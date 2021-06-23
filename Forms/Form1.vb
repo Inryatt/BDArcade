@@ -120,6 +120,8 @@ Public Class Form1
         CMD.CommandText = "arcade.getPublisher"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("code", Convert.ToInt32(game.gameID))
+        CN.Close()
+
         CN.Open()
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
@@ -173,9 +175,6 @@ Public Class Form1
         PublisherLocationInput.Text = publisher.pubLocation
         PublisherIsIndependent.Checked = publisher.pubIsIndie
         Console.WriteLine(publisher.pubIsIndie)
-
-
-
     End Sub
 
     Public Sub ShowGameMachine()
@@ -185,11 +184,31 @@ Public Class Form1
         GameMachineLocationInput.Text = gameMachine.gmStore
         GameMachineSerialInput.Text = gameMachine.gmSerial
         GameMachineManuInput.Text = gameMachine.gmManuf
-        GameMachineSupplierInput.Text = gameMachine.gmSupName
+        GameMachineSupplierInput.Text = gameMachine.gmSerial + " " + gameMachine.gmSupName
+        GameMAchineRentInput.Text = gameMachine.gmRent
         GameMachineSerialInput.Enabled = False
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
+        GameMAchineRentInput.Enabled = False
+
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getSupplier"
+        CMD.CommandType = CommandType.StoredProcedure
+        CN.Close()
+        CN.Open()
+        Dim RDR As SqlDataReader
+        RDR = CMD.ExecuteReader
+        GameMachineSupplierInput.Items.Clear()
+
+        While RDR.Read
+            If RDR.Item("NIF") <> "000000000" Then
+                GameMachineSupplierInput.Items.Add(RDR.Item("NIF") + " " + RDR.Item("sup_name"))
+            End If
+        End While
+
     End Sub
 
     Public Sub ShowEmployee()
@@ -470,6 +489,7 @@ Public Class Form1
             GameMachineLocationInput.Enabled = True
             GameMachineManuInput.Enabled = True
             GameMachineSupplierInput.Enabled = True
+            GameMAchineRentInput.Enabled = True
 
         Else
             GameMachineCancelButton.Hide()
@@ -480,6 +500,7 @@ Public Class Form1
             GameMachineLocationInput.Enabled = False
             GameMachineManuInput.Enabled = False
             GameMachineSupplierInput.Enabled = False
+            GameMAchineRentInput.Enabled = False
 
         End If
     End Sub
@@ -492,6 +513,7 @@ Public Class Form1
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
+        GameMAchineRentInput.Enabled = False
 
         If GameMachinesListBox.SelectedIndex > -1 Then
             currentGameMachine = GameMachinesListBox.SelectedIndex
@@ -508,28 +530,45 @@ Public Class Form1
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
+        GameMAchineRentInput.Enabled=False
+
+
+        Dim line As String = GameMachineSupplierInput.Text
+        Dim result() As String
+        result = line.Split(" ")
+        Dim actualid As String = result(0)
+        Dim gm As New GameMachine
+
+        gm = CType(GameMachinesListBox.Items.Item(currentGameMachine), GameMachine)
+        Console.WriteLine(currentGameMachine)
+
+        CN.Close()
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.insertMachine"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("serial_no", Integer.Parse(GameMachineSerialInput.Text))
+        CMD.Parameters.AddWithValue("manufacturer", GameMachineManuInput.Text)
+        CMD.Parameters.AddWithValue("supplier", Integer.Parse(actualid))
+        Console.WriteLine(actualid)
+        CMD.Parameters.AddWithValue("game", Integer.Parse(gm.gmNameId))
+        CMD.Parameters.AddWithValue("store", Integer.Parse(gm.gmStoreId))
+        ''CMD.Parameters.AddWithValue("rent_cost", GameMAchineRentInput.Text)
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+        Console.WriteLine("he")
+
+        Console.WriteLine(currentGameMachine)
+
+        GameMachineLoad(gm.gmCode)
 
         If GameMachinesListBox.SelectedIndex > -1 Then
             currentGameMachine = GameMachinesListBox.SelectedIndex
             ShowGameMachine()
         End If
 
-
-        CMD = New SqlCommand
-        CMD.Connection = CN
-        CMD.CommandText = "arcade.insertMachine"
-        CMD.CommandType = CommandType.StoredProcedure
-        CMD.Parameters.AddWithValue("serial_no", Integer.Parse(GameMachineSerialInput.Text))
-
-        CMD.Parameters.AddWithValue("manufacturer", GameMachineManuInput.Text)
-        CMD.Parameters.AddWithValue("supplier", GameMachineSupplierInput.Text)
-        CMD.Parameters.AddWithValue("game", GameNameInput.Text)
-        CMD.Parameters.AddWithValue("store", GameMachineLocationInput.Text)
-        CMD.Parameters.AddWithValue("rent_cost", SupplierNameInput.Text)
-
-        CN.Open()
-        CMD.ExecuteNonQuery()
-        CN.Close()
 
         ''todo - save changes via SP
     End Sub
@@ -729,6 +768,7 @@ Public Class Form1
         CMD.CommandText = "arcade.game_machines"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("game", gameID)
+        CN.Close()
         CN.Open()
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
@@ -767,6 +807,12 @@ Public Class Form1
                     G.gmSerial = RDR.Item("serial_no")
                     G.gmStore = RDR.Item("store_location")
                     G.gmSupName = RDR.Item("sup_name")
+                    G.gmStoreId = RDR.Item("store_id")
+                    G.gmNameId = RDR.Item("game_id")
+                    G.gmCode = RDR.Item("Code")
+                    '' G.gmRent = RDR.Item("rent")
+                    ''G.gmRentDur = RDR.Item("rent:dur")
+
                     GameMachinesListBox.Items.Add(G)
                     i = i + 1
                     Exit While
@@ -1104,6 +1150,10 @@ Public Class Form1
         RDR.Close()
 
         ShowGameMachine()
+    End Sub
+
+    Private Sub GameMachineSupplierInput_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GameMachineSupplierInput.SelectedIndexChanged
+
     End Sub
 End Class
 

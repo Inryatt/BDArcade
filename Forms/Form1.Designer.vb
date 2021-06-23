@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem4 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.GameTab = New System.Windows.Forms.TabPage()
         Me.GameMachineShowLess = New System.Windows.Forms.Button()
@@ -36,7 +36,6 @@ Partial Class Form1
         Me.GameMAchineRentInput = New System.Windows.Forms.TextBox()
         Me.Rent = New System.Windows.Forms.Label()
         Me.Panel13 = New System.Windows.Forms.Panel()
-        Me.GameMachineSupplierInput = New System.Windows.Forms.TextBox()
         Me.GameMachineSupplierLabel = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.GameMachineLocationInput = New System.Windows.Forms.TextBox()
@@ -163,6 +162,9 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StoreListBox = New System.Windows.Forms.ListBox()
         Me.LogTab = New System.Windows.Forms.TabPage()
+        Me.GameMachineSupplierInput = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -315,6 +317,8 @@ Partial Class Form1
         '
         'Panel26
         '
+        Me.Panel26.Controls.Add(Me.TextBox1)
+        Me.Panel26.Controls.Add(Me.Label11)
         Me.Panel26.Controls.Add(Me.GameMAchineRentInput)
         Me.Panel26.Controls.Add(Me.Rent)
         Me.Panel26.Location = New System.Drawing.Point(6, 291)
@@ -326,7 +330,7 @@ Partial Class Form1
         '
         Me.GameMAchineRentInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMAchineRentInput.Name = "GameMAchineRentInput"
-        Me.GameMAchineRentInput.Size = New System.Drawing.Size(232, 20)
+        Me.GameMAchineRentInput.Size = New System.Drawing.Size(83, 20)
         Me.GameMAchineRentInput.TabIndex = 0
         '
         'Rent
@@ -334,9 +338,9 @@ Partial Class Form1
         Me.Rent.AutoSize = True
         Me.Rent.Location = New System.Drawing.Point(12, 14)
         Me.Rent.Name = "Rent"
-        Me.Rent.Size = New System.Drawing.Size(45, 13)
+        Me.Rent.Size = New System.Drawing.Size(30, 13)
         Me.Rent.TabIndex = 1
-        Me.Rent.Text = "Supplier"
+        Me.Rent.Text = "Rent"
         '
         'Panel13
         '
@@ -346,13 +350,6 @@ Partial Class Form1
         Me.Panel13.Name = "Panel13"
         Me.Panel13.Size = New System.Drawing.Size(263, 62)
         Me.Panel13.TabIndex = 5
-        '
-        'GameMachineSupplierInput
-        '
-        Me.GameMachineSupplierInput.Location = New System.Drawing.Point(15, 30)
-        Me.GameMachineSupplierInput.Name = "GameMachineSupplierInput"
-        Me.GameMachineSupplierInput.Size = New System.Drawing.Size(232, 20)
-        Me.GameMachineSupplierInput.TabIndex = 0
         '
         'GameMachineSupplierLabel
         '
@@ -1180,7 +1177,7 @@ Partial Class Form1
         Me.EmpTaskList.Alignment = System.Windows.Forms.ListViewAlignment.Left
         Me.EmpTaskList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.EmpTaskList.HideSelection = False
-        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
+        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem4})
         Me.EmpTaskList.Location = New System.Drawing.Point(104, 89)
         Me.EmpTaskList.Name = "EmpTaskList"
         Me.EmpTaskList.Size = New System.Drawing.Size(245, 83)
@@ -1499,6 +1496,30 @@ Partial Class Form1
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
         '
+        'GameMachineSupplierInput
+        '
+        Me.GameMachineSupplierInput.FormattingEnabled = True
+        Me.GameMachineSupplierInput.Location = New System.Drawing.Point(15, 30)
+        Me.GameMachineSupplierInput.Name = "GameMachineSupplierInput"
+        Me.GameMachineSupplierInput.Size = New System.Drawing.Size(232, 21)
+        Me.GameMachineSupplierInput.TabIndex = 2
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(161, 14)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(73, 13)
+        Me.Label11.TabIndex = 2
+        Me.Label11.Text = "Rent Duration"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(164, 30)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(83, 20)
+        Me.TextBox1.TabIndex = 3
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1679,7 +1700,6 @@ Partial Class Form1
     Friend WithEvents GameMachineSerialInput As TextBox
     Friend WithEvents GameMachineSerialLabel As Label
     Friend WithEvents Panel13 As Panel
-    Friend WithEvents GameMachineSupplierInput As TextBox
     Friend WithEvents GameMachineSupplierLabel As Label
     Friend WithEvents GameMachineEditButton As Button
     Friend WithEvents GameMachineSaveButton As Button
@@ -1721,4 +1741,7 @@ Partial Class Form1
     Friend WithEvents Panel26 As Panel
     Friend WithEvents GameMAchineRentInput As TextBox
     Friend WithEvents Rent As Label
+    Friend WithEvents GameMachineSupplierInput As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label11 As Label
 End Class

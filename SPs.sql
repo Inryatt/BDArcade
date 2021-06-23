@@ -12,7 +12,7 @@ RETURN CODES:
 -- Machine games, supplier, and store location
 CREATE OR ALTER PROCEDURE arcade.machine_list
 AS
-	select	serial_no, manufacturer, sup_name, game_name, store_location
+	select	serial_no, manufacturer, sup_name, game_name, store_location,St.store_id
 	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
 			join arcade.Game as G on M.code=G.game_id
 			join arcade.Store as St on M.store_id=St.store_id
@@ -1293,3 +1293,25 @@ as
 	select *  from arcade.arcadeMachine 
 
 go
+
+create procedure arcade.getSupplier
+as
+	select * from arcade.supplier
+
+go
+
+create procedure arcade.getGameID
+	@name varchar(50) = null
+AS
+	select game_id from arcade.game where game_name=@name
+	go
+
+	
+/*altered this one */
+CREATE OR ALTER PROCEDURE arcade.machine_list
+AS
+	select	serial_no, manufacturer, sup_name, game_name, store_location,St.store_id,game_id,code
+	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
+			join arcade.Game as G on M.code=G.game_id
+			join arcade.Store as St on M.store_id=St.store_id
+GO

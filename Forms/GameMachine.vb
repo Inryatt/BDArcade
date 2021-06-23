@@ -4,13 +4,54 @@
     Private _gmSupName As String
     Private _gmGameName As String
     Private _gmStore As String
-
+    Private _gmRent As String
+    Private _gmRentDur As String
+    Private _gmStoreId As String
+    Private _gmNameId As Integer
+    Private _gmCode As String
     Property gmSerial As String
         Get
             Return _gmSerial
         End Get
         Set(ByVal value As String)
             _gmSerial = value
+        End Set
+    End Property
+
+    Property gmCode As String
+        Get
+            Return _gmCode
+        End Get
+        Set(ByVal value As String)
+            _gmCode = value
+        End Set
+    End Property
+
+
+    Property gmNameId As String
+        Get
+            Return _gmNameId
+        End Get
+        Set(ByVal value As String)
+            _gmNameId = value
+        End Set
+    End Property
+
+    Property gmStoreId As String
+        Get
+            Return _gmStoreId
+        End Get
+        Set(ByVal value As String)
+            _gmStoreId = value
+        End Set
+    End Property
+
+    Property gmRent As String
+        Get
+            Return _gmRent
+        End Get
+        Set(ByVal value As String)
+            _gmRent = value
         End Set
     End Property
 
@@ -43,6 +84,10 @@
             Return _gmGameName
         End Get
         Set(ByVal value As String)
+
+
+
+
             If value Is Nothing Or value = "" Then
                 Throw New Exception("Supplier Phone field can’t be empty")
                 Exit Property
