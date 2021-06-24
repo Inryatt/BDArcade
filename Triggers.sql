@@ -1,24 +1,3 @@
-
-/*
-INSERT INTO arcade.Supplier ([NIF],[email],[phone_no],[sup_address],[sup_name]) VALUES ('128323702','sdasd@miac.com','949401351','5794 Lacus. Street','Cum Sociis Ltd');
-INSERT INTO arcade.ArcadeMachine([serial_no],[manufacturer],[NIF],[code],[store_id]) VALUES(128419737,'Cubilia Curae; Industries'                 ,'128323702'                           ,04029,01002);
-
---Erro -> ainda há maquinas a serem alugadas!
-INSERT INTO arcade.Rents([machine_no],[supplier],[rent_cost],[rent_duration]) VALUES(128419737,'128323702',401.04,'2021/07/25');
---Rent já expirou - pode ser apagado
-INSERT INTO arcade.Rents([machine_no],[supplier],[rent_cost],[rent_duration]) VALUES(128419737,'128323702',401.04,'2021/03/25');
-
-
-
-delete from arcade.Supplier where NIF=128323702
-
-delete from arcade.Rents where machine_no=128419737
-
-select * from arcade.ArcadeMachine
-select * from arcade.Supplier;
-select * from arcade.Rents;
-
-*/
 CREATE TRIGGER supplierDeleted ON arcade.Supplier
 INSTEAD OF DELETE
 AS
@@ -48,16 +27,6 @@ AS
 		PRINT 'There are still machines from this supplier being rented!'
 GO
 
-/*
-
-select * from arcade.employee
-
-delete from arcade.employee where emp_no=12004
-
-
-select * from arcade.Redeemed
-select * from arcade.Employee where emp_no = 12999
-*/
 
 GO
 CREATE TRIGGER employeeDeleted ON arcade.Employee
@@ -76,8 +45,6 @@ AS
 GO
 
 
-
-
 GO
 CREATE TRIGGER clientDeleted ON arcade.Client
 INSTEAD of DELETE
@@ -94,50 +61,22 @@ AS
 	commit
 GO
 
-GO
+
 CREATE TRIGGER machineDeleted ON arcade.arcadeMachine
 INSTEAD of DELETE
 AS
 		DECLARE @machine_serial int;
 		SELECT @machine_serial = serial_no from deleted;
+
 	begin tran
 		update arcade.rents set machine_no=0 where machine_no=@machine_serial;
-		update arcade.Maintained set machine_no=0 where machine_no=@mahcine_serial;
+		update arcade.Maintained set machine_no=0 where machine_no=@machine_serial;
 		update arcade.played set machine_no=0 where machine_no=@machine_serial;
 		
 		delete from arcade.arcadeMachine where serial_no=@machine_serial;
 	commit
 GO
 
-
-/*
-
-select * from arcade.prize
-
-select * from arcade.client
-
-select * from arcade.client where client_no=6000
---works
-INSERT INTO arcade.Redeemed([quantity],[time_stamp],[client_no],[emp_no],[pri_id]) VALUES(4,'2021-02-25 08:16:35',06000,12009,07001);
-
- select * from arcade.prize where pri_id=7001
-
-select * from arcade.client
-
-
- --doesnt work
-
- --stock
- INSERT INTO arcade.Redeemed([quantity],[time_stamp],[client_no],[emp_no],[pri_id]) VALUES(40,'2021-02-25 08:16:35',06000,12009,07001);
-
-
- --credits
-
-  INSERT INTO arcade.Redeemed([quantity],[time_stamp],[client_no],[emp_no],[pri_id]) VALUES(1,'2021-02-25 08:16:35',06027,12009,07001);
-
-   select * from arcade.prize where pri_id=7001
-
-select * from arcade.client where client_no=6000 or client_no=6027*/
 
 CREATE TRIGGER prizeRedeemed ON arcade.Redeemed
 AFTER INSERT
@@ -185,24 +124,7 @@ AS
 		DELETE FROM arcade.Publisher WHERE pub_id=@pub;
 GO
 
-/*
 
-select serial_no,credit_cost from arcade.arcadeMachine join arcade.Game on code=game_id where serial_no=118546459
-
-select * from arcade.game
-
-select * from arcade.client where client_no=6009
-select * from arcade.client where client_no=6000
-
-INSERT INTO arcade.Played([time_stamp],[playtime],[points_recv],[client],[machine_no]) VALUES('2020-07-01 20:04:01','00:26:22',48,6000,118546459);
-
-
-INSERT INTO arcade.Played([time_stamp],[playtime],[points_recv],[client],[machine_no]) VALUES('2020-07-01 20:04:01','00:26:22',48,6009,118546459);
-select * from arcade.client where client_no=6009
-select * from arcade.client where client_no=6000
-*/
-
-go
 Create trigger tryToPlay on arcade.played
 after Insert
 as
@@ -230,4 +152,26 @@ as
 	commit tran
 	end
 go
+
+
+CREATE TRIGGER scheduleDeleted ON arcade.Schedule
+INSTEAD OF DELETE
+AS
+	DECLARE @code INT;
+	SELECT @code = schedule_code FROM DELETED;
+
+	IF (SELECT COUNT(*) FROM arcade.Employee WHERE schedule=@code) > 0
+	BEGIN
+		PRINT 'There are still employees using this schedule!'
+		RETURN
+	END
+
+	BEGIN TRAN
+
+	DELETE FROM arcade.ScheduleFunctions WHERE schedule_code = @code;
+	DELETE FROM arcade.ScheduleWeekDays WHERE schedule_code = @code;
+	DELETE FROM arcade.Schedule WHERE schedule_code = @code;
+
+	COMMIT TRAN
+GO
 

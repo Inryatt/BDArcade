@@ -9,40 +9,6 @@ RETURN CODES:
 */
 
 
--- Machine games, supplier, and store location
-CREATE OR ALTER PROCEDURE arcade.machine_list
-AS
-	select	serial_no, manufacturer, sup_name, game_name, store_location,St.store_id
-	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
-			join arcade.Game as G on M.code=G.game_id
-			join arcade.Store as St on M.store_id=St.store_id
-GO
-
--- Schedule times, tasks, and week days (this seems kinda bad)
-CREATE OR ALTER PROCEDURE arcade.get_schedule
-	@code int = null,
-	@starttime time OUTPUT,
-	@endtime time OUTPUT
-AS
-	IF @code is null
-	BEGIN
-		PRINT 'Please enter schedule code!'
-		RETURN 1
-	END
-
-	select	@starttime = start_time, @endtime = end_time
-	from	arcade.Schedule
-	where	schedule_code=@code;
-
-	select	task
-	from	arcade.ScheduleFunctions
-	where	schedule_code=@code;
-
-	select	week_day
-	from	arcade.ScheduleWeekDays
-	where	schedule_code=@code;
-GO
-
 -- Get Machines from Supplier
 CREATE OR ALTER PROCEDURE arcade.supplier_machines @supplier CHAR(9) = null
 AS
@@ -162,31 +128,8 @@ AS
 GO
 
 
-
-/*
-DECLARE @avg_time CHAR(9), @total_time CHAR(10);
-EXEC arcade.playtime_stats @end_date = '2021-01-01', @avg_time = @avg_time OUTPUT, @total_time = @total_time OUTPUT
-print @avg_time;
-print @total_time;
-*/
-
-/*
-DROP PROCEDURE arcade.machine_list;
-DROP PROCEDURE arcade.get_schedule;
-DROP PROCEDURE arcade.supplier_machines;
-DROP PROCEDURE arcade.game_machines;
-DROP PROCEDURE arcade.game_list;
-DROP PROCEDURE arcade.publisher_games;
-*/
-
-/*
-DECLARE @start time, @end time;
-EXEC arcade.get_schedule_test 8001, @start OUTPUT, @end OUTPUT;
-print @start;
-print @end;*/
-
 Go
-CREATE OR ALTER PROCEDURE arcade.get_schedule_test
+CREATE OR ALTER PROCEDURE arcade.get_schedule
 	@code int = null,
 	@starttime time OUTPUT,
 	@endtime time OUTPUT
@@ -201,14 +144,6 @@ AS
 	from	arcade.Schedule
 	where	schedule_code=@code;
 
-	/*select	task
-	from	arcade.ScheduleFunctions
-	where	schedule_code=@code;
-
-	select	week_day
-	from	arcade.ScheduleWeekDays
-	where	schedule_code=@code;
-	*/
 GO
 
 
@@ -258,18 +193,6 @@ as
 		where client=@user
 		order by time_stamp
 go
-
-/*
-
-declare @days int =3;
-declare @machine int =128170507
-select * from arcade.arcadeMachine
-
-exec  arcade.extendRent @machine_id = 128170507, @days=3 --extends in 3 days
-
-select * from arcade.rents where machine_no= 128170507
-
-*/
 
 
 CREATE OR ALTER PROCEDURE arcade.extendRent
@@ -333,12 +256,105 @@ AS
 	END CATCH
 GO
 
+
+CREATE OR ALTER PROCEDURE arcade.addGameToMachine
+	@machine int = null,
+	@game int = null
+as
+	IF @machine is null OR @game is null
+	BEGIN
+		PRINT 'Please enter machine and game!'
+		RETURN 1
+	END
+
+	UPDATE arcade.arcadeMachine SET code = @game WHERE serial_no=@machine
+go
+
+CREATE OR ALTER PROCEDURE arcade.removeGameFromMachine
+	@machine int = null
+as
+
+	UPDATE arcade.arcadeMachine SET code = null WHERE serial_no=@machine
+go
+
+
 -- GETS
 
 create or alter procedure arcade.getEmployees
     @store int = null
 as
     select * from arcade.employee where @store=store
+go
+
+
+create or alter procedure arcade.getEmployees
+	@store int = null
+as
+	select * from arcade.employee where @store=store
+
+go
+
+
+create or alter procedure arcade.getTask
+	@code int = null
+as
+	select task from arcade.ScheduleFunctions where @code=schedule_code
+
+go
+
+
+create or alter procedure arcade.getPublisher
+as
+	select concat(pub_id,' ',pub_name) as pub from arcade.publisher 
+
+go
+
+
+create or alter procedure arcade.getAllMachines
+as
+	select *  from arcade.arcadeMachine 
+
+go
+
+
+create or alter procedure arcade.getSupplier
+as
+	select * from arcade.supplier
+
+go
+
+create or alter procedure arcade.getGameID
+	@name varchar(50) = null
+AS
+	select game_id from arcade.game where game_name=@name
+go
+
+	
+CREATE OR ALTER PROCEDURE arcade.machine_list
+AS
+	select	serial_no, manufacturer, sup_name, game_name, store_location,St.store_id,game_id,code
+	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
+			join arcade.Game as G on M.code=G.game_id
+			join arcade.Store as St on M.store_id=St.store_id
+Go
+
+
+CREATE OR ALTER PROCEDURE arcade.getMachineWithNoGame
+as
+	select * from arcade.ArcadeMachine where code is null
+go
+
+
+CREATE OR ALTER PROCEDURE arcade.getAllLogs
+	@emp int = null
+as
+	select * from(
+	select op_id,'Redeemed' as Task, emp_no as employee, time_stamp from arcade.Redeemed
+	union
+	select op_id,'Maintained' as Task,  employee, time_stamp from arcade.Maintained
+	union
+	select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
+	) as biglist where biglist.employee=@emp
 go
 
 
@@ -1068,7 +1084,7 @@ CREATE OR ALTER PROCEDURE arcade.alterGame
 	@point_value INT = null,
 	@credit_cost INT = null,
 	@no_players INT = null
-AS	
+AS
 	IF @game_id is null
 	BEGIN
 		PRINT 'No game specified!'
@@ -1255,106 +1271,3 @@ AS
 		ROLLBACK TRAN
 	END CATCH
 GO
-
-
-
-/* 
-	exec arcade.getEmployees 1001
-*/
-create procedure arcade.getEmployees
-	@store int = null
-as
-	select * from arcade.employee where @store=store
-
-go
-
-
-/*
-declare @code int = 8001
-exec arcade.getTask @code
-*/
-
-create procedure arcade.getTask
-	@code int = null
-as
-	select task from arcade.ScheduleFunctions where @code=schedule_code
-
-go
-
-create procedure arcade.getPublisher
-as
-	select concat(pub_id,' ',pub_name) as pub from arcade.publisher 
-
-go
-
-
-create procedure arcade.getAllMachines
-as
-	select *  from arcade.arcadeMachine 
-
-go
-
-create procedure arcade.getSupplier
-as
-	select * from arcade.supplier
-
-go
-
-create procedure arcade.getGameID
-	@name varchar(50) = null
-AS
-	select game_id from arcade.game where game_name=@name
-	go
-
-	
-/*altered this one */
-CREATE OR ALTER PROCEDURE arcade.machine_list
-AS
-	select	serial_no, manufacturer, sup_name, game_name, store_location,St.store_id,game_id,code
-	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
-			join arcade.Game as G on M.code=G.game_id
-			join arcade.Store as St on M.store_id=St.store_id
-Go
-
-
-
-CREATE OR ALTER PROCEDURE arcade.addGameToMachine
-	@machine int = null,
-	@game int = null
-as
-	IF @machine is null OR @game is null
-	BEGIN
-		PRINT 'Please enter machine and game!'
-		RETURN 1
-	END
-
-	UPDATE arcade.arcadeMachine SET code = @game WHERE serial_no=@machine
-go
-
-CREATE OR ALTER PROCEDURE arcade.removeGameFromMachine
-	@machine int = null,
-as
-
-	UPDATE arcade.arcadeMachine SET code = null WHERE serial_no=@machine
-go
-
-CREATE OR ALTER PROCEDURE arcade.getMachineWithNoGame
-as
-select * from arcade.ArcadeMachine where code is null
-go
-
-
-
-CREATE OR ALTER PROCEDURE arcade.getAllLogs
-	@emp int = null
-as
-
-select * from(
-select op_id,'Redeemed' as Task, emp_no as employee, time_stamp from arcade.Redeemed
-union
-select op_id,'Maintained' as Task,  employee, time_stamp from arcade.Maintained
-union
-select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
-) as biglist where biglist.employee=@emp
-go
-
