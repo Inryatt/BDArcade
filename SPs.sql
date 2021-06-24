@@ -1068,7 +1068,7 @@ CREATE OR ALTER PROCEDURE arcade.alterGame
 	@point_value INT = null,
 	@credit_cost INT = null,
 	@no_players INT = null
-AS
+AS	
 	IF @game_id is null
 	BEGIN
 		PRINT 'No game specified!'
@@ -1329,5 +1329,32 @@ as
 	END
 
 	UPDATE arcade.arcadeMachine SET code = @game WHERE serial_no=@machine
+go
+
+CREATE OR ALTER PROCEDURE arcade.removeGameFromMachine
+	@machine int = null,
+as
+
+	UPDATE arcade.arcadeMachine SET code = null WHERE serial_no=@machine
+go
+
+CREATE OR ALTER PROCEDURE arcade.getMachineWithNoGame
+as
+select * from arcade.ArcadeMachine where code is null
+go
+
+
+
+CREATE OR ALTER PROCEDURE arcade.getAllLogs
+	@emp int = null
+as
+
+select * from(
+select op_id,'Redeemed' as Task, emp_no as employee, time_stamp from arcade.Redeemed
+union
+select op_id,'Maintained' as Task,  employee, time_stamp from arcade.Maintained
+union
+select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
+) as biglist where biglist.employee=@emp
 go
 

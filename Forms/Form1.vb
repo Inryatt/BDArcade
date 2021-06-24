@@ -260,6 +260,15 @@ Public Class Form1
 
     ''Loads everything :)
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'ArcadeData.Played' table. You can move, or remove it, as needed.
+        Me.PlayedTableAdapter.Fill(Me.ArcadeData.Played)
+        'TODO: This line of code loads data into the 'ArcadeData.Maintained' table. You can move, or remove it, as needed.
+        Me.MaintainedTableAdapter.Fill(Me.ArcadeData.Maintained)
+        'TODO: This line of code loads data into the 'ArcadeData.ToppedUp' table. You can move, or remove it, as needed.
+        Me.ToppedUpTableAdapter.Fill(Me.ArcadeData.ToppedUp)
+        'TODO: This line of code loads data into the 'ArcadeData.Redeemed' table. You can move, or remove it, as needed.
+        Me.RedeemedTableAdapter.Fill(Me.ArcadeData.Redeemed)
+
         Select Case TabControl.SelectedIndex
             Case 0
                 GameLoad()
@@ -269,6 +278,8 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
+            Case 4
+                LogsLoad()
         End Select
 
 
@@ -394,6 +405,7 @@ Public Class Form1
             GamePointsInput.Enabled = True
             GamePublisherInput.Enabled = True
             GamePlayersInput.Enabled = True
+            GameAlterButton.Show()
 
         Else
             GameCancelButton.Hide()
@@ -406,7 +418,10 @@ Public Class Form1
             GamePointsInput.Enabled = False
             GamePublisherInput.Enabled = False
             GamePlayersInput.Enabled = False
+            GameAlterButton.Hide()
+
         End If
+
     End Sub
 
     Private Sub GameSaveButton_Click(sender As Object, e As EventArgs) Handles GameSaveButton.Click
@@ -422,7 +437,7 @@ Public Class Form1
         GamePlayersInput.Enabled = False
 
 
-        Dim line As String = GameIDInput.Text
+        Dim line As String = GamePublisherInput.Text
         Dim result() As String
         result = line.Split(" ")
         Dim actualid As String = result(0)
@@ -433,16 +448,15 @@ Public Class Form1
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("id", GameIDInput.Text)
         CMD.Parameters.AddWithValue("name", GameNameInput.Text)
-        CMD.Parameters.AddWithValue("publisher", actualid)
+        CMD.Parameters.AddWithValue("publisher", Integer.Parse(actualid))
         CMD.Parameters.AddWithValue("point_value", Integer.Parse(GamePointsInput.Text))
         CMD.Parameters.AddWithValue("credit_cost", Integer.Parse(GameCostInput.Text))
         CMD.Parameters.AddWithValue("no_players", Integer.Parse(GamePlayersInput.Text))
 
-
-
         CN.Open()
         CMD.ExecuteNonQuery()
         CN.Close()
+        GameLoad()
 
     End Sub
 
@@ -457,6 +471,7 @@ Public Class Form1
         GamePointsInput.Enabled = True
         GamePublisherInput.Enabled = True
         GamePlayersInput.Enabled = True
+        GameAlterButton.Hide()
 
 
 
@@ -488,6 +503,7 @@ Public Class Form1
         GamePointsInput.Enabled = False
         GamePublisherInput.Enabled = False
         GamePlayersInput.Enabled = False
+        GameAlterButton.Hide()
 
         If GameListBox.SelectedIndex > -1 Then
             currentGame = GameListBox.SelectedIndex
@@ -756,7 +772,7 @@ Public Class Form1
         CN.Open()
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
-        Supplier_ListBox.Items.Clear()
+        GameListBox.Items.Clear()
         While RDR.Read
             Dim G As New Game
 
@@ -880,6 +896,8 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
+            Case 4
+                LogsLoad()
         End Select
 
 
@@ -1218,9 +1236,12 @@ Public Class Form1
 
         selectMachineForGame.Show()
         gameAddSaveMachine.Show()
+        removeGamefromMachine.Hide()
+        addGameToMAchineButton.Hide()
+
         CN.Open()
         CMD.Parameters.Clear()
-        CMD.CommandText = "arcade.getMachinesWithNoGame"
+        CMD.CommandText = "arcade.getMachineWithNoGame"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.Clear()
         Dim RDR As SqlDataReader
@@ -1229,6 +1250,7 @@ Public Class Form1
 
         While RDR.Read
             selectMachineForGame.Items.Add(RDR.Item("serial_no"))
+            Console.WriteLine("ssfdf")
         End While
 
 
@@ -1247,15 +1269,95 @@ Public Class Form1
         CMD.Parameters.Clear()
         Dim gm As New Game
         gm = CType(GameListBox.Items.Item(currentGame), Game)
-
+        CN.Open()
         CMD.Parameters.AddWithValue("machine", Integer.Parse(selectMachineForGame.Text))
         CMD.Parameters.AddWithValue("game", Integer.Parse(gm.gameID))
 
         CMD.ExecuteNonQuery()
 
+        selectMachineForGame.Hide()
+        gameAddSaveMachine.Hide()
+        removeGamefromMachine.Show()
+        addGameToMAchineButton.Show()
 
         CN.Close()
+        GameLoad()
+    End Sub
+
+    Private Sub removeGamefromMachine_Click(sender As Object, e As EventArgs) Handles removeGamefromMachine.Click
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.removeGameFromMachine"
+        CMD.CommandType = CommandType.StoredProcedure
+        Dim gm As New Game
+        gm = CType(GameListBox.Items.Item(currentGame), Game)
+
+        CN.Open()
+
+        Console.WriteLine(GameMachinesListBox.Items(currentMachine))
+        CMD.Parameters.AddWithValue("machine", Integer.Parse(GameMachinesListBox.Items(currentMachine)))
+        CMD.ExecuteNonQuery()
+
+
+        CN.Close()
+
+        selectMachineForGame.Hide()
+        gameAddSaveMachine.Hide()
+        removeGamefromMachine.Show()
+
+        GameLoad()
+    End Sub
+
+    Private Sub GameAlterButton_Click(sender As Object, e As EventArgs) Handles GameAlterButton.Click
+
+
+        Dim line As String = GamePublisherInput.Text
+        Dim result() As String
+        result = line.Split(" ")
+        Dim actualid As String = result(0)
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.alterGame"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("game_id", GameIDInput.Text)
+        CMD.Parameters.AddWithValue("name", GameNameInput.Text)
+        CMD.Parameters.AddWithValue("point_value", Integer.Parse(GamePointsInput.Text))
+        CMD.Parameters.AddWithValue("credit_cost", Integer.Parse(GameCostInput.Text))
+        CMD.Parameters.AddWithValue("no_players", Integer.Parse(GamePlayersInput.Text))
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+        GameLoad()
+    End Sub
+
+    Private Sub GameDeleteButton_Click(sender As Object, e As EventArgs) Handles GameDeleteButton.Click
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.deleteGame"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("game_id", Integer.Parse(GameIDInput.Text))
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+        GameLoad()
+    End Sub
+
+    Private Sub LogsLoad()
+
+        'TODO: This line of code loads data into the 'ArcadeData.Redeemed' table. You can move, or remove it, as needed.
+        Me.RedeemedTableAdapter.Fill(Me.ArcadeData.Redeemed)
+    End Sub
+
+    Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs) Handles FillByToolStripButton.Click
+        Try
+            Me.RedeemedTableAdapter.FillBy(Me.ArcadeData.Redeemed)
+        Catch ex As System.Exception
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
 End Class
-
 

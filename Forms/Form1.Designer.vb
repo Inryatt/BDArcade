@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -22,9 +22,12 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Me.components = New System.ComponentModel.Container()
+        Dim ListViewItem6 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.GameTab = New System.Windows.Forms.TabPage()
+        Me.GameAlterButton = New System.Windows.Forms.Button()
+        Me.gameAddSaveMachine = New System.Windows.Forms.Button()
         Me.selectMachineForGame = New System.Windows.Forms.ComboBox()
         Me.removeGamefromMachine = New System.Windows.Forms.Button()
         Me.addGameToMAchineButton = New System.Windows.Forms.Button()
@@ -141,6 +144,11 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StoreListBox = New System.Windows.Forms.ListBox()
         Me.LogTab = New System.Windows.Forms.TabPage()
+        Me.Logs = New System.Windows.Forms.TabControl()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GameMachineAddButton = New System.Windows.Forms.Button()
         Me.GameMachineSaveButton = New System.Windows.Forms.Button()
@@ -170,7 +178,43 @@ Partial Class Form1
         Me.Label21 = New System.Windows.Forms.Label()
         Me.MachinaListBox = New System.Windows.Forms.ListBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.gameAddSaveMachine = New System.Windows.Forms.Button()
+        Me.RedeemeDTable = New System.Windows.Forms.DataGridView()
+        Me.FillByToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.FillByToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.OpidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantityDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClientnoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpnoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PriidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RedeemedBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ArcadeData = New Projeto_BD.ArcadeData()
+        Me.RedeemedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RedeemedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.RedeemedTableAdapter()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ToppedUpBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ToppedUpTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.ToppedUpTableAdapter()
+        Me.OpidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClientDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TimestampDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CreditsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.MaintainedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MaintainedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.MaintainedTableAdapter()
+        Me.MaintidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MachinenoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TimestampDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.PlayedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PlayedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.PlayedTableAdapter()
+        Me.TimestampDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PlaytimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PointsrecvDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClientDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MachinenoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -204,6 +248,12 @@ Partial Class Form1
         Me.GroupBox2.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel16.SuspendLayout()
+        Me.LogTab.SuspendLayout()
+        Me.Logs.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
+        Me.TabPage5.SuspendLayout()
+        Me.TabPage6.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Panel27.SuspendLayout()
@@ -212,6 +262,17 @@ Partial Class Form1
         Me.Panel30.SuspendLayout()
         Me.Panel31.SuspendLayout()
         Me.Panel32.SuspendLayout()
+        CType(Me.RedeemeDTable, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FillByToolStrip.SuspendLayout()
+        CType(Me.RedeemedBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArcadeData, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ToppedUpBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MaintainedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl
@@ -231,6 +292,7 @@ Partial Class Form1
         '
         'GameTab
         '
+        Me.GameTab.Controls.Add(Me.GameAlterButton)
         Me.GameTab.Controls.Add(Me.gameAddSaveMachine)
         Me.GameTab.Controls.Add(Me.selectMachineForGame)
         Me.GameTab.Controls.Add(Me.removeGamefromMachine)
@@ -251,6 +313,26 @@ Partial Class Form1
         Me.GameTab.TabIndex = 0
         Me.GameTab.Text = "Game"
         Me.GameTab.UseVisualStyleBackColor = True
+        '
+        'GameAlterButton
+        '
+        Me.GameAlterButton.Location = New System.Drawing.Point(739, 272)
+        Me.GameAlterButton.Name = "GameAlterButton"
+        Me.GameAlterButton.Size = New System.Drawing.Size(75, 23)
+        Me.GameAlterButton.TabIndex = 24
+        Me.GameAlterButton.Text = "Update"
+        Me.GameAlterButton.UseVisualStyleBackColor = True
+        Me.GameAlterButton.Visible = False
+        '
+        'gameAddSaveMachine
+        '
+        Me.gameAddSaveMachine.Location = New System.Drawing.Point(412, 530)
+        Me.gameAddSaveMachine.Name = "gameAddSaveMachine"
+        Me.gameAddSaveMachine.Size = New System.Drawing.Size(75, 23)
+        Me.gameAddSaveMachine.TabIndex = 23
+        Me.gameAddSaveMachine.Text = "Add"
+        Me.gameAddSaveMachine.UseVisualStyleBackColor = True
+        Me.gameAddSaveMachine.Visible = False
         '
         'selectMachineForGame
         '
@@ -995,7 +1077,7 @@ Partial Class Form1
         Me.EmpTaskList.Alignment = System.Windows.Forms.ListViewAlignment.Left
         Me.EmpTaskList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.EmpTaskList.HideSelection = False
-        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
+        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem6})
         Me.EmpTaskList.Location = New System.Drawing.Point(104, 89)
         Me.EmpTaskList.Name = "EmpTaskList"
         Me.EmpTaskList.Size = New System.Drawing.Size(245, 83)
@@ -1307,12 +1389,68 @@ Partial Class Form1
         '
         'LogTab
         '
+        Me.LogTab.Controls.Add(Me.Logs)
         Me.LogTab.Location = New System.Drawing.Point(4, 22)
         Me.LogTab.Name = "LogTab"
         Me.LogTab.Size = New System.Drawing.Size(883, 751)
         Me.LogTab.TabIndex = 4
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
+        '
+        'Logs
+        '
+        Me.Logs.Controls.Add(Me.TabPage3)
+        Me.Logs.Controls.Add(Me.TabPage4)
+        Me.Logs.Controls.Add(Me.TabPage5)
+        Me.Logs.Controls.Add(Me.TabPage6)
+        Me.Logs.Location = New System.Drawing.Point(107, 243)
+        Me.Logs.Name = "Logs"
+        Me.Logs.SelectedIndex = 0
+        Me.Logs.Size = New System.Drawing.Size(748, 462)
+        Me.Logs.TabIndex = 0
+        '
+        'TabPage3
+        '
+        Me.TabPage3.AutoScroll = True
+        Me.TabPage3.Controls.Add(Me.RedeemeDTable)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(740, 436)
+        Me.TabPage3.TabIndex = 0
+        Me.TabPage3.Text = "Redeemed Prizes"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'TabPage4
+        '
+        Me.TabPage4.Controls.Add(Me.DataGridView1)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(740, 436)
+        Me.TabPage4.TabIndex = 1
+        Me.TabPage4.Text = "Top Up Ops"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.DataGridView2)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Size = New System.Drawing.Size(740, 436)
+        Me.TabPage5.TabIndex = 2
+        Me.TabPage5.Text = "Maintenance"
+        Me.TabPage5.UseVisualStyleBackColor = True
+        '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.DataGridView3)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Size = New System.Drawing.Size(740, 436)
+        Me.TabPage6.TabIndex = 3
+        Me.TabPage6.Text = "Plays"
+        Me.TabPage6.UseVisualStyleBackColor = True
         '
         'TabPage1
         '
@@ -1577,21 +1715,276 @@ Partial Class Form1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'gameAddSaveMachine
+        'RedeemeDTable
         '
-        Me.gameAddSaveMachine.Location = New System.Drawing.Point(412, 530)
-        Me.gameAddSaveMachine.Name = "gameAddSaveMachine"
-        Me.gameAddSaveMachine.Size = New System.Drawing.Size(75, 23)
-        Me.gameAddSaveMachine.TabIndex = 23
-        Me.gameAddSaveMachine.Text = "Add"
-        Me.gameAddSaveMachine.UseVisualStyleBackColor = True
-        Me.gameAddSaveMachine.Visible = False
+        Me.RedeemeDTable.AllowUserToAddRows = False
+        Me.RedeemeDTable.AllowUserToDeleteRows = False
+        Me.RedeemeDTable.AllowUserToOrderColumns = True
+        Me.RedeemeDTable.AutoGenerateColumns = False
+        Me.RedeemeDTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.RedeemeDTable.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.OpidDataGridViewTextBoxColumn, Me.QuantityDataGridViewTextBoxColumn, Me.TimestampDataGridViewTextBoxColumn, Me.ClientnoDataGridViewTextBoxColumn, Me.EmpnoDataGridViewTextBoxColumn, Me.PriidDataGridViewTextBoxColumn})
+        Me.RedeemeDTable.DataSource = Me.RedeemedBindingSource1
+        Me.RedeemeDTable.Location = New System.Drawing.Point(42, 51)
+        Me.RedeemeDTable.Name = "RedeemeDTable"
+        Me.RedeemeDTable.ReadOnly = True
+        Me.RedeemeDTable.Size = New System.Drawing.Size(675, 359)
+        Me.RedeemeDTable.TabIndex = 0
+        '
+        'FillByToolStrip
+        '
+        Me.FillByToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FillByToolStripButton})
+        Me.FillByToolStrip.Location = New System.Drawing.Point(0, 0)
+        Me.FillByToolStrip.Name = "FillByToolStrip"
+        Me.FillByToolStrip.Size = New System.Drawing.Size(915, 25)
+        Me.FillByToolStrip.TabIndex = 1
+        Me.FillByToolStrip.Text = "FillByToolStrip"
+        '
+        'FillByToolStripButton
+        '
+        Me.FillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.FillByToolStripButton.Name = "FillByToolStripButton"
+        Me.FillByToolStripButton.Size = New System.Drawing.Size(39, 22)
+        Me.FillByToolStripButton.Text = "FillBy"
+        '
+        'OpidDataGridViewTextBoxColumn
+        '
+        Me.OpidDataGridViewTextBoxColumn.DataPropertyName = "op_id"
+        Me.OpidDataGridViewTextBoxColumn.HeaderText = "op_id"
+        Me.OpidDataGridViewTextBoxColumn.Name = "OpidDataGridViewTextBoxColumn"
+        Me.OpidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'QuantityDataGridViewTextBoxColumn
+        '
+        Me.QuantityDataGridViewTextBoxColumn.DataPropertyName = "quantity"
+        Me.QuantityDataGridViewTextBoxColumn.HeaderText = "quantity"
+        Me.QuantityDataGridViewTextBoxColumn.Name = "QuantityDataGridViewTextBoxColumn"
+        Me.QuantityDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TimestampDataGridViewTextBoxColumn
+        '
+        Me.TimestampDataGridViewTextBoxColumn.DataPropertyName = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn.HeaderText = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn.Name = "TimestampDataGridViewTextBoxColumn"
+        Me.TimestampDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ClientnoDataGridViewTextBoxColumn
+        '
+        Me.ClientnoDataGridViewTextBoxColumn.DataPropertyName = "client_no"
+        Me.ClientnoDataGridViewTextBoxColumn.HeaderText = "client_no"
+        Me.ClientnoDataGridViewTextBoxColumn.Name = "ClientnoDataGridViewTextBoxColumn"
+        Me.ClientnoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmpnoDataGridViewTextBoxColumn
+        '
+        Me.EmpnoDataGridViewTextBoxColumn.DataPropertyName = "emp_no"
+        Me.EmpnoDataGridViewTextBoxColumn.HeaderText = "emp_no"
+        Me.EmpnoDataGridViewTextBoxColumn.Name = "EmpnoDataGridViewTextBoxColumn"
+        Me.EmpnoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PriidDataGridViewTextBoxColumn
+        '
+        Me.PriidDataGridViewTextBoxColumn.DataPropertyName = "pri_id"
+        Me.PriidDataGridViewTextBoxColumn.HeaderText = "pri_id"
+        Me.PriidDataGridViewTextBoxColumn.Name = "PriidDataGridViewTextBoxColumn"
+        Me.PriidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RedeemedBindingSource1
+        '
+        Me.RedeemedBindingSource1.DataMember = "Redeemed"
+        Me.RedeemedBindingSource1.DataSource = Me.ArcadeData
+        '
+        'ArcadeData
+        '
+        Me.ArcadeData.DataSetName = "ArcadeData"
+        Me.ArcadeData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'RedeemedBindingSource
+        '
+        Me.RedeemedBindingSource.DataMember = "Redeemed"
+        Me.RedeemedBindingSource.DataSource = Me.ArcadeData
+        '
+        'RedeemedTableAdapter
+        '
+        Me.RedeemedTableAdapter.ClearBeforeFill = True
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.OpidDataGridViewTextBoxColumn1, Me.EmployeeDataGridViewTextBoxColumn, Me.ClientDataGridViewTextBoxColumn, Me.CostDataGridViewTextBoxColumn, Me.TimestampDataGridViewTextBoxColumn1, Me.CreditsDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.ToppedUpBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(28, 20)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(706, 410)
+        Me.DataGridView1.TabIndex = 0
+        '
+        'ToppedUpBindingSource
+        '
+        Me.ToppedUpBindingSource.DataMember = "ToppedUp"
+        Me.ToppedUpBindingSource.DataSource = Me.ArcadeData
+        '
+        'ToppedUpTableAdapter
+        '
+        Me.ToppedUpTableAdapter.ClearBeforeFill = True
+        '
+        'OpidDataGridViewTextBoxColumn1
+        '
+        Me.OpidDataGridViewTextBoxColumn1.DataPropertyName = "op_id"
+        Me.OpidDataGridViewTextBoxColumn1.HeaderText = "op_id"
+        Me.OpidDataGridViewTextBoxColumn1.Name = "OpidDataGridViewTextBoxColumn1"
+        Me.OpidDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'EmployeeDataGridViewTextBoxColumn
+        '
+        Me.EmployeeDataGridViewTextBoxColumn.DataPropertyName = "employee"
+        Me.EmployeeDataGridViewTextBoxColumn.HeaderText = "employee"
+        Me.EmployeeDataGridViewTextBoxColumn.Name = "EmployeeDataGridViewTextBoxColumn"
+        Me.EmployeeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ClientDataGridViewTextBoxColumn
+        '
+        Me.ClientDataGridViewTextBoxColumn.DataPropertyName = "client"
+        Me.ClientDataGridViewTextBoxColumn.HeaderText = "client"
+        Me.ClientDataGridViewTextBoxColumn.Name = "ClientDataGridViewTextBoxColumn"
+        Me.ClientDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CostDataGridViewTextBoxColumn
+        '
+        Me.CostDataGridViewTextBoxColumn.DataPropertyName = "cost"
+        Me.CostDataGridViewTextBoxColumn.HeaderText = "cost"
+        Me.CostDataGridViewTextBoxColumn.Name = "CostDataGridViewTextBoxColumn"
+        Me.CostDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TimestampDataGridViewTextBoxColumn1
+        '
+        Me.TimestampDataGridViewTextBoxColumn1.DataPropertyName = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn1.HeaderText = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn1.Name = "TimestampDataGridViewTextBoxColumn1"
+        Me.TimestampDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'CreditsDataGridViewTextBoxColumn
+        '
+        Me.CreditsDataGridViewTextBoxColumn.DataPropertyName = "credits"
+        Me.CreditsDataGridViewTextBoxColumn.HeaderText = "credits"
+        Me.CreditsDataGridViewTextBoxColumn.Name = "CreditsDataGridViewTextBoxColumn"
+        Me.CreditsDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AllowUserToOrderColumns = True
+        Me.DataGridView2.AutoGenerateColumns = False
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MaintidDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn1, Me.MachinenoDataGridViewTextBoxColumn, Me.TimestampDataGridViewTextBoxColumn2})
+        Me.DataGridView2.DataSource = Me.MaintainedBindingSource
+        Me.DataGridView2.Location = New System.Drawing.Point(13, 17)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        Me.DataGridView2.Size = New System.Drawing.Size(709, 401)
+        Me.DataGridView2.TabIndex = 0
+        '
+        'MaintainedBindingSource
+        '
+        Me.MaintainedBindingSource.DataMember = "Maintained"
+        Me.MaintainedBindingSource.DataSource = Me.ArcadeData
+        '
+        'MaintainedTableAdapter
+        '
+        Me.MaintainedTableAdapter.ClearBeforeFill = True
+        '
+        'MaintidDataGridViewTextBoxColumn
+        '
+        Me.MaintidDataGridViewTextBoxColumn.DataPropertyName = "maint_id"
+        Me.MaintidDataGridViewTextBoxColumn.HeaderText = "maint_id"
+        Me.MaintidDataGridViewTextBoxColumn.Name = "MaintidDataGridViewTextBoxColumn"
+        Me.MaintidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmployeeDataGridViewTextBoxColumn1
+        '
+        Me.EmployeeDataGridViewTextBoxColumn1.DataPropertyName = "employee"
+        Me.EmployeeDataGridViewTextBoxColumn1.HeaderText = "employee"
+        Me.EmployeeDataGridViewTextBoxColumn1.Name = "EmployeeDataGridViewTextBoxColumn1"
+        Me.EmployeeDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'MachinenoDataGridViewTextBoxColumn
+        '
+        Me.MachinenoDataGridViewTextBoxColumn.DataPropertyName = "machine_no"
+        Me.MachinenoDataGridViewTextBoxColumn.HeaderText = "machine_no"
+        Me.MachinenoDataGridViewTextBoxColumn.Name = "MachinenoDataGridViewTextBoxColumn"
+        Me.MachinenoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TimestampDataGridViewTextBoxColumn2
+        '
+        Me.TimestampDataGridViewTextBoxColumn2.DataPropertyName = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn2.HeaderText = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn2.Name = "TimestampDataGridViewTextBoxColumn2"
+        Me.TimestampDataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.AllowUserToAddRows = False
+        Me.DataGridView3.AllowUserToDeleteRows = False
+        Me.DataGridView3.AllowUserToOrderColumns = True
+        Me.DataGridView3.AutoGenerateColumns = False
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.TimestampDataGridViewTextBoxColumn3, Me.PlaytimeDataGridViewTextBoxColumn, Me.PointsrecvDataGridViewTextBoxColumn, Me.ClientDataGridViewTextBoxColumn1, Me.MachinenoDataGridViewTextBoxColumn1})
+        Me.DataGridView3.DataSource = Me.PlayedBindingSource
+        Me.DataGridView3.Location = New System.Drawing.Point(21, 26)
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.ReadOnly = True
+        Me.DataGridView3.Size = New System.Drawing.Size(701, 395)
+        Me.DataGridView3.TabIndex = 0
+        '
+        'PlayedBindingSource
+        '
+        Me.PlayedBindingSource.DataMember = "Played"
+        Me.PlayedBindingSource.DataSource = Me.ArcadeData
+        '
+        'PlayedTableAdapter
+        '
+        Me.PlayedTableAdapter.ClearBeforeFill = True
+        '
+        'TimestampDataGridViewTextBoxColumn3
+        '
+        Me.TimestampDataGridViewTextBoxColumn3.DataPropertyName = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn3.HeaderText = "time_stamp"
+        Me.TimestampDataGridViewTextBoxColumn3.Name = "TimestampDataGridViewTextBoxColumn3"
+        '
+        'PlaytimeDataGridViewTextBoxColumn
+        '
+        Me.PlaytimeDataGridViewTextBoxColumn.DataPropertyName = "playtime"
+        Me.PlaytimeDataGridViewTextBoxColumn.HeaderText = "playtime"
+        Me.PlaytimeDataGridViewTextBoxColumn.Name = "PlaytimeDataGridViewTextBoxColumn"
+        '
+        'PointsrecvDataGridViewTextBoxColumn
+        '
+        Me.PointsrecvDataGridViewTextBoxColumn.DataPropertyName = "points_recv"
+        Me.PointsrecvDataGridViewTextBoxColumn.HeaderText = "points_recv"
+        Me.PointsrecvDataGridViewTextBoxColumn.Name = "PointsrecvDataGridViewTextBoxColumn"
+        '
+        'ClientDataGridViewTextBoxColumn1
+        '
+        Me.ClientDataGridViewTextBoxColumn1.DataPropertyName = "client"
+        Me.ClientDataGridViewTextBoxColumn1.HeaderText = "client"
+        Me.ClientDataGridViewTextBoxColumn1.Name = "ClientDataGridViewTextBoxColumn1"
+        '
+        'MachinenoDataGridViewTextBoxColumn1
+        '
+        Me.MachinenoDataGridViewTextBoxColumn1.DataPropertyName = "machine_no"
+        Me.MachinenoDataGridViewTextBoxColumn1.HeaderText = "machine_no"
+        Me.MachinenoDataGridViewTextBoxColumn1.Name = "MachinenoDataGridViewTextBoxColumn1"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(915, 823)
+        Me.Controls.Add(Me.FillByToolStrip)
         Me.Controls.Add(Me.TabControl)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -1652,6 +2045,12 @@ Partial Class Form1
         Me.Panel17.PerformLayout()
         Me.Panel16.ResumeLayout(False)
         Me.Panel16.PerformLayout()
+        Me.LogTab.ResumeLayout(False)
+        Me.Logs.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage4.ResumeLayout(False)
+        Me.TabPage5.ResumeLayout(False)
+        Me.TabPage6.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
@@ -1667,7 +2066,20 @@ Partial Class Form1
         Me.Panel31.PerformLayout()
         Me.Panel32.ResumeLayout(False)
         Me.Panel32.PerformLayout()
+        CType(Me.RedeemeDTable, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FillByToolStrip.ResumeLayout(False)
+        Me.FillByToolStrip.PerformLayout()
+        CType(Me.RedeemedBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArcadeData, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ToppedUpBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MaintainedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -1819,4 +2231,47 @@ Partial Class Form1
     Friend WithEvents selectMachineForGame As ComboBox
     Friend WithEvents GameMachineRentInput As TextBox
     Friend WithEvents gameAddSaveMachine As Button
+    Friend WithEvents GameAlterButton As Button
+    Friend WithEvents Logs As TabControl
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents TabPage4 As TabPage
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents TabPage6 As TabPage
+    Friend WithEvents ArcadeData As ArcadeData
+    Friend WithEvents RedeemedBindingSource As BindingSource
+    Friend WithEvents RedeemedTableAdapter As ArcadeDataTableAdapters.RedeemedTableAdapter
+    Friend WithEvents RedeemeDTable As DataGridView
+    Friend WithEvents OpidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents QuantityDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TimestampDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ClientnoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmpnoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PriidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents RedeemedBindingSource1 As BindingSource
+    Friend WithEvents FillByToolStrip As ToolStrip
+    Friend WithEvents FillByToolStripButton As ToolStripButton
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ToppedUpBindingSource As BindingSource
+    Friend WithEvents ToppedUpTableAdapter As ArcadeDataTableAdapters.ToppedUpTableAdapter
+    Friend WithEvents OpidDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents EmployeeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ClientDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CostDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TimestampDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents CreditsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents MaintainedBindingSource As BindingSource
+    Friend WithEvents MaintainedTableAdapter As ArcadeDataTableAdapters.MaintainedTableAdapter
+    Friend WithEvents MaintidDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmployeeDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents MachinenoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TimestampDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridView3 As DataGridView
+    Friend WithEvents PlayedBindingSource As BindingSource
+    Friend WithEvents PlayedTableAdapter As ArcadeDataTableAdapters.PlayedTableAdapter
+    Friend WithEvents TimestampDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents PlaytimeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PointsrecvDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ClientDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents MachinenoDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
 End Class
