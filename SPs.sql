@@ -293,6 +293,16 @@ AS
 GO
 
 
+CREATE OR ALTER PROCEDURE arcade.getUserList
+AS
+	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.Client
+GO
+go
+CREATE OR ALTER PROCEDURE arcade.getGameList
+AS
+	SELECT CONCAT(game_id, ' ', game_name) as game FROM arcade.game
+GO
+
 create or alter procedure arcade.getTask
 	@code int = null
 as

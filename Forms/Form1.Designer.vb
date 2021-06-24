@@ -144,6 +144,15 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StoreListBox = New System.Windows.Forms.ListBox()
         Me.LogTab = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.totalTime = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.avgTime = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.StartTimeStats = New System.Windows.Forms.DateTimePicker()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.EmployeeLogs = New System.Windows.Forms.ComboBox()
         Me.RedeemShowLogs = New System.Windows.Forms.Button()
         Me.topupShowLogs = New System.Windows.Forms.Button()
         Me.ShowMaintenanceLog = New System.Windows.Forms.Button()
@@ -189,6 +198,15 @@ Partial Class Form1
         Me.MaintainedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.MaintainedTableAdapter()
         Me.PlayedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.PlayedTableAdapter()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.statisticsButtonGo = New System.Windows.Forms.Button()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.EndTimeStats = New System.Windows.Forms.DateTimePicker()
+        Me.userStat = New System.Windows.Forms.ComboBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.gameStat = New System.Windows.Forms.ComboBox()
+        Me.statsUseStart = New System.Windows.Forms.CheckBox()
+        Me.StatsuseEnd = New System.Windows.Forms.CheckBox()
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -223,6 +241,7 @@ Partial Class Form1
         Me.Panel17.SuspendLayout()
         Me.Panel16.SuspendLayout()
         Me.LogTab.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.LogGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -1355,6 +1374,9 @@ Partial Class Form1
         '
         'LogTab
         '
+        Me.LogTab.Controls.Add(Me.GroupBox3)
+        Me.LogTab.Controls.Add(Me.Label7)
+        Me.LogTab.Controls.Add(Me.EmployeeLogs)
         Me.LogTab.Controls.Add(Me.RedeemShowLogs)
         Me.LogTab.Controls.Add(Me.topupShowLogs)
         Me.LogTab.Controls.Add(Me.ShowMaintenanceLog)
@@ -1366,6 +1388,99 @@ Partial Class Form1
         Me.LogTab.TabIndex = 4
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.StatsuseEnd)
+        Me.GroupBox3.Controls.Add(Me.statsUseStart)
+        Me.GroupBox3.Controls.Add(Me.Label25)
+        Me.GroupBox3.Controls.Add(Me.gameStat)
+        Me.GroupBox3.Controls.Add(Me.Label24)
+        Me.GroupBox3.Controls.Add(Me.userStat)
+        Me.GroupBox3.Controls.Add(Me.EndTimeStats)
+        Me.GroupBox3.Controls.Add(Me.Label22)
+        Me.GroupBox3.Controls.Add(Me.statisticsButtonGo)
+        Me.GroupBox3.Controls.Add(Me.totalTime)
+        Me.GroupBox3.Controls.Add(Me.Label23)
+        Me.GroupBox3.Controls.Add(Me.avgTime)
+        Me.GroupBox3.Controls.Add(Me.Label14)
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Controls.Add(Me.StartTimeStats)
+        Me.GroupBox3.Location = New System.Drawing.Point(15, 531)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(343, 203)
+        Me.GroupBox3.TabIndex = 8
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Statistics:"
+        '
+        'totalTime
+        '
+        Me.totalTime.AutoSize = True
+        Me.totalTime.Location = New System.Drawing.Point(85, 172)
+        Me.totalTime.Name = "totalTime"
+        Me.totalTime.Size = New System.Drawing.Size(92, 13)
+        Me.totalTime.TabIndex = 12
+        Me.totalTime.Text = "[PLACEHOLDER]"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(19, 172)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(60, 13)
+        Me.Label23.TabIndex = 11
+        Me.Label23.Text = "Total Time:"
+        '
+        'avgTime
+        '
+        Me.avgTime.AutoSize = True
+        Me.avgTime.Location = New System.Drawing.Point(85, 150)
+        Me.avgTime.Name = "avgTime"
+        Me.avgTime.Size = New System.Drawing.Size(92, 13)
+        Me.avgTime.TabIndex = 10
+        Me.avgTime.Text = "[PLACEHOLDER]"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 150)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(76, 13)
+        Me.Label14.TabIndex = 9
+        Me.Label14.Text = "Average Time:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(42, 95)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(37, 13)
+        Me.Label11.TabIndex = 8
+        Me.Label11.Text = "Since:"
+        '
+        'StartTimeStats
+        '
+        Me.StartTimeStats.Location = New System.Drawing.Point(85, 89)
+        Me.StartTimeStats.Name = "StartTimeStats"
+        Me.StartTimeStats.Size = New System.Drawing.Size(200, 20)
+        Me.StartTimeStats.TabIndex = 7
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(364, 19)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(96, 13)
+        Me.Label7.TabIndex = 6
+        Me.Label7.Text = "Filter By Employee:"
+        '
+        'EmployeeLogs
+        '
+        Me.EmployeeLogs.FormattingEnabled = True
+        Me.EmployeeLogs.Location = New System.Drawing.Point(466, 16)
+        Me.EmployeeLogs.Name = "EmployeeLogs"
+        Me.EmployeeLogs.Size = New System.Drawing.Size(165, 21)
+        Me.EmployeeLogs.TabIndex = 5
         '
         'RedeemShowLogs
         '
@@ -1408,7 +1523,7 @@ Partial Class Form1
         Me.LogGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.LogGrid.Location = New System.Drawing.Point(15, 43)
         Me.LogGrid.Name = "LogGrid"
-        Me.LogGrid.Size = New System.Drawing.Size(629, 506)
+        Me.LogGrid.Size = New System.Drawing.Size(852, 482)
         Me.LogGrid.TabIndex = 0
         '
         'TabPage1
@@ -1720,6 +1835,85 @@ Partial Class Form1
         '
         Me.PlayedTableAdapter.ClearBeforeFill = True
         '
+        'statisticsButtonGo
+        '
+        Me.statisticsButtonGo.Location = New System.Drawing.Point(210, 10)
+        Me.statisticsButtonGo.Name = "statisticsButtonGo"
+        Me.statisticsButtonGo.Size = New System.Drawing.Size(75, 23)
+        Me.statisticsButtonGo.TabIndex = 13
+        Me.statisticsButtonGo.Text = "Calculate!"
+        Me.statisticsButtonGo.UseVisualStyleBackColor = True
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(48, 115)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(31, 13)
+        Me.Label22.TabIndex = 14
+        Me.Label22.Text = "Until:"
+        '
+        'EndTimeStats
+        '
+        Me.EndTimeStats.Location = New System.Drawing.Point(85, 115)
+        Me.EndTimeStats.Name = "EndTimeStats"
+        Me.EndTimeStats.Size = New System.Drawing.Size(200, 20)
+        Me.EndTimeStats.TabIndex = 15
+        '
+        'userStat
+        '
+        Me.userStat.FormattingEnabled = True
+        Me.userStat.Location = New System.Drawing.Point(164, 39)
+        Me.userStat.Name = "userStat"
+        Me.userStat.Size = New System.Drawing.Size(121, 21)
+        Me.userStat.TabIndex = 16
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(11, 42)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(134, 13)
+        Me.Label24.TabIndex = 17
+        Me.Label24.Text = "User? (For All, leave blank)"
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(11, 65)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(140, 13)
+        Me.Label25.TabIndex = 19
+        Me.Label25.Text = "Game? (For All, leave blank)"
+        '
+        'gameStat
+        '
+        Me.gameStat.FormattingEnabled = True
+        Me.gameStat.Location = New System.Drawing.Point(164, 62)
+        Me.gameStat.Name = "gameStat"
+        Me.gameStat.Size = New System.Drawing.Size(121, 21)
+        Me.gameStat.TabIndex = 18
+        '
+        'statsUseStart
+        '
+        Me.statsUseStart.AutoSize = True
+        Me.statsUseStart.Location = New System.Drawing.Point(288, 91)
+        Me.statsUseStart.Name = "statsUseStart"
+        Me.statsUseStart.Size = New System.Drawing.Size(49, 17)
+        Me.statsUseStart.TabIndex = 20
+        Me.statsUseStart.Text = "use?"
+        Me.statsUseStart.UseVisualStyleBackColor = True
+        '
+        'StatsuseEnd
+        '
+        Me.StatsuseEnd.AutoSize = True
+        Me.StatsuseEnd.Location = New System.Drawing.Point(288, 114)
+        Me.StatsuseEnd.Name = "StatsuseEnd"
+        Me.StatsuseEnd.Size = New System.Drawing.Size(49, 17)
+        Me.StatsuseEnd.TabIndex = 21
+        Me.StatsuseEnd.Text = "use?"
+        Me.StatsuseEnd.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1786,6 +1980,9 @@ Partial Class Form1
         Me.Panel16.ResumeLayout(False)
         Me.Panel16.PerformLayout()
         Me.LogTab.ResumeLayout(False)
+        Me.LogTab.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         CType(Me.LogGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1978,4 +2175,22 @@ Partial Class Form1
     Friend WithEvents ShowPlayLog As Button
     Friend WithEvents LogGrid As DataGridView
     Friend WithEvents BindingSource1 As BindingSource
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents totalTime As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents StartTimeStats As DateTimePicker
+    Friend WithEvents Label7 As Label
+    Friend WithEvents EmployeeLogs As ComboBox
+    Friend WithEvents avgTime As Label
+    Friend WithEvents statisticsButtonGo As Button
+    Friend WithEvents EndTimeStats As DateTimePicker
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents userStat As ComboBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents gameStat As ComboBox
+    Friend WithEvents StatsuseEnd As CheckBox
+    Friend WithEvents statsUseStart As CheckBox
 End Class
