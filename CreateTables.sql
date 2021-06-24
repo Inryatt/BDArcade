@@ -33,7 +33,7 @@ CREATE TABLE arcade.ArcadeMachine(
     serial_no       INT          PRIMARY KEY,
     manufacturer    VARCHAR(30),
     NIF             CHAR(9)     NOT NULL CHECK(NIF NOT LIKE '%[^0-9]%'),
-    code            INT         NOT NULL,   
+    code            INT         ,   
     store_id        INT         NOT NULL,
     FOREIGN KEY (NIF) REFERENCES arcade.Supplier(NIF),
     FOREIGN KEY (code) REFERENCES arcade.Game(game_id),
@@ -144,3 +144,9 @@ CREATE TABLE arcade.ToppedUp (
     FOREIGN KEY(client)   REFERENCES arcade.Client(client_no)
 );
 
+
+CREATE OR ALTER PROCEDURE arcade.getMachinesWithNoGame
+as
+	select * from arcade.arcadeMachine where code = null
+
+go

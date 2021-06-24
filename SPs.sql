@@ -1314,4 +1314,20 @@ AS
 	from	arcade.ArcadeMachine as M join arcade.Supplier as S on M.NIF=S.NIF
 			join arcade.Game as G on M.code=G.game_id
 			join arcade.Store as St on M.store_id=St.store_id
-GO
+Go
+
+
+
+CREATE OR ALTER PROCEDURE arcade.addGameToMachine
+	@machine int = null,
+	@game int = null
+as
+	IF @machine is null OR @game is null
+	BEGIN
+		PRINT 'Please enter machine and game!'
+		RETURN 1
+	END
+
+	UPDATE arcade.arcadeMachine SET code = @game WHERE serial_no=@machine
+go
+

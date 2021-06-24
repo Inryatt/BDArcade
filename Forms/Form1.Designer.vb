@@ -22,33 +22,12 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ListViewItem4 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.GameTab = New System.Windows.Forms.TabPage()
-        Me.GameMachineShowLess = New System.Windows.Forms.Button()
-        Me.GameMachineShowAll = New System.Windows.Forms.Button()
-        Me.GameMAchineAddButton = New System.Windows.Forms.Button()
-        Me.GameMachineSaveButton = New System.Windows.Forms.Button()
-        Me.GameMachineCancelButton = New System.Windows.Forms.Button()
-        Me.GameMachineEditButton = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Panel26 = New System.Windows.Forms.Panel()
-        Me.GameMAchineRentInput = New System.Windows.Forms.TextBox()
-        Me.Rent = New System.Windows.Forms.Label()
-        Me.Panel13 = New System.Windows.Forms.Panel()
-        Me.GameMachineSupplierLabel = New System.Windows.Forms.Label()
-        Me.Panel15 = New System.Windows.Forms.Panel()
-        Me.GameMachineLocationInput = New System.Windows.Forms.TextBox()
-        Me.GameMachineLocationLabel = New System.Windows.Forms.Label()
-        Me.Panel18 = New System.Windows.Forms.Panel()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Panel19 = New System.Windows.Forms.Panel()
-        Me.GameMachineManuInput = New System.Windows.Forms.TextBox()
-        Me.GameMachineManuLabel = New System.Windows.Forms.Label()
-        Me.Panel20 = New System.Windows.Forms.Panel()
-        Me.GameMachineSerialInput = New System.Windows.Forms.TextBox()
-        Me.GameMachineSerialLabel = New System.Windows.Forms.Label()
+        Me.selectMachineForGame = New System.Windows.Forms.ComboBox()
+        Me.removeGamefromMachine = New System.Windows.Forms.Button()
+        Me.addGameToMAchineButton = New System.Windows.Forms.Button()
         Me.GameMachineLabel = New System.Windows.Forms.Label()
         Me.GameMachinesListBox = New System.Windows.Forms.ListBox()
         Me.GameCancelButton = New System.Windows.Forms.Button()
@@ -162,18 +141,38 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StoreListBox = New System.Windows.Forms.ListBox()
         Me.LogTab = New System.Windows.Forms.TabPage()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GameMachineAddButton = New System.Windows.Forms.Button()
+        Me.GameMachineSaveButton = New System.Windows.Forms.Button()
+        Me.GameMachineCancelButton = New System.Windows.Forms.Button()
+        Me.GameMachineEditButton = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Panel27 = New System.Windows.Forms.Panel()
+        Me.GameMachineRentDurInput = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.GameMachineRentInput = New System.Windows.Forms.TextBox()
+        Me.GameMachineRentCost = New System.Windows.Forms.Label()
+        Me.Panel28 = New System.Windows.Forms.Panel()
         Me.GameMachineSupplierInput = New System.Windows.Forms.ComboBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Panel29 = New System.Windows.Forms.Panel()
+        Me.GameMachineLocationInput = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Panel30 = New System.Windows.Forms.Panel()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Panel31 = New System.Windows.Forms.Panel()
+        Me.GameMachineManuInput = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Panel32 = New System.Windows.Forms.Panel()
+        Me.GameMachineSerialInput = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.MachinaListBox = New System.Windows.Forms.ListBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.gameAddSaveMachine = New System.Windows.Forms.Button()
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.Panel26.SuspendLayout()
-        Me.Panel13.SuspendLayout()
-        Me.Panel15.SuspendLayout()
-        Me.Panel18.SuspendLayout()
-        Me.Panel19.SuspendLayout()
-        Me.Panel20.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -205,6 +204,14 @@ Partial Class Form1
         Me.GroupBox2.SuspendLayout()
         Me.Panel17.SuspendLayout()
         Me.Panel16.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.Panel27.SuspendLayout()
+        Me.Panel28.SuspendLayout()
+        Me.Panel29.SuspendLayout()
+        Me.Panel30.SuspendLayout()
+        Me.Panel31.SuspendLayout()
+        Me.Panel32.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl
@@ -214,6 +221,8 @@ Partial Class Form1
         Me.TabControl.Controls.Add(Me.SupplierTab)
         Me.TabControl.Controls.Add(Me.StoreTab)
         Me.TabControl.Controls.Add(Me.LogTab)
+        Me.TabControl.Controls.Add(Me.TabPage1)
+        Me.TabControl.Controls.Add(Me.TabPage2)
         Me.TabControl.Location = New System.Drawing.Point(12, 12)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
@@ -222,13 +231,10 @@ Partial Class Form1
         '
         'GameTab
         '
-        Me.GameTab.Controls.Add(Me.GameMachineShowLess)
-        Me.GameTab.Controls.Add(Me.GameMachineShowAll)
-        Me.GameTab.Controls.Add(Me.GameMAchineAddButton)
-        Me.GameTab.Controls.Add(Me.GameMachineSaveButton)
-        Me.GameTab.Controls.Add(Me.GameMachineCancelButton)
-        Me.GameTab.Controls.Add(Me.GameMachineEditButton)
-        Me.GameTab.Controls.Add(Me.GroupBox3)
+        Me.GameTab.Controls.Add(Me.gameAddSaveMachine)
+        Me.GameTab.Controls.Add(Me.selectMachineForGame)
+        Me.GameTab.Controls.Add(Me.removeGamefromMachine)
+        Me.GameTab.Controls.Add(Me.addGameToMAchineButton)
         Me.GameTab.Controls.Add(Me.GameMachineLabel)
         Me.GameTab.Controls.Add(Me.GameMachinesListBox)
         Me.GameTab.Controls.Add(Me.GameCancelButton)
@@ -246,220 +252,32 @@ Partial Class Form1
         Me.GameTab.Text = "Game"
         Me.GameTab.UseVisualStyleBackColor = True
         '
-        'GameMachineShowLess
+        'selectMachineForGame
         '
-        Me.GameMachineShowLess.Location = New System.Drawing.Point(405, 498)
-        Me.GameMachineShowLess.Name = "GameMachineShowLess"
-        Me.GameMachineShowLess.Size = New System.Drawing.Size(75, 23)
-        Me.GameMachineShowLess.TabIndex = 22
-        Me.GameMachineShowLess.Text = "Show Less"
-        Me.GameMachineShowLess.UseVisualStyleBackColor = True
+        Me.selectMachineForGame.FormattingEnabled = True
+        Me.selectMachineForGame.Location = New System.Drawing.Point(281, 530)
+        Me.selectMachineForGame.Name = "selectMachineForGame"
+        Me.selectMachineForGame.Size = New System.Drawing.Size(121, 21)
+        Me.selectMachineForGame.TabIndex = 22
+        Me.selectMachineForGame.Visible = False
         '
-        'GameMachineShowAll
+        'removeGamefromMachine
         '
-        Me.GameMachineShowAll.Location = New System.Drawing.Point(486, 498)
-        Me.GameMachineShowAll.Name = "GameMachineShowAll"
-        Me.GameMachineShowAll.Size = New System.Drawing.Size(75, 23)
-        Me.GameMachineShowAll.TabIndex = 21
-        Me.GameMachineShowAll.Text = "Show all"
-        Me.GameMachineShowAll.UseVisualStyleBackColor = True
+        Me.removeGamefromMachine.Location = New System.Drawing.Point(372, 501)
+        Me.removeGamefromMachine.Name = "removeGamefromMachine"
+        Me.removeGamefromMachine.Size = New System.Drawing.Size(75, 23)
+        Me.removeGamefromMachine.TabIndex = 21
+        Me.removeGamefromMachine.Text = "Remove"
+        Me.removeGamefromMachine.UseVisualStyleBackColor = True
         '
-        'GameMAchineAddButton
+        'addGameToMAchineButton
         '
-        Me.GameMAchineAddButton.Location = New System.Drawing.Point(281, 501)
-        Me.GameMAchineAddButton.Name = "GameMAchineAddButton"
-        Me.GameMAchineAddButton.Size = New System.Drawing.Size(75, 23)
-        Me.GameMAchineAddButton.TabIndex = 20
-        Me.GameMAchineAddButton.Text = "Add"
-        Me.GameMAchineAddButton.UseVisualStyleBackColor = True
-        '
-        'GameMachineSaveButton
-        '
-        Me.GameMachineSaveButton.Location = New System.Drawing.Point(774, 698)
-        Me.GameMachineSaveButton.Name = "GameMachineSaveButton"
-        Me.GameMachineSaveButton.Size = New System.Drawing.Size(75, 23)
-        Me.GameMachineSaveButton.TabIndex = 19
-        Me.GameMachineSaveButton.Text = "Save"
-        Me.GameMachineSaveButton.UseVisualStyleBackColor = True
-        '
-        'GameMachineCancelButton
-        '
-        Me.GameMachineCancelButton.Location = New System.Drawing.Point(693, 698)
-        Me.GameMachineCancelButton.Name = "GameMachineCancelButton"
-        Me.GameMachineCancelButton.Size = New System.Drawing.Size(75, 23)
-        Me.GameMachineCancelButton.TabIndex = 18
-        Me.GameMachineCancelButton.Text = "Cancel"
-        Me.GameMachineCancelButton.UseVisualStyleBackColor = True
-        '
-        'GameMachineEditButton
-        '
-        Me.GameMachineEditButton.Location = New System.Drawing.Point(582, 698)
-        Me.GameMachineEditButton.Name = "GameMachineEditButton"
-        Me.GameMachineEditButton.Size = New System.Drawing.Size(75, 23)
-        Me.GameMachineEditButton.TabIndex = 17
-        Me.GameMachineEditButton.Text = "Edit"
-        Me.GameMachineEditButton.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Panel26)
-        Me.GroupBox3.Controls.Add(Me.Panel13)
-        Me.GroupBox3.Controls.Add(Me.Panel15)
-        Me.GroupBox3.Controls.Add(Me.Panel18)
-        Me.GroupBox3.Controls.Add(Me.Panel19)
-        Me.GroupBox3.Controls.Add(Me.Panel20)
-        Me.GroupBox3.Location = New System.Drawing.Point(582, 332)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(275, 360)
-        Me.GroupBox3.TabIndex = 10
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Machine Info"
-        '
-        'Panel26
-        '
-        Me.Panel26.Controls.Add(Me.TextBox1)
-        Me.Panel26.Controls.Add(Me.Label11)
-        Me.Panel26.Controls.Add(Me.GameMAchineRentInput)
-        Me.Panel26.Controls.Add(Me.Rent)
-        Me.Panel26.Location = New System.Drawing.Point(6, 291)
-        Me.Panel26.Name = "Panel26"
-        Me.Panel26.Size = New System.Drawing.Size(263, 62)
-        Me.Panel26.TabIndex = 6
-        '
-        'GameMAchineRentInput
-        '
-        Me.GameMAchineRentInput.Location = New System.Drawing.Point(15, 30)
-        Me.GameMAchineRentInput.Name = "GameMAchineRentInput"
-        Me.GameMAchineRentInput.Size = New System.Drawing.Size(83, 20)
-        Me.GameMAchineRentInput.TabIndex = 0
-        '
-        'Rent
-        '
-        Me.Rent.AutoSize = True
-        Me.Rent.Location = New System.Drawing.Point(12, 14)
-        Me.Rent.Name = "Rent"
-        Me.Rent.Size = New System.Drawing.Size(30, 13)
-        Me.Rent.TabIndex = 1
-        Me.Rent.Text = "Rent"
-        '
-        'Panel13
-        '
-        Me.Panel13.Controls.Add(Me.GameMachineSupplierInput)
-        Me.Panel13.Controls.Add(Me.GameMachineSupplierLabel)
-        Me.Panel13.Location = New System.Drawing.Point(6, 223)
-        Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(263, 62)
-        Me.Panel13.TabIndex = 5
-        '
-        'GameMachineSupplierLabel
-        '
-        Me.GameMachineSupplierLabel.AutoSize = True
-        Me.GameMachineSupplierLabel.Location = New System.Drawing.Point(12, 14)
-        Me.GameMachineSupplierLabel.Name = "GameMachineSupplierLabel"
-        Me.GameMachineSupplierLabel.Size = New System.Drawing.Size(45, 13)
-        Me.GameMachineSupplierLabel.TabIndex = 1
-        Me.GameMachineSupplierLabel.Text = "Supplier"
-        '
-        'Panel15
-        '
-        Me.Panel15.Controls.Add(Me.GameMachineLocationInput)
-        Me.Panel15.Controls.Add(Me.GameMachineLocationLabel)
-        Me.Panel15.Location = New System.Drawing.Point(6, 155)
-        Me.Panel15.Name = "Panel15"
-        Me.Panel15.Size = New System.Drawing.Size(263, 62)
-        Me.Panel15.TabIndex = 4
-        '
-        'GameMachineLocationInput
-        '
-        Me.GameMachineLocationInput.Location = New System.Drawing.Point(15, 30)
-        Me.GameMachineLocationInput.Name = "GameMachineLocationInput"
-        Me.GameMachineLocationInput.Size = New System.Drawing.Size(232, 20)
-        Me.GameMachineLocationInput.TabIndex = 0
-        '
-        'GameMachineLocationLabel
-        '
-        Me.GameMachineLocationLabel.AutoSize = True
-        Me.GameMachineLocationLabel.Location = New System.Drawing.Point(12, 14)
-        Me.GameMachineLocationLabel.Name = "GameMachineLocationLabel"
-        Me.GameMachineLocationLabel.Size = New System.Drawing.Size(48, 13)
-        Me.GameMachineLocationLabel.TabIndex = 1
-        Me.GameMachineLocationLabel.Text = "Location"
-        '
-        'Panel18
-        '
-        Me.Panel18.Controls.Add(Me.TextBox6)
-        Me.Panel18.Controls.Add(Me.Label7)
-        Me.Panel18.Location = New System.Drawing.Point(341, 155)
-        Me.Panel18.Name = "Panel18"
-        Me.Panel18.Size = New System.Drawing.Size(123, 62)
-        Me.Panel18.TabIndex = 5
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(15, 30)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(94, 20)
-        Me.TextBox6.TabIndex = 3
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 14)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(18, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "ID"
-        '
-        'Panel19
-        '
-        Me.Panel19.Controls.Add(Me.GameMachineManuInput)
-        Me.Panel19.Controls.Add(Me.GameMachineManuLabel)
-        Me.Panel19.Location = New System.Drawing.Point(6, 87)
-        Me.Panel19.Name = "Panel19"
-        Me.Panel19.Size = New System.Drawing.Size(263, 62)
-        Me.Panel19.TabIndex = 4
-        '
-        'GameMachineManuInput
-        '
-        Me.GameMachineManuInput.Location = New System.Drawing.Point(15, 30)
-        Me.GameMachineManuInput.Name = "GameMachineManuInput"
-        Me.GameMachineManuInput.Size = New System.Drawing.Size(232, 20)
-        Me.GameMachineManuInput.TabIndex = 2
-        '
-        'GameMachineManuLabel
-        '
-        Me.GameMachineManuLabel.AutoSize = True
-        Me.GameMachineManuLabel.Location = New System.Drawing.Point(12, 14)
-        Me.GameMachineManuLabel.Name = "GameMachineManuLabel"
-        Me.GameMachineManuLabel.Size = New System.Drawing.Size(70, 13)
-        Me.GameMachineManuLabel.TabIndex = 1
-        Me.GameMachineManuLabel.Text = "Manufacturer"
-        '
-        'Panel20
-        '
-        Me.Panel20.Controls.Add(Me.GameMachineSerialInput)
-        Me.Panel20.Controls.Add(Me.GameMachineSerialLabel)
-        Me.Panel20.Location = New System.Drawing.Point(6, 19)
-        Me.Panel20.Name = "Panel20"
-        Me.Panel20.Size = New System.Drawing.Size(263, 62)
-        Me.Panel20.TabIndex = 3
-        '
-        'GameMachineSerialInput
-        '
-        Me.GameMachineSerialInput.Enabled = False
-        Me.GameMachineSerialInput.Location = New System.Drawing.Point(15, 30)
-        Me.GameMachineSerialInput.Name = "GameMachineSerialInput"
-        Me.GameMachineSerialInput.Size = New System.Drawing.Size(232, 20)
-        Me.GameMachineSerialInput.TabIndex = 0
-        '
-        'GameMachineSerialLabel
-        '
-        Me.GameMachineSerialLabel.AutoSize = True
-        Me.GameMachineSerialLabel.Location = New System.Drawing.Point(12, 14)
-        Me.GameMachineSerialLabel.Name = "GameMachineSerialLabel"
-        Me.GameMachineSerialLabel.Size = New System.Drawing.Size(73, 13)
-        Me.GameMachineSerialLabel.TabIndex = 1
-        Me.GameMachineSerialLabel.Text = "Serial Number"
+        Me.addGameToMAchineButton.Location = New System.Drawing.Point(281, 501)
+        Me.addGameToMAchineButton.Name = "addGameToMAchineButton"
+        Me.addGameToMAchineButton.Size = New System.Drawing.Size(75, 23)
+        Me.addGameToMAchineButton.TabIndex = 20
+        Me.addGameToMAchineButton.Text = "Add"
+        Me.addGameToMAchineButton.UseVisualStyleBackColor = True
         '
         'GameMachineLabel
         '
@@ -1177,7 +995,7 @@ Partial Class Form1
         Me.EmpTaskList.Alignment = System.Windows.Forms.ListViewAlignment.Left
         Me.EmpTaskList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.EmpTaskList.HideSelection = False
-        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem4})
+        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
         Me.EmpTaskList.Location = New System.Drawing.Point(104, 89)
         Me.EmpTaskList.Name = "EmpTaskList"
         Me.EmpTaskList.Size = New System.Drawing.Size(245, 83)
@@ -1496,6 +1314,125 @@ Partial Class Form1
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
         '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.GameMachineAddButton)
+        Me.TabPage1.Controls.Add(Me.GameMachineSaveButton)
+        Me.TabPage1.Controls.Add(Me.GameMachineCancelButton)
+        Me.TabPage1.Controls.Add(Me.GameMachineEditButton)
+        Me.TabPage1.Controls.Add(Me.GroupBox5)
+        Me.TabPage1.Controls.Add(Me.Label21)
+        Me.TabPage1.Controls.Add(Me.MachinaListBox)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Size = New System.Drawing.Size(883, 751)
+        Me.TabPage1.TabIndex = 5
+        Me.TabPage1.Text = "Machines"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GameMachineAddButton
+        '
+        Me.GameMachineAddButton.Location = New System.Drawing.Point(153, 359)
+        Me.GameMachineAddButton.Name = "GameMachineAddButton"
+        Me.GameMachineAddButton.Size = New System.Drawing.Size(75, 23)
+        Me.GameMachineAddButton.TabIndex = 29
+        Me.GameMachineAddButton.Text = "Add"
+        Me.GameMachineAddButton.UseVisualStyleBackColor = True
+        '
+        'GameMachineSaveButton
+        '
+        Me.GameMachineSaveButton.Location = New System.Drawing.Point(646, 556)
+        Me.GameMachineSaveButton.Name = "GameMachineSaveButton"
+        Me.GameMachineSaveButton.Size = New System.Drawing.Size(75, 23)
+        Me.GameMachineSaveButton.TabIndex = 28
+        Me.GameMachineSaveButton.Text = "Save"
+        Me.GameMachineSaveButton.UseVisualStyleBackColor = True
+        '
+        'GameMachineCancelButton
+        '
+        Me.GameMachineCancelButton.Location = New System.Drawing.Point(565, 556)
+        Me.GameMachineCancelButton.Name = "GameMachineCancelButton"
+        Me.GameMachineCancelButton.Size = New System.Drawing.Size(75, 23)
+        Me.GameMachineCancelButton.TabIndex = 27
+        Me.GameMachineCancelButton.Text = "Cancel"
+        Me.GameMachineCancelButton.UseVisualStyleBackColor = True
+        '
+        'GameMachineEditButton
+        '
+        Me.GameMachineEditButton.Location = New System.Drawing.Point(454, 556)
+        Me.GameMachineEditButton.Name = "GameMachineEditButton"
+        Me.GameMachineEditButton.Size = New System.Drawing.Size(75, 23)
+        Me.GameMachineEditButton.TabIndex = 26
+        Me.GameMachineEditButton.Text = "Edit"
+        Me.GameMachineEditButton.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Panel27)
+        Me.GroupBox5.Controls.Add(Me.Panel28)
+        Me.GroupBox5.Controls.Add(Me.Panel29)
+        Me.GroupBox5.Controls.Add(Me.Panel30)
+        Me.GroupBox5.Controls.Add(Me.Panel31)
+        Me.GroupBox5.Controls.Add(Me.Panel32)
+        Me.GroupBox5.Location = New System.Drawing.Point(454, 190)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(275, 360)
+        Me.GroupBox5.TabIndex = 23
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Machine Info"
+        '
+        'Panel27
+        '
+        Me.Panel27.Controls.Add(Me.GameMachineRentDurInput)
+        Me.Panel27.Controls.Add(Me.Label13)
+        Me.Panel27.Controls.Add(Me.GameMachineRentInput)
+        Me.Panel27.Controls.Add(Me.GameMachineRentCost)
+        Me.Panel27.Location = New System.Drawing.Point(6, 291)
+        Me.Panel27.Name = "Panel27"
+        Me.Panel27.Size = New System.Drawing.Size(263, 62)
+        Me.Panel27.TabIndex = 6
+        '
+        'GameMachineRentDurInput
+        '
+        Me.GameMachineRentDurInput.Location = New System.Drawing.Point(164, 30)
+        Me.GameMachineRentDurInput.Name = "GameMachineRentDurInput"
+        Me.GameMachineRentDurInput.Size = New System.Drawing.Size(83, 20)
+        Me.GameMachineRentDurInput.TabIndex = 3
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(161, 14)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(73, 13)
+        Me.Label13.TabIndex = 2
+        Me.Label13.Text = "Rent Duration"
+        '
+        'GameMachineRentInput
+        '
+        Me.GameMachineRentInput.Location = New System.Drawing.Point(15, 30)
+        Me.GameMachineRentInput.Name = "GameMachineRentInput"
+        Me.GameMachineRentInput.Size = New System.Drawing.Size(83, 20)
+        Me.GameMachineRentInput.TabIndex = 0
+        '
+        'GameMachineRentCost
+        '
+        Me.GameMachineRentCost.AutoSize = True
+        Me.GameMachineRentCost.Location = New System.Drawing.Point(12, 14)
+        Me.GameMachineRentCost.Name = "GameMachineRentCost"
+        Me.GameMachineRentCost.Size = New System.Drawing.Size(45, 13)
+        Me.GameMachineRentCost.TabIndex = 1
+        Me.GameMachineRentCost.Text = "Label14"
+        '
+        'Panel28
+        '
+        Me.Panel28.Controls.Add(Me.GameMachineSupplierInput)
+        Me.Panel28.Controls.Add(Me.Label16)
+        Me.Panel28.Location = New System.Drawing.Point(6, 223)
+        Me.Panel28.Name = "Panel28"
+        Me.Panel28.Size = New System.Drawing.Size(263, 62)
+        Me.Panel28.TabIndex = 5
+        '
         'GameMachineSupplierInput
         '
         Me.GameMachineSupplierInput.FormattingEnabled = True
@@ -1504,21 +1441,151 @@ Partial Class Form1
         Me.GameMachineSupplierInput.Size = New System.Drawing.Size(232, 21)
         Me.GameMachineSupplierInput.TabIndex = 2
         '
-        'Label11
+        'Label16
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(161, 14)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(73, 13)
-        Me.Label11.TabIndex = 2
-        Me.Label11.Text = "Rent Duration"
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(12, 14)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(45, 13)
+        Me.Label16.TabIndex = 1
+        Me.Label16.Text = "Supplier"
         '
-        'TextBox1
+        'Panel29
         '
-        Me.TextBox1.Location = New System.Drawing.Point(164, 30)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox1.TabIndex = 3
+        Me.Panel29.Controls.Add(Me.GameMachineLocationInput)
+        Me.Panel29.Controls.Add(Me.Label17)
+        Me.Panel29.Location = New System.Drawing.Point(6, 155)
+        Me.Panel29.Name = "Panel29"
+        Me.Panel29.Size = New System.Drawing.Size(263, 62)
+        Me.Panel29.TabIndex = 4
+        '
+        'GameMachineLocationInput
+        '
+        Me.GameMachineLocationInput.Location = New System.Drawing.Point(15, 30)
+        Me.GameMachineLocationInput.Name = "GameMachineLocationInput"
+        Me.GameMachineLocationInput.Size = New System.Drawing.Size(232, 20)
+        Me.GameMachineLocationInput.TabIndex = 0
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(12, 14)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(48, 13)
+        Me.Label17.TabIndex = 1
+        Me.Label17.Text = "Location"
+        '
+        'Panel30
+        '
+        Me.Panel30.Controls.Add(Me.TextBox5)
+        Me.Panel30.Controls.Add(Me.Label18)
+        Me.Panel30.Location = New System.Drawing.Point(341, 155)
+        Me.Panel30.Name = "Panel30"
+        Me.Panel30.Size = New System.Drawing.Size(123, 62)
+        Me.Panel30.TabIndex = 5
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(15, 30)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(94, 20)
+        Me.TextBox5.TabIndex = 3
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(12, 14)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(18, 13)
+        Me.Label18.TabIndex = 1
+        Me.Label18.Text = "ID"
+        '
+        'Panel31
+        '
+        Me.Panel31.Controls.Add(Me.GameMachineManuInput)
+        Me.Panel31.Controls.Add(Me.Label19)
+        Me.Panel31.Location = New System.Drawing.Point(6, 87)
+        Me.Panel31.Name = "Panel31"
+        Me.Panel31.Size = New System.Drawing.Size(263, 62)
+        Me.Panel31.TabIndex = 4
+        '
+        'GameMachineManuInput
+        '
+        Me.GameMachineManuInput.Location = New System.Drawing.Point(15, 30)
+        Me.GameMachineManuInput.Name = "GameMachineManuInput"
+        Me.GameMachineManuInput.Size = New System.Drawing.Size(232, 20)
+        Me.GameMachineManuInput.TabIndex = 2
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(12, 14)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(70, 13)
+        Me.Label19.TabIndex = 1
+        Me.Label19.Text = "Manufacturer"
+        '
+        'Panel32
+        '
+        Me.Panel32.Controls.Add(Me.GameMachineSerialInput)
+        Me.Panel32.Controls.Add(Me.Label20)
+        Me.Panel32.Location = New System.Drawing.Point(6, 19)
+        Me.Panel32.Name = "Panel32"
+        Me.Panel32.Size = New System.Drawing.Size(263, 62)
+        Me.Panel32.TabIndex = 3
+        '
+        'GameMachineSerialInput
+        '
+        Me.GameMachineSerialInput.Enabled = False
+        Me.GameMachineSerialInput.Location = New System.Drawing.Point(15, 30)
+        Me.GameMachineSerialInput.Name = "GameMachineSerialInput"
+        Me.GameMachineSerialInput.Size = New System.Drawing.Size(232, 20)
+        Me.GameMachineSerialInput.TabIndex = 0
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(12, 14)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(73, 13)
+        Me.Label20.TabIndex = 1
+        Me.Label20.Text = "Serial Number"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(153, 171)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(90, 13)
+        Me.Label21.TabIndex = 25
+        Me.Label21.Text = "Arcade Machines"
+        '
+        'MachinaListBox
+        '
+        Me.MachinaListBox.FormattingEnabled = True
+        Me.MachinaListBox.Location = New System.Drawing.Point(153, 190)
+        Me.MachinaListBox.Name = "MachinaListBox"
+        Me.MachinaListBox.Size = New System.Drawing.Size(280, 160)
+        Me.MachinaListBox.TabIndex = 24
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Size = New System.Drawing.Size(883, 751)
+        Me.TabPage2.TabIndex = 6
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'gameAddSaveMachine
+        '
+        Me.gameAddSaveMachine.Location = New System.Drawing.Point(412, 530)
+        Me.gameAddSaveMachine.Name = "gameAddSaveMachine"
+        Me.gameAddSaveMachine.Size = New System.Drawing.Size(75, 23)
+        Me.gameAddSaveMachine.TabIndex = 23
+        Me.gameAddSaveMachine.Text = "Add"
+        Me.gameAddSaveMachine.UseVisualStyleBackColor = True
+        Me.gameAddSaveMachine.Visible = False
         '
         'Form1
         '
@@ -1531,19 +1598,6 @@ Partial Class Form1
         Me.TabControl.ResumeLayout(False)
         Me.GameTab.ResumeLayout(False)
         Me.GameTab.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.Panel26.ResumeLayout(False)
-        Me.Panel26.PerformLayout()
-        Me.Panel13.ResumeLayout(False)
-        Me.Panel13.PerformLayout()
-        Me.Panel15.ResumeLayout(False)
-        Me.Panel15.PerformLayout()
-        Me.Panel18.ResumeLayout(False)
-        Me.Panel18.PerformLayout()
-        Me.Panel19.ResumeLayout(False)
-        Me.Panel19.PerformLayout()
-        Me.Panel20.ResumeLayout(False)
-        Me.Panel20.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.Panel12.ResumeLayout(False)
         Me.Panel12.PerformLayout()
@@ -1598,6 +1652,21 @@ Partial Class Form1
         Me.Panel17.PerformLayout()
         Me.Panel16.ResumeLayout(False)
         Me.Panel16.PerformLayout()
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.Panel27.ResumeLayout(False)
+        Me.Panel27.PerformLayout()
+        Me.Panel28.ResumeLayout(False)
+        Me.Panel28.PerformLayout()
+        Me.Panel29.ResumeLayout(False)
+        Me.Panel29.PerformLayout()
+        Me.Panel30.ResumeLayout(False)
+        Me.Panel30.PerformLayout()
+        Me.Panel31.ResumeLayout(False)
+        Me.Panel31.PerformLayout()
+        Me.Panel32.ResumeLayout(False)
+        Me.Panel32.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1686,24 +1755,6 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents StoreListBox As ListBox
     Friend WithEvents LogTab As TabPage
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Panel15 As Panel
-    Friend WithEvents GameMachineLocationInput As TextBox
-    Friend WithEvents GameMachineLocationLabel As Label
-    Friend WithEvents Panel18 As Panel
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Panel19 As Panel
-    Friend WithEvents GameMachineManuInput As TextBox
-    Friend WithEvents GameMachineManuLabel As Label
-    Friend WithEvents Panel20 As Panel
-    Friend WithEvents GameMachineSerialInput As TextBox
-    Friend WithEvents GameMachineSerialLabel As Label
-    Friend WithEvents Panel13 As Panel
-    Friend WithEvents GameMachineSupplierLabel As Label
-    Friend WithEvents GameMachineEditButton As Button
-    Friend WithEvents GameMachineSaveButton As Button
-    Friend WithEvents GameMachineCancelButton As Button
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents EmployeeSaveButton As Button
     Friend WithEvents EmployeeCancelButton As Button
@@ -1735,13 +1786,37 @@ Partial Class Form1
     Friend WithEvents employeeFuncLabel As Label
     Friend WithEvents EmpTaskList As ListView
     Friend WithEvents GamePublisherInput As ComboBox
-    Friend WithEvents GameMachineShowLess As Button
-    Friend WithEvents GameMachineShowAll As Button
-    Friend WithEvents GameMAchineAddButton As Button
-    Friend WithEvents Panel26 As Panel
-    Friend WithEvents GameMAchineRentInput As TextBox
-    Friend WithEvents Rent As Label
+    Friend WithEvents addGameToMAchineButton As Button
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents GameMachineAddButton As Button
+    Friend WithEvents GameMachineSaveButton As Button
+    Friend WithEvents GameMachineCancelButton As Button
+    Friend WithEvents GameMachineEditButton As Button
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents Panel27 As Panel
+    Friend WithEvents GameMachineRentDurInput As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents GameMachineRentCost As Label
+    Friend WithEvents Panel28 As Panel
     Friend WithEvents GameMachineSupplierInput As ComboBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label11 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Panel29 As Panel
+    Friend WithEvents GameMachineLocationInput As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Panel30 As Panel
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Panel31 As Panel
+    Friend WithEvents GameMachineManuInput As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Panel32 As Panel
+    Friend WithEvents GameMachineSerialInput As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents MachinaListBox As ListBox
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents removeGamefromMachine As Button
+    Friend WithEvents selectMachineForGame As ComboBox
+    Friend WithEvents GameMachineRentInput As TextBox
+    Friend WithEvents gameAddSaveMachine As Button
 End Class

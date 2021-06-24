@@ -25,11 +25,11 @@ Public Class Form1
     End Sub
 
     Private Sub GameMachinesListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GameMachinesListBox.SelectedIndexChanged
-        GameMachineCancelButton_Click(Nothing, Nothing)
-        If GameMachinesListBox.SelectedIndex > -1 Then
-            currentGameMachine = GameMachinesListBox.SelectedIndex
-            ShowGameMachine()
-        End If
+        ''GameMachineCancelButton_Click(Nothing, Nothing)
+        ''If GameMachinesListBox.SelectedIndex > -1 Then
+        '' currentGameMachine = GameMachinesListBox.SelectedIndex
+        '' ShowGameMachine()
+        '' End If
     End Sub
 
     Private Sub StoreListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles StoreListBox.SelectedIndexChanged
@@ -113,7 +113,7 @@ Public Class Form1
         GamePointsInput.Text = game.gamePoints
         GamePublisherInput.Text = game.gamePublisherID
         GamePlayersInput.Text = game.gamePlayers
-        GameMachineLoad(Convert.ToInt32(game.gameID))
+        ''  GameMachineLoad(Convert.ToInt32(game.gameID))
 
         CMD = New SqlCommand
         CMD.Connection = CN
@@ -131,6 +131,22 @@ Public Class Form1
             If RDR.Item("pub") <> "3999 DELETED PUBLISHER" Then
                 GamePublisherInput.Items.Add(RDR.Item("pub"))
             End If
+        End While
+        CN.Close()
+        RDR.Close()
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.game_machines"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("game", Convert.ToInt32(game.gameID))
+
+        CN.Open()
+        RDR = CMD.ExecuteReader
+        GameMachinesListBox.Items.Clear()
+
+        While RDR.Read
+            GameMachinesListBox.Items.Add(RDR.Item("serial_no"))
         End While
         CN.Close()
 
@@ -479,7 +495,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub GameMachineEditButton_Click(sender As Object, e As EventArgs) Handles GameMachineEditButton.Click
+    Private Sub GameMachineEditButton_Click(sender As Object, e As EventArgs)
         If Not editing Then
             editing = True
             GameMachineCancelButton.Show()
@@ -504,7 +520,7 @@ Public Class Form1
 
         End If
     End Sub
-    Private Sub GameMachineCancelButton_Click(sender As Object, e As EventArgs) Handles GameMachineCancelButton.Click
+    Private Sub GameMachineCancelButton_Click(sender As Object, e As EventArgs)
         GameMachineCancelButton.Hide()
         GameMachineSaveButton.Hide()
         GameMachineEditButton.Show()
@@ -521,7 +537,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub GameMachineSaveButton_Click(sender As Object, e As EventArgs) Handles GameMachineSaveButton.Click
+    Private Sub GameMachineSaveButton_Click(sender As Object, e As EventArgs)
         GameMachineCancelButton.Hide()
         GameMachineSaveButton.Hide()
         GameMachineEditButton.Show()
@@ -530,7 +546,7 @@ Public Class Form1
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
-        GameMAchineRentInput.Enabled=False
+        GameMAchineRentInput.Enabled = False
 
 
         Dim line As String = GameMachineSupplierInput.Text
@@ -1122,7 +1138,7 @@ Public Class Form1
         ShowEmployee()
     End Sub
 
-    Private Sub GameMachineShowAll_Click(sender As Object, e As EventArgs) Handles GameMachineShowAll.Click
+    Private Sub GameMachineShowAll_Click(sender As Object, e As EventArgs)
         CMD = New SqlCommand
         CMD.Connection = CN
         CMD.CommandText = "arcade.getAllMachines"
@@ -1152,8 +1168,93 @@ Public Class Form1
         ShowGameMachine()
     End Sub
 
-    Private Sub GameMachineSupplierInput_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GameMachineSupplierInput.SelectedIndexChanged
+    Private Sub GameMachineSupplierInput_SelectedIndexChanged(sender As Object, e As EventArgs)
+        selectMachineForGame.Show()
 
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getallMachines"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim RDR As SqlDataReader
+
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+            selectMachineForGame.Items.Add(RDR.Item("serial_no"))
+        End While
+
+
+        CN.Close()
+    End Sub
+
+    Private Sub addGameToMAchineButton_Click(sender As Object, e As EventArgs) Handles addGameToMAchineButton.Click
+        ''   CMD = New SqlCommand
+        ''   CMD.Connection = CN
+        ''   CMD.CommandText = "arcade.getAllMachines"
+        ''   CMD.CommandType = CommandType.StoredProcedure
+        ''   CMD.Parameters.Clear()
+        ''   CN.Open()
+        ''   Dim RDR As SqlDataReader
+        ''   RDR = CMD.ExecuteReader
+        ''   GameMachinesListBox.Items.Clear()
+        ''   While RDR.Read
+        ''
+        ''       If Not RDR.Item("serial_no").Equals(0) Then
+        ''
+        ''           Dim G As New GameMachine
+        ''
+        ''           G.gmManuf = RDR.Item("manufacturer")
+        ''           G.gmSerial = RDR.Item("serial_no")
+        ''           G.gmStore = RDR.Item("store_id")
+        ''           G.gmSupName = RDR.Item("sup_name")
+        ''           GameMachinesListBox.Items.Add(G)
+        ''
+        ''       End If
+        ''   End While
+        ''   CN.Close()
+        ''   RDR.Close()
+        ''
+        ''   ShowGameMachine()
+
+        selectMachineForGame.Show()
+        gameAddSaveMachine.Show()
+        CN.Open()
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getMachinesWithNoGame"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim RDR As SqlDataReader
+
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+            selectMachineForGame.Items.Add(RDR.Item("serial_no"))
+        End While
+
+
+        CN.Close()
+    End Sub
+
+    Private Sub selectMachineForGame_SelectedIndexChanged(sender As Object, e As EventArgs) Handles selectMachineForGame.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub gameAddSaveMachine_Click(sender As Object, e As EventArgs) Handles gameAddSaveMachine.Click
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.addGameToMachine"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim gm As New Game
+        gm = CType(GameListBox.Items.Item(currentGame), Game)
+
+        CMD.Parameters.AddWithValue("machine", Integer.Parse(selectMachineForGame.Text))
+        CMD.Parameters.AddWithValue("game", Integer.Parse(gm.gameID))
+
+        CMD.ExecuteNonQuery()
+
+
+        CN.Close()
     End Sub
 End Class
 
