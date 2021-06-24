@@ -224,7 +224,6 @@ Public Class Form1
                 GameMachineSupplierInput.Items.Add(RDR.Item("NIF") + " " + RDR.Item("sup_name"))
             End If
         End While
-
     End Sub
 
     Public Sub ShowEmployee()
@@ -238,7 +237,6 @@ Public Class Form1
             EmployeeNIFInput.Enabled = False
             EmployeePhoneInput.Enabled = False
             EmployeeSalaryInput.Enabled = False
-
         End If
 
         If EmployeeListBox.Items.Count = 0 Or currentEmployee < 0 Then Exit Sub
@@ -260,14 +258,6 @@ Public Class Form1
 
     ''Loads everything :)
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ArcadeData.Played' table. You can move, or remove it, as needed.
-        Me.PlayedTableAdapter.Fill(Me.ArcadeData.Played)
-        'TODO: This line of code loads data into the 'ArcadeData.Maintained' table. You can move, or remove it, as needed.
-        Me.MaintainedTableAdapter.Fill(Me.ArcadeData.Maintained)
-        'TODO: This line of code loads data into the 'ArcadeData.ToppedUp' table. You can move, or remove it, as needed.
-        Me.ToppedUpTableAdapter.Fill(Me.ArcadeData.ToppedUp)
-        'TODO: This line of code loads data into the 'ArcadeData.Redeemed' table. You can move, or remove it, as needed.
-        Me.RedeemedTableAdapter.Fill(Me.ArcadeData.Redeemed)
 
         Select Case TabControl.SelectedIndex
             Case 0
@@ -278,8 +268,6 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
-            Case 4
-                LogsLoad()
         End Select
 
 
@@ -896,8 +884,28 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
-            Case 4
-                LogsLoad()
+
+        End Select
+
+
+    End Sub
+
+    Private Sub LogChange(sender As Object, e As EventArgs)
+
+        Select Case TabControl.SelectedIndex
+            Case 0
+                Me.RedeemedTableAdapter.Fill(Me.ArcadeData.Redeemed)
+
+            Case 1
+
+                Me.ToppedUpTableAdapter.Fill(Me.ArcadeData.ToppedUp)
+
+            Case 2
+                Me.MaintainedTableAdapter.Fill(Me.ArcadeData.Maintained)
+
+            Case 3
+                Me.PlayedTableAdapter.Fill(Me.ArcadeData.Played)
+
         End Select
 
 
@@ -1093,7 +1101,7 @@ Public Class Form1
             CN.Open()
             CMD = New SqlCommand
             CMD.Connection = CN
-            CMD.CommandText = "arcade.get_schedule_test"
+            CMD.CommandText = "arcade.get_schedule"
             CMD.CommandType = CommandType.StoredProcedure
 
             Dim code = New SqlParameter()
@@ -1345,19 +1353,99 @@ Public Class Form1
         GameLoad()
     End Sub
 
-    Private Sub LogsLoad()
 
-        'TODO: This line of code loads data into the 'ArcadeData.Redeemed' table. You can move, or remove it, as needed.
-        Me.RedeemedTableAdapter.Fill(Me.ArcadeData.Redeemed)
+    Private Sub ShowMaintenanceLogs()
+        CMD = New SqlCommand
+
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getMaintained"
+        CMD.CommandType = CommandType.StoredProcedure
+
+        CN.Open()
+
+
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+
+        sa.Fill(ds)
+        LogGrid.DataSource = ds.Tables(0)
+        CN.Close()
+
+
+    End Sub
+    Private Sub ShowPlayLogs()
+        CMD = New SqlCommand
+
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getPlayed"
+        CMD.CommandType = CommandType.StoredProcedure
+
+        CN.Open()
+
+
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+
+        sa.Fill(ds)
+        LogGrid.DataSource = ds.Tables(0)
+        CN.Close()
+
+    End Sub
+    Private Sub ShowRedeemLogs()
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getRedeemed"
+        CMD.CommandType = CommandType.StoredProcedure
+
+        CN.Open()
+
+
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+
+        sa.Fill(ds)
+        LogGrid.DataSource = ds.Tables(0)
+        CN.Close()
+
+
+    End Sub
+    Private Sub ShowTopupLogs()
+
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getTopped"
+        CMD.CommandType = CommandType.StoredProcedure
+
+        CN.Open()
+
+
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+
+        sa.Fill(ds)
+        LogGrid.DataSource = ds.Tables(0)
+        CN.Close()
+
+
     End Sub
 
-    Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs) Handles FillByToolStripButton.Click
-        Try
-            Me.RedeemedTableAdapter.FillBy(Me.ArcadeData.Redeemed)
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
+    Private Sub ShowMaintenanceLog_Click(sender As Object, e As EventArgs) Handles ShowMaintenanceLog.Click
+        ShowMaintenanceLogs()
+    End Sub
 
+    Private Sub RedeemShowLogs_Click(sender As Object, e As EventArgs) Handles RedeemShowLogs.Click
+        ShowRedeemLogs()
+    End Sub
+
+    Private Sub ShowPlayLog_Click(sender As Object, e As EventArgs) Handles ShowPlayLog.Click
+        ShowPlayLogs()
+    End Sub
+
+    Private Sub topupShowLogs_Click(sender As Object, e As EventArgs) Handles topupShowLogs.Click
+        ShowTopupLogs()
     End Sub
 End Class
 

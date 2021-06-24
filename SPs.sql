@@ -1358,3 +1358,23 @@ select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
 ) as biglist where biglist.employee=@emp
 go
 
+create procedure arcade.getRedeemed
+as
+	select * from arcade.redeemed
+go
+
+create procedure arcade.getPlayed
+as
+	select * from arcade.played
+go
+
+create procedure arcade.getTopped
+as
+	select * from arcade.toppedUp
+go
+
+
+create procedure arcade.getMaintained
+as
+	select * from arcade.Maintained
+go
