@@ -171,13 +171,13 @@ CREATE OR ALTER PROCEDURE arcade.saleHistory
 	@emp int = null
 as
 
-select * from(
-select op_id,'Redeemed' as Task, emp_no as employee, time_stamp from arcade.Redeemed
-union
-select op_id,'Maintained' as Task,  employee, time_stamp from arcade.Maintained
-union
-select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
-) as biglist where biglist.employee=@emp
+	select * from(
+		select op_id,'Redeemed' as Task, emp_no as employee, time_stamp from arcade.Redeemed
+		union
+		select op_id,'Maintained' as Task,  employee, time_stamp from arcade.Maintained
+		union
+		select op_id,'Topped Up' as Task, employee, time_stamp from arcade.toppedup
+	) as biglist where biglist.employee=@emp
 go
 
 
@@ -201,7 +201,7 @@ CREATE OR ALTER PROCEDURE arcade.extendRent
 	@months int = null,
 	@years int = null
 as
-
+	BEGIN TRAN
 	declare @date date
 	select @date = rent_duration from arcade.rents where machine_no=@machine_id;
 	if @days is not null
@@ -216,6 +216,7 @@ as
 		begin
 			update arcade.rents set rent_duration= dateadd(year,@days,@date) where machine_no=@machine_id;
 		end
+	COMMIT TRAN
 GO
 
 
@@ -302,6 +303,7 @@ CREATE OR ALTER PROCEDURE arcade.getGameList
 AS
 	SELECT CONCAT(game_id, ' ', game_name) as game FROM arcade.game
 GO
+
 
 create or alter procedure arcade.getTask
 	@code int = null
