@@ -358,6 +358,28 @@ as
 go
 
 
+create procedure arcade.getRedeemed
+as
+	select * from arcade.redeemed
+go
+
+create procedure arcade.getPlayed
+as
+	select * from arcade.played
+go
+
+create procedure arcade.getTopped
+as
+	select * from arcade.toppedUp
+go
+
+
+create procedure arcade.getMaintained
+as
+	select * from arcade.Maintained
+go
+
+
 -- INSERTS
 
 create or alter procedure arcade.insertClient
@@ -1270,4 +1292,5 @@ AS
 		PRINT 'An error occured while updating schedule! Canceling Operation.'
 		ROLLBACK TRAN
 	END CATCH
+
 GO

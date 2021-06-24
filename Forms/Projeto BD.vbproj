@@ -88,6 +88,11 @@
     </Compile>
     <Compile Include="Game.vb" />
     <Compile Include="GameMachine.vb" />
+    <Compile Include="log.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>log.xsd</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -130,6 +135,17 @@
     <None Include="ArcadeData.xss">
       <DependentUpon>ArcadeData.xsd</DependentUpon>
     </None>
+    <None Include="log.xsc">
+      <DependentUpon>log.xsd</DependentUpon>
+    </None>
+    <None Include="log.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>log.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="log.xss">
+      <DependentUpon>log.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -140,6 +156,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
