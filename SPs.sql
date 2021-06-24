@@ -287,12 +287,10 @@ as
 go
 
 
-create or alter procedure arcade.getEmployees
-	@store int = null
-as
-	select * from arcade.employee where @store=store
-
-go
+CREATE OR ALTER PROCEDURE arcade.getEmployeeList
+AS
+	SELECT CONCAT(emp_no, ' ', emp_name) as employee FROM arcade.Employee WHERE NIF!='000000000'
+GO
 
 
 create or alter procedure arcade.getTask

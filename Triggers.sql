@@ -130,8 +130,9 @@ after Insert
 as
 	DECLARE @player INT;
 	DECLARE @code int;
+	DECLARE @points INT;
 
-	Select @player = client, @code = machine_no from inserted
+	Select @player = client, @code = machine_no, @points = points_recv from inserted;
 	DECLARE @cost INT;
 
 	select @cost = credit_cost from (select serial_no,credit_cost from arcade.arcadeMachine join arcade.Game on code=game_id)as r where @code= serial_no;
@@ -145,10 +146,8 @@ as
 	ELSE
 	begin
 	begin tran
-		
-		declare @player_creds int;
-		select @player_creds = credits from arcade.client where @player=client_no;
-		update arcade.client set credits=@player_creds-@cost where @player=client_no;
+		update arcade.client set credits-=@cost where @player=client_no;
+		update arcade.client set points+=@points where @player=client_no;
 	commit tran
 	end
 go
