@@ -294,9 +294,14 @@ AS
 GO
 
 
-CREATE OR ALTER PROCEDURE arcade.getClientList
+CREATE OR ALTER PROCEDURE arcade.getUserList
 AS
-	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.Client WHERE client_no!=6999
+	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.Client
+GO
+go
+CREATE OR ALTER PROCEDURE arcade.getGameList
+AS
+	SELECT CONCAT(game_id, ' ', game_name) as game FROM arcade.game
 GO
 
 

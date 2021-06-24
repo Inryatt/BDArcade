@@ -268,6 +268,9 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
+            Case 4
+                LoadLogs()
+
         End Select
 
 
@@ -884,6 +887,8 @@ Public Class Form1
                 SupplierLoad()
             Case 3
                 StoreLoad()
+            Case 4
+                LoadLogs()
 
         End Select
 
@@ -1446,6 +1451,167 @@ Public Class Form1
 
     Private Sub topupShowLogs_Click(sender As Object, e As EventArgs) Handles topupShowLogs.Click
         ShowTopupLogs()
+    End Sub
+
+    Private Sub EmployeeLogs_SelectedIndexChanged(sender As Object, e As EventArgs) Handles EmployeeLogs.SelectedIndexChanged
+        selectMachineForGame.Show()
+        Dim line As String = EmployeeLogs.Text
+        Dim result() As String
+        result = line.Split(" ")
+        Dim actualid As String = result(0)
+        Console.WriteLine(actualid)
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getAllLogs"
+        CMD.Parameters.AddWithValue("@emp", Integer.Parse(actualid))
+        CMD.CommandType = CommandType.StoredProcedure
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+        CN.Open()
+        sa.Fill(ds)
+        LogGrid.DataSource = ds.Tables(0)
+        CN.Close()
+
+
+    End Sub
+
+    Private Sub LoadLogs()
+
+        EmployeeLogs.Items.Add("")
+        userStat.Items.Add("")
+
+        gameStat.Items.Add("")
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getEMployeeList"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim RDR As SqlDataReader
+
+        CN.Open()
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+
+
+
+            EmployeeLogs.Items.Add(RDR.Item("employee"))
+        End While
+        RDR.Close()
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getUserList"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read()
+
+            userStat.Items.Add(RDR.Item("client"))
+        End While
+
+        RDR.Close()
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getGameList"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read()
+
+            gameStat.Items.Add(RDR.Item("game"))
+        End While
+
+
+
+        CN.Close()
+
+
+    End Sub
+
+    Private Sub statisticsButtonGo_Click(sender As Object, e As EventArgs) Handles statisticsButtonGo.Click
+
+
+        Dim RDR As SqlDataReader
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.playtime_stats"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+
+        Dim us As String = userStat.Text
+        Dim result() As String
+        result = us.Split(" ")
+        Dim client As String = result(0)
+
+        Dim us2 As String = gameStat.Text
+        Dim result2() As String
+        result2 = us2.Split(" ")
+        Dim game As String = result2(0)
+        If client Like "" Then
+            CMD.Parameters.AddWithValue("@client", Nothing)
+        Else
+            CMD.Parameters.AddWithValue("@client", client)
+
+        End If
+
+        If game Like "" Then
+        Else
+            CMD.Parameters.AddWithValue("@game", game)
+
+        End If
+
+        If statsUseStart.Checked Then
+            CMD.Parameters.AddWithValue("@start_date", StartTimeStats.Value)
+
+        End If
+
+        If StatsuseEnd.Checked Then
+            CMD.Parameters.AddWithValue("@end_date", EndTimeStats.Value)
+
+
+        End If
+
+        Dim avg = New SqlParameter()
+        avg.ParameterName = "@avg_time"
+        avg.SqlDbType = SqlDbType.Time
+        avg.Direction = ParameterDirection.Output
+        CMD.Parameters.Add(avg)
+
+        Dim endt = New SqlParameter()
+        endt.ParameterName = "@total_time"
+        endt.SqlDbType = SqlDbType.Time
+        endt.Direction = ParameterDirection.Output
+        CMD.Parameters.Add(endt)
+        CN.Open()
+        Try
+            CMD.ExecuteNonQuery()
+            avgTime.Text = avg.Value.ToString
+            totalTime.Text = endt.Value.ToString
+
+
+        Catch ex As Exception
+            MessageBox.Show("No activity found!", "ERROR",
+    MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        CN.Close()
+
+
     End Sub
 End Class
 
