@@ -245,6 +245,8 @@ Public Class Form1
             EmployeeNIFInput.Enabled = False
             EmployeePhoneInput.Enabled = False
             EmployeeSalaryInput.Enabled = False
+            EmployeeAddressInput.Enabled = False
+            EmployeeScheduleSelect.Enabled = False
         End If
 
         If EmployeeListBox.Items.Count = 0 Or currentEmployee < 0 Then Exit Sub
@@ -260,8 +262,15 @@ Public Class Form1
         EmployeeNIFInput.Text = employee.empNIF
         EmployeePhoneInput.Text = employee.empPhone
         EmployeeSalaryInput.Text = employee.empSalary
+        EmployeeAddressInput.Text = employee.empAddress
         EmployeeStartVal.Text = employee.empStart
         EmployeeEndVal.Text = employee.empEnd
+
+        For Each sch In EmployeeScheduleSelect.Items
+            If sch.ToString().Equals(employee.empSchedule) Then
+                EmployeeScheduleSelect.SelectedItem = sch
+            End If
+        Next
     End Sub
 
     ''Loads everything :)
@@ -295,7 +304,6 @@ Public Class Form1
             SupplierNameInput.Enabled = True
             SupplierAddressInput.Enabled = True
             SupplierPhoneInput.Enabled = True
-            SupplierNIFInput.Enabled = True
 
         Else
             SupplierCancelEditButton.Hide()
@@ -331,7 +339,6 @@ Public Class Form1
         SupplierCancelEditButton.Hide()
         SupplierSaveButton.Hide()
         SupplierEditButton.Show()
-        editing = False
         SupplierEmailInput.Enabled = False
         SupplierNameInput.Enabled = False
         SupplierAddressInput.Enabled = False
@@ -342,13 +349,27 @@ Public Class Form1
 
         CMD = New SqlCommand
         CMD.Connection = CN
-        CMD.CommandText = "arcade.insertSupplier"
-        CMD.CommandType = CommandType.StoredProcedure
-        CMD.Parameters.AddWithValue("NIF", SupplierNIFInput.Text)
-        CMD.Parameters.AddWithValue("email", SupplierEmailInput.Text)
-        CMD.Parameters.AddWithValue("phone_no", SupplierPhoneInput.Text)
-        CMD.Parameters.AddWithValue("address", SupplierAddressInput.Text)
-        CMD.Parameters.AddWithValue("name", SupplierNameInput.Text)
+
+        If editing Then
+            CMD.CommandText = "arcade.alterSupplier"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("nif", SupplierNIFInput.Text)
+            CMD.Parameters.AddWithValue("email", SupplierEmailInput.Text)
+            CMD.Parameters.AddWithValue("phone_no", SupplierPhoneInput.Text)
+            CMD.Parameters.AddWithValue("address", SupplierAddressInput.Text)
+            CMD.Parameters.AddWithValue("name", SupplierNameInput.Text)
+        Else
+            CMD.CommandText = "arcade.insertSupplier"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("NIF", SupplierNIFInput.Text)
+            CMD.Parameters.AddWithValue("email", SupplierEmailInput.Text)
+            CMD.Parameters.AddWithValue("phone_no", SupplierPhoneInput.Text)
+            CMD.Parameters.AddWithValue("address", SupplierAddressInput.Text)
+            CMD.Parameters.AddWithValue("name", SupplierNameInput.Text)
+        End If
+
+        editing = False
+        adding = False
 
         CN.Open()
         CMD.ExecuteNonQuery()
@@ -609,7 +630,6 @@ Public Class Form1
         PublisherCancelButton.Show()
         PublisherSaveButton.Show()
         PublisherEditButton.Hide()
-        PublisherIDInput.Enabled = True
         PublisherNameInput.Enabled = True
         PublisherIsIndependent.Enabled = True
         PublisherLocationInput.Enabled = True
@@ -629,6 +649,23 @@ Public Class Form1
             PublisherIsIndependent.Enabled = False
             PublisherLocationInput.Enabled = False
 
+            CMD = New SqlCommand
+            CMD.Connection = CN
+            CMD.CommandText = "arcade.alterPublisher"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("publisher_id", PublisherIDInput.Text)
+            CMD.Parameters.AddWithValue("name", PublisherNameInput.Text)
+            CMD.Parameters.AddWithValue("location", PublisherLocationInput.Text)
+            If PublisherIsIndependent.Checked Then
+                CMD.Parameters.AddWithValue("is_indie", 1)
+            Else
+                CMD.Parameters.AddWithValue("is_indie", 0)
+            End If
+
+            CN.Open()
+            CMD.ExecuteNonQuery()
+            CN.Close()
+            PublishersLoad()
         End If
 
         If adding Then
@@ -674,14 +711,19 @@ Public Class Form1
         PublisherIsIndependent.Enabled = True
         PublisherLocationInput.Enabled = True
 
-
-        PublisherIDInput.Text = ""
+        Dim biggestID As Integer = 0
+        For Each pub In PublisherListBox.Items
+            If Integer.Parse(pub.pubID) > biggestID Then
+                biggestID = Integer.Parse(pub.pubID)
+            End If
+        Next
+        biggestID = biggestID + 1
+        PublisherIDInput.Text = biggestID
         PublisherNameInput.Text = ""
         PublisherLocationInput.Text = ""
         PublisherIsIndependent.Checked = False
         PublisherLocationInput.Text = ""
 
-        ''TODO --> Insert the new data into the BD
 
     End Sub
 
@@ -695,6 +737,7 @@ Public Class Form1
         PublisherIDInput.Enabled = False
         PublisherNameInput.Enabled = False
         PublisherIsIndependent.Enabled = False
+        PublisherLocationInput.Enabled = False
 
 
         If PublisherListBox.SelectedIndex > -1 Then
@@ -933,29 +976,27 @@ Public Class Form1
             StoreCancelButton.Show()
             StoreSaveButton.Show()
             StoreEditButton.Hide()
-            StoreIDInput.Enabled = True
+            StoreIDInput.Enabled = False
             StoreLocationInput.Enabled = True
-
 
         Else
             editing = True
             StoreCancelButton.Show()
             StoreSaveButton.Show()
             StoreEditButton.Hide()
-            StoreIDInput.Enabled = True
+            StoreIDInput.Enabled = False
             StoreLocationInput.Enabled = True
-
 
         End If
     End Sub
 
     Private Sub StoreCancelButton_Click(sender As Object, e As EventArgs) Handles StoreCancelButton.Click
         editing = False
+        adding = False
         StoreCancelButton.Hide()
         StoreSaveButton.Hide()
         StoreEditButton.Show()
         StoreAddButton.Show()
-        StoreDeleteButton.Show()
         StoreIDInput.Enabled = False
         StoreLocationInput.Enabled = False
 
@@ -967,12 +1008,12 @@ Public Class Form1
 
 
     Private Sub StoreAddButton_Click(sender As Object, e As EventArgs) Handles StoreAddButton.Click
-        editing = True
+        adding = True
+        editing = False
         StoreCancelButton.Show()
         StoreSaveButton.Show()
         StoreEditButton.Hide()
         StoreAddButton.Hide()
-        StoreDeleteButton.Hide()
         StoreIDInput.Enabled = True
         StoreLocationInput.Enabled = True
 
@@ -981,25 +1022,36 @@ Public Class Form1
         StoreLocationInput.Text = ""
     End Sub
 
-    Private Sub StoreDeleteButton_Click(sender As Object, e As EventArgs) Handles StoreDeleteButton.Click
-        editing = True
-        StoreCancelButton.Hide()
-        StoreSaveButton.Hide()
-        StoreEditButton.Show()
-        StoreIDInput.Enabled = False
-        StoreLocationInput.Enabled = False
-    End Sub
 
     Private Sub StoreSaveButton_Click(sender As Object, e As EventArgs) Handles StoreSaveButton.Click
-        editing = True
         StoreCancelButton.Hide()
         StoreSaveButton.Hide()
         StoreEditButton.Show()
         StoreAddButton.Show()
-        StoreDeleteButton.Show()
         StoreIDInput.Enabled = False
         StoreLocationInput.Enabled = False
 
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandType = CommandType.StoredProcedure
+
+        If editing Then
+            CMD.CommandText = "arcade.alterStore"
+        Else
+            CMD.CommandText = "arcade.insertStore"
+        End If
+
+        CMD.Parameters.AddWithValue("store_id", StoreIDInput.Text)
+        CMD.Parameters.AddWithValue("location", StoreLocationInput.Text)
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+
+        editing = False
+        adding = False
+        StoreLoad()
     End Sub
 
     Private Sub EmployeeEditButton_Click(sender As Object, e As EventArgs) Handles EmployeeEditButton.Click
@@ -1013,7 +1065,8 @@ Public Class Form1
             EmployeePhoneInput.Enabled = True
             EmployeeNIFInput.Enabled = False
             EmployeeSalaryInput.Enabled = True
-
+            EmployeeAddressInput.Enabled = True
+            EmployeeScheduleSelect.Enabled = True
 
         Else
             editing = True
@@ -1025,7 +1078,8 @@ Public Class Form1
             EmployeePhoneInput.Enabled = True
             EmployeeNIFInput.Enabled = False
             EmployeeSalaryInput.Enabled = True
-
+            EmployeeAddressInput.Enabled = True
+            EmployeeScheduleSelect.Enabled = True
 
         End If
     End Sub
@@ -1040,6 +1094,9 @@ Public Class Form1
         EmployeePhoneInput.Enabled = False
         EmployeeNIFInput.Enabled = False
         EmployeeSalaryInput.Enabled = False
+        EmployeeAddressInput.Enabled = False
+        EmployeeScheduleSelect.Enabled = False
+
 
         If EmployeeListBox.SelectedIndex > -1 Then
             currentEmployee = EmployeeListBox.SelectedIndex
@@ -1048,7 +1105,6 @@ Public Class Form1
     End Sub
 
     Private Sub EmployeeSaveButton_Click(sender As Object, e As EventArgs) Handles EmployeeSaveButton.Click
-        editing = False
         EmployeeCancelButton.Hide()
         EmployeeSaveButton.Hide()
         EmployeeEditButton.Show()
@@ -1057,14 +1113,72 @@ Public Class Form1
         EmployeePhoneInput.Enabled = False
         EmployeeNIFInput.Enabled = False
         EmployeeSalaryInput.Enabled = False
+        EmployeeAddressInput.Enabled = False
+        EmployeeScheduleSelect.Enabled = False
+
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        If editing Then
+            CMD.CommandText = "arcade.alterEmployee"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("emp_no", EmployeeListBox.SelectedItem.empNo)
+            CMD.Parameters.AddWithValue("name", EmployeeNameInput.Text)
+            CMD.Parameters.AddWithValue("email", EmployeeEmailInput.Text)
+            CMD.Parameters.AddWithValue("salary", "€" + EmployeeSalaryInput.Text)
+            CMD.Parameters.AddWithValue("phone_no", EmployeePhoneInput.Text)
+            CMD.Parameters.AddWithValue("address", EmployeeAddressInput.Text)
+            CMD.Parameters.AddWithValue("schedule", EmployeeScheduleSelect.SelectedItem.ToString())
+        Else
+            CMD.CommandText = "arcade.insertEmployee"
+            CMD.CommandType = CommandType.StoredProcedure
+
+            Dim biggestID As Integer = 0
+            For Each emp In EmployeeListBox.Items
+                If Integer.Parse(emp.empNo) > biggestID Then
+                    biggestID = Integer.Parse(emp.empNo)
+                End If
+            Next
+            biggestID = biggestID + 1
+            CMD.Parameters.AddWithValue("emp_no", biggestID)
+            CMD.Parameters.AddWithValue("nif", EmployeeNIFInput.Text)
+            CMD.Parameters.AddWithValue("address", EmployeeAddressInput.Text)
+            CMD.Parameters.AddWithValue("schedule", EmployeeScheduleSelect.SelectedItem.ToString())
+            CMD.Parameters.AddWithValue("name", EmployeeNameInput.Text)
+            CMD.Parameters.AddWithValue("email", EmployeeEmailInput.Text)
+            CMD.Parameters.AddWithValue("salary", "€" + EmployeeSalaryInput.Text)
+            CMD.Parameters.AddWithValue("phone_no", EmployeePhoneInput.Text)
+            CMD.Parameters.AddWithValue("store", StoreIDInput.Text)
+        End If
+
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+
+        adding = False
+        editing = False
+        EmployeeLoad(Integer.Parse(StoreIDInput.Text))
     End Sub
 
     Private Sub EmployeeDeleteButton_Click(sender As Object, e As EventArgs) Handles EmployeeDeleteButton.Click
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.deleteEmployee"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("emp_no", EmployeeListBox.SelectedItem.empNo)
 
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        CN.Close()
+        EmployeeLoad(Integer.Parse(StoreIDInput.Text))
+        EmployeeListBox.SelectedIndex = 0
     End Sub
 
     Private Sub EmployeeAddButton_Click(sender As Object, e As EventArgs) Handles EmployeeAddButton.Click
-        editing = True
+        adding = True
+        editing = False
         EmployeeCancelButton.Show()
         EmployeeSaveButton.Show()
         EmployeeEditButton.Hide()
@@ -1073,22 +1187,45 @@ Public Class Form1
         EmployeePhoneInput.Enabled = True
         EmployeeNIFInput.Enabled = True
         EmployeeSalaryInput.Enabled = True
+        EmployeeAddressInput.Enabled = True
+        EmployeeScheduleSelect.Enabled = True
 
         EmployeeNameInput.Text = ""
         EmployeeEmailInput.Text = ""
         EmployeePhoneInput.Text = ""
         EmployeeNIFInput.Text = ""
         EmployeeSalaryInput.Text = ""
+        EmployeeAddressInput.Text = ""
+        EmployeeScheduleSelect.SelectedIndex = 0
     End Sub
 
     Private Sub EmployeeLoad(storeID As Integer)
+        Dim RDR As SqlDataReader
+
+        ''get schedule list
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getScheduleCodes"
+        CMD.CommandType = CommandType.StoredProcedure
+        CN.Open()
+
+        RDR = CMD.ExecuteReader
+        EmployeeScheduleSelect.Items.Clear()
+        While RDR.Read
+            If RDR.Item("schedule_code") <> 8999 Then
+                EmployeeScheduleSelect.Items.Add(RDR.Item("schedule_code"))
+            End If
+        End While
+        CN.Close()
+        RDR.Close()
+
+
         CMD = New SqlCommand
         CMD.Connection = CN
         CMD.CommandText = "arcade.getEmployees"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("store", storeID)
         CN.Open()
-        Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
         EmployeeListBox.Items.Clear()
         While RDR.Read
@@ -1110,6 +1247,8 @@ Public Class Form1
         End While
         CN.Close()
         RDR.Close()
+
+
 
         ''get schedule details
         For Each E In EmployeeListBox.Items

@@ -147,14 +147,20 @@ AS
 GO
 
 
+CREATE OR ALTER PROCEDURE arcade.getScheduleCodes
+AS
+	SELECT schedule_code FROM arcade.Schedule
+GO
+
 
 CREATE OR ALTER PROCEDURE arcade.topUp
 	@value int = null,
-	@client int = null
+	@client int = null,
+	@employee int = null
 as
-	IF @client is null OR @value is null
+	IF @client is null OR @value is null OR @employee is null
 	BEGIN
-		PRINT 'Please enter client and value!'
+		PRINT 'Please enter client, employee and value!'
 		RETURN 1
 	END
 
@@ -164,8 +170,30 @@ as
 		RETURN 4
 	END
 
-	UPDATE arcade.Client SET credits += @value WHERE client_no=@client
+	BEGIN TRAN
+
+	BEGIN TRY
+		INSERT INTO arcade.ToppedUp VALUES (@employee, @client, @value*�1, GETDATE(), @value)
+		UPDATE arcade.Client SET credits += @value WHERE client_no=@client
+	END TRY
+	BEGIN CATCH
+		DECLARE @err INT
+		SELECT @err = ERROR_NUMBER()
+		
+		IF @err=547
+		BEGIN
+			PRINT 'Invalid client and/or employee!'
+			RETURN 2
+		END
+		ELSE BEGIN
+			PRINT 'Something went wrong!'
+			RETURN 5
+		END
+	END CATCH
+
+	COMMIT TRAN
 go
+
 
 CREATE OR ALTER PROCEDURE arcade.saleHistory
 	@emp int = null
@@ -878,12 +906,51 @@ AS
 GO
 
 
+CREATE OR ALTER PROCEDURE arcade.insertStore
+	@store_id INT = null,
+	@location VARCHAR(50) = null
+AS
+	IF @store_id is null OR @location is null
+	BEGIN
+		PRINT 'Please enter all required parameters! (store ID and location)'
+		RETURN 1
+	END
+
+	BEGIN TRY
+		INSERT  INTO arcade.Store
+				VALUES (@store_id, @location)
+	END TRY
+	BEGIN CATCH
+		DECLARE @err INT
+		SELECT @err = ERROR_NUMBER()
+		
+		IF @err=2627
+		BEGIN
+			PRINT 'Store ID entered already exists!'
+			RETURN 3
+		END
+		ELSE
+		BEGIN
+			PRINT 'Something went wrong!'
+			RETURN 5
+		END		
+	END CATCH
+GO
+
+
 -- DELETES
 
 CREATE OR ALTER PROCEDURE arcade.deleteClient
 	@cli_no int null
 as
 	delete from arcade.client where client_no=@cli_no; --The trigger will take care of any complications that may arise
+go
+
+
+CREATE OR ALTER PROCEDURE arcade.deleteEmployee
+	@emp_no int null
+as
+	delete from arcade.employee where emp_no=@emp_no;
 go
 
 
@@ -1159,7 +1226,7 @@ GO
 CREATE OR ALTER PROCEDURE arcade.alterPublisher
 	@publisher_id INT = null,
 	@name VARCHAR(30) = null,
-	@location INT = null,
+	@location VARCHAR(100) = null,
 	@is_indie INT = null
 AS
 	IF @publisher_id is null
@@ -1305,6 +1372,29 @@ AS
 
 GO
 
+
+CREATE OR ALTER PROCEDURE arcade.alterStore
+	@store_id INT = null,
+	@location VARCHAR(50) = null
+AS
+	IF @store_id is null
+	BEGIN
+		PRINT 'No store specified!'
+		RETURN 1
+	END
+
+	BEGIN TRAN
+	BEGIN TRY
+		IF @location is not null
+			BEGIN
+				UPDATE arcade.Store SET store_location = @location WHERE store_id=@store_id;
+			END
+		COMMIT TRAN
+	END TRY
+	BEGIN CATCH
+		PRINT 'An error occured while updating store! Canceling Operation.'
+		ROLLBACK TRAN
+	END CATCH
 create or alter procedure arcade.getPrizesFromStore
 	@id int =null
 	as
@@ -1359,3 +1449,4 @@ declare @ret int;
   return @ret
   end
 ;  
+GO
