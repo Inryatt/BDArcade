@@ -1304,3 +1304,15 @@ AS
 	END CATCH
 
 GO
+
+create or alter procedure arcade.getPrizesFromStore
+	@id int =null,
+	as
+	Select * from arcade.prize where store_id = @id
+	go
+
+
+CREATE OR ALTER PROCEDURE arcade.getClientList
+AS
+	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.client WHERE client_no!=06999
+GO
