@@ -1,0 +1,21 @@
+Publishers:
+	-edit
+
+Suppliers:
+	-edit
+
+Stores:
+	-no delete button
+	-edit
+	Employees:
+		-edit
+		-schedule code
+		-add
+		-delete?
+
+
+Machines:
+	-everything
+
+Clients:
+	-everything
