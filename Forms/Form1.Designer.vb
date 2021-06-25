@@ -23,7 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem6 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.GameTab = New System.Windows.Forms.TabPage()
         Me.GameAlterButton = New System.Windows.Forms.Button()
@@ -103,10 +103,8 @@ Partial Class Form1
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.EmployeeAddressInput = New System.Windows.Forms.TextBox()
-        Me.Label27 = New System.Windows.Forms.Label()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.EmployeeScheduleSelect = New System.Windows.Forms.ComboBox()
-        Me.Label26 = New System.Windows.Forms.Label()
         Me.EmployeeDeleteButton = New System.Windows.Forms.Button()
         Me.EmployeeAddButton = New System.Windows.Forms.Button()
         Me.EmployeeSaveButton = New System.Windows.Forms.Button()
@@ -205,6 +203,14 @@ Partial Class Form1
         Me.Label21 = New System.Windows.Forms.Label()
         Me.MachinaListBox = New System.Windows.Forms.ListBox()
         Me.ControlTab = New System.Windows.Forms.TabPage()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.controlPlayMachine = New System.Windows.Forms.ComboBox()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.controlTime = New System.Windows.Forms.DateTimePicker()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.controlPlayUser = New System.Windows.Forms.ComboBox()
+        Me.ControlPlayButton = New System.Windows.Forms.Button()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.controlDoMaintenance = New System.Windows.Forms.Button()
         Me.Label38 = New System.Windows.Forms.Label()
@@ -228,9 +234,10 @@ Partial Class Form1
         Me.Label28 = New System.Windows.Forms.Label()
         Me.topUpQuantity = New System.Windows.Forms.NumericUpDown()
         Me.topUpButton = New System.Windows.Forms.Button()
-        Me.Label272 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.topUpWho = New System.Windows.Forms.ComboBox()
+        Me.Label272 = New System.Windows.Forms.Label()
         Me.RedeemedBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ArcadeData = New Projeto_BD.ArcadeData()
         Me.ToppedUpBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -242,26 +249,6 @@ Partial Class Form1
         Me.MaintainedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.MaintainedTableAdapter()
         Me.PlayedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.PlayedTableAdapter()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ControlPlayButton = New System.Windows.Forms.Button()
-        Me.controlPlayUser = New System.Windows.Forms.ComboBox()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.controlTime = New System.Windows.Forms.DateTimePicker()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.controlPlayMachine = New System.Windows.Forms.ComboBox()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
-
-        Me.controlEmployee = New System.Windows.Forms.ComboBox()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.prizeSelect = New System.Windows.Forms.ComboBox()
-        Me.prizeQuantity = New System.Windows.Forms.NumericUpDown()
-        
-
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -311,6 +298,7 @@ Partial Class Form1
         Me.Panel31.SuspendLayout()
         Me.Panel32.SuspendLayout()
         Me.ControlTab.SuspendLayout()
+        Me.GroupBox10.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         CType(Me.prizeQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -323,7 +311,6 @@ Partial Class Form1
         CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox10.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl
@@ -335,10 +322,11 @@ Partial Class Form1
         Me.TabControl.Controls.Add(Me.LogTab)
         Me.TabControl.Controls.Add(Me.TabPage1)
         Me.TabControl.Controls.Add(Me.ControlTab)
-        Me.TabControl.Location = New System.Drawing.Point(12, 12)
+        Me.TabControl.Location = New System.Drawing.Point(9, 10)
+        Me.TabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
-        Me.TabControl.Size = New System.Drawing.Size(1188, 956)
+        Me.TabControl.Size = New System.Drawing.Size(891, 777)
         Me.TabControl.TabIndex = 0
         '
         'GameTab
@@ -357,21 +345,19 @@ Partial Class Form1
         Me.GameTab.Controls.Add(Me.GameSaveButton)
         Me.GameTab.Controls.Add(Me.GroupBox1)
         Me.GameTab.Controls.Add(Me.GameListBox)
-        Me.GameTab.Location = New System.Drawing.Point(4, 25)
-        Me.GameTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameTab.Location = New System.Drawing.Point(4, 22)
         Me.GameTab.Name = "GameTab"
-        Me.GameTab.Padding = New System.Windows.Forms.Padding(4)
-        Me.GameTab.Size = New System.Drawing.Size(1180, 927)
+        Me.GameTab.Padding = New System.Windows.Forms.Padding(3)
+        Me.GameTab.Size = New System.Drawing.Size(883, 751)
         Me.GameTab.TabIndex = 0
         Me.GameTab.Text = "Game"
         Me.GameTab.UseVisualStyleBackColor = True
         '
         'GameAlterButton
         '
-        Me.GameAlterButton.Location = New System.Drawing.Point(985, 335)
-        Me.GameAlterButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameAlterButton.Location = New System.Drawing.Point(739, 272)
         Me.GameAlterButton.Name = "GameAlterButton"
-        Me.GameAlterButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameAlterButton.Size = New System.Drawing.Size(75, 23)
         Me.GameAlterButton.TabIndex = 24
         Me.GameAlterButton.Text = "Update"
         Me.GameAlterButton.UseVisualStyleBackColor = True
@@ -379,10 +365,9 @@ Partial Class Form1
         '
         'gameAddSaveMachine
         '
-        Me.gameAddSaveMachine.Location = New System.Drawing.Point(549, 652)
-        Me.gameAddSaveMachine.Margin = New System.Windows.Forms.Padding(4)
+        Me.gameAddSaveMachine.Location = New System.Drawing.Point(412, 530)
         Me.gameAddSaveMachine.Name = "gameAddSaveMachine"
-        Me.gameAddSaveMachine.Size = New System.Drawing.Size(100, 28)
+        Me.gameAddSaveMachine.Size = New System.Drawing.Size(75, 23)
         Me.gameAddSaveMachine.TabIndex = 23
         Me.gameAddSaveMachine.Text = "Add"
         Me.gameAddSaveMachine.UseVisualStyleBackColor = True
@@ -391,29 +376,26 @@ Partial Class Form1
         'selectMachineForGame
         '
         Me.selectMachineForGame.FormattingEnabled = True
-        Me.selectMachineForGame.Location = New System.Drawing.Point(375, 652)
-        Me.selectMachineForGame.Margin = New System.Windows.Forms.Padding(4)
+        Me.selectMachineForGame.Location = New System.Drawing.Point(281, 530)
         Me.selectMachineForGame.Name = "selectMachineForGame"
-        Me.selectMachineForGame.Size = New System.Drawing.Size(160, 24)
+        Me.selectMachineForGame.Size = New System.Drawing.Size(121, 21)
         Me.selectMachineForGame.TabIndex = 22
         Me.selectMachineForGame.Visible = False
         '
         'removeGamefromMachine
         '
-        Me.removeGamefromMachine.Location = New System.Drawing.Point(496, 617)
-        Me.removeGamefromMachine.Margin = New System.Windows.Forms.Padding(4)
+        Me.removeGamefromMachine.Location = New System.Drawing.Point(372, 501)
         Me.removeGamefromMachine.Name = "removeGamefromMachine"
-        Me.removeGamefromMachine.Size = New System.Drawing.Size(100, 28)
+        Me.removeGamefromMachine.Size = New System.Drawing.Size(75, 23)
         Me.removeGamefromMachine.TabIndex = 21
         Me.removeGamefromMachine.Text = "Remove"
         Me.removeGamefromMachine.UseVisualStyleBackColor = True
         '
         'addGameToMAchineButton
         '
-        Me.addGameToMAchineButton.Location = New System.Drawing.Point(375, 617)
-        Me.addGameToMAchineButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.addGameToMAchineButton.Location = New System.Drawing.Point(281, 501)
         Me.addGameToMAchineButton.Name = "addGameToMAchineButton"
-        Me.addGameToMAchineButton.Size = New System.Drawing.Size(100, 28)
+        Me.addGameToMAchineButton.Size = New System.Drawing.Size(75, 23)
         Me.addGameToMAchineButton.TabIndex = 20
         Me.addGameToMAchineButton.Text = "Add"
         Me.addGameToMAchineButton.UseVisualStyleBackColor = True
@@ -421,69 +403,61 @@ Partial Class Form1
         'GameMachineLabel
         '
         Me.GameMachineLabel.AutoSize = True
-        Me.GameMachineLabel.Location = New System.Drawing.Point(375, 385)
-        Me.GameMachineLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GameMachineLabel.Location = New System.Drawing.Point(281, 313)
         Me.GameMachineLabel.Name = "GameMachineLabel"
-        Me.GameMachineLabel.Size = New System.Drawing.Size(117, 17)
+        Me.GameMachineLabel.Size = New System.Drawing.Size(90, 13)
         Me.GameMachineLabel.TabIndex = 16
         Me.GameMachineLabel.Text = "Arcade Machines"
         '
         'GameMachinesListBox
         '
         Me.GameMachinesListBox.FormattingEnabled = True
-        Me.GameMachinesListBox.ItemHeight = 16
-        Me.GameMachinesListBox.Location = New System.Drawing.Point(375, 409)
-        Me.GameMachinesListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachinesListBox.Location = New System.Drawing.Point(281, 332)
         Me.GameMachinesListBox.Name = "GameMachinesListBox"
-        Me.GameMachinesListBox.Size = New System.Drawing.Size(372, 196)
+        Me.GameMachinesListBox.Size = New System.Drawing.Size(280, 160)
         Me.GameMachinesListBox.TabIndex = 15
         '
         'GameCancelButton
         '
-        Me.GameCancelButton.Location = New System.Drawing.Point(855, 335)
-        Me.GameCancelButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameCancelButton.Location = New System.Drawing.Point(641, 272)
         Me.GameCancelButton.Name = "GameCancelButton"
-        Me.GameCancelButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameCancelButton.Size = New System.Drawing.Size(75, 23)
         Me.GameCancelButton.TabIndex = 14
         Me.GameCancelButton.Text = "Cancel"
         Me.GameCancelButton.UseVisualStyleBackColor = True
         '
         'GameEditButton
         '
-        Me.GameEditButton.Location = New System.Drawing.Point(380, 335)
-        Me.GameEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameEditButton.Location = New System.Drawing.Point(285, 272)
         Me.GameEditButton.Name = "GameEditButton"
-        Me.GameEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameEditButton.Size = New System.Drawing.Size(75, 23)
         Me.GameEditButton.TabIndex = 13
         Me.GameEditButton.Text = "Edit"
         Me.GameEditButton.UseVisualStyleBackColor = True
         '
         'GameDeleteButton
         '
-        Me.GameDeleteButton.Location = New System.Drawing.Point(168, 743)
-        Me.GameDeleteButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameDeleteButton.Location = New System.Drawing.Point(126, 604)
         Me.GameDeleteButton.Name = "GameDeleteButton"
-        Me.GameDeleteButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameDeleteButton.Size = New System.Drawing.Size(75, 23)
         Me.GameDeleteButton.TabIndex = 12
         Me.GameDeleteButton.Text = "Delete"
         Me.GameDeleteButton.UseVisualStyleBackColor = True
         '
         'GameAddButton
         '
-        Me.GameAddButton.Location = New System.Drawing.Point(36, 743)
-        Me.GameAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameAddButton.Location = New System.Drawing.Point(27, 604)
         Me.GameAddButton.Name = "GameAddButton"
-        Me.GameAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameAddButton.Size = New System.Drawing.Size(75, 23)
         Me.GameAddButton.TabIndex = 11
         Me.GameAddButton.Text = "Add"
         Me.GameAddButton.UseVisualStyleBackColor = True
         '
         'GameSaveButton
         '
-        Me.GameSaveButton.Location = New System.Drawing.Point(985, 335)
-        Me.GameSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameSaveButton.Location = New System.Drawing.Point(739, 272)
         Me.GameSaveButton.Name = "GameSaveButton"
-        Me.GameSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.GameSaveButton.TabIndex = 10
         Me.GameSaveButton.Text = "Save"
         Me.GameSaveButton.UseVisualStyleBackColor = True
@@ -496,11 +470,9 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.Panel9)
         Me.GroupBox1.Controls.Add(Me.Panel10)
         Me.GroupBox1.Controls.Add(Me.Panel11)
-        Me.GroupBox1.Location = New System.Drawing.Point(380, 48)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Location = New System.Drawing.Point(285, 39)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(705, 279)
+        Me.GroupBox1.Size = New System.Drawing.Size(529, 227)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Game Info"
@@ -509,27 +481,24 @@ Partial Class Form1
         '
         Me.Panel12.Controls.Add(Me.GameCostInput)
         Me.Panel12.Controls.Add(Me.GameCostLabel)
-        Me.Panel12.Location = New System.Drawing.Point(149, 191)
-        Me.Panel12.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel12.Location = New System.Drawing.Point(112, 155)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(128, 76)
+        Me.Panel12.Size = New System.Drawing.Size(96, 62)
         Me.Panel12.TabIndex = 5
         '
         'GameCostInput
         '
-        Me.GameCostInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameCostInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameCostInput.Location = New System.Drawing.Point(15, 30)
         Me.GameCostInput.Name = "GameCostInput"
-        Me.GameCostInput.Size = New System.Drawing.Size(57, 22)
+        Me.GameCostInput.Size = New System.Drawing.Size(44, 20)
         Me.GameCostInput.TabIndex = 0
         '
         'GameCostLabel
         '
         Me.GameCostLabel.AutoSize = True
-        Me.GameCostLabel.Location = New System.Drawing.Point(16, 17)
-        Me.GameCostLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GameCostLabel.Location = New System.Drawing.Point(12, 14)
         Me.GameCostLabel.Name = "GameCostLabel"
-        Me.GameCostLabel.Size = New System.Drawing.Size(77, 17)
+        Me.GameCostLabel.Size = New System.Drawing.Size(58, 13)
         Me.GameCostLabel.TabIndex = 1
         Me.GameCostLabel.Text = "Credit Cost"
         '
@@ -537,27 +506,24 @@ Partial Class Form1
         '
         Me.Panel3.Controls.Add(Me.GamePlayersInput)
         Me.Panel3.Controls.Add(Me.GamePlayersLabel)
-        Me.Panel3.Location = New System.Drawing.Point(285, 191)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel3.Location = New System.Drawing.Point(214, 155)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(161, 76)
+        Me.Panel3.Size = New System.Drawing.Size(121, 62)
         Me.Panel3.TabIndex = 4
         '
         'GamePlayersInput
         '
-        Me.GamePlayersInput.Location = New System.Drawing.Point(20, 37)
-        Me.GamePlayersInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GamePlayersInput.Location = New System.Drawing.Point(15, 30)
         Me.GamePlayersInput.Name = "GamePlayersInput"
-        Me.GamePlayersInput.Size = New System.Drawing.Size(61, 22)
+        Me.GamePlayersInput.Size = New System.Drawing.Size(47, 20)
         Me.GamePlayersInput.TabIndex = 0
         '
         'GamePlayersLabel
         '
         Me.GamePlayersLabel.AutoSize = True
-        Me.GamePlayersLabel.Location = New System.Drawing.Point(16, 17)
-        Me.GamePlayersLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GamePlayersLabel.Location = New System.Drawing.Point(12, 14)
         Me.GamePlayersLabel.Name = "GamePlayersLabel"
-        Me.GamePlayersLabel.Size = New System.Drawing.Size(131, 17)
+        Me.GamePlayersLabel.Size = New System.Drawing.Size(99, 13)
         Me.GamePlayersLabel.TabIndex = 1
         Me.GamePlayersLabel.Text = "How many players?"
         '
@@ -565,27 +531,24 @@ Partial Class Form1
         '
         Me.Panel8.Controls.Add(Me.GamePointsInput)
         Me.Panel8.Controls.Add(Me.GamePointsLabel)
-        Me.Panel8.Location = New System.Drawing.Point(8, 191)
-        Me.Panel8.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel8.Location = New System.Drawing.Point(6, 155)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(133, 76)
+        Me.Panel8.Size = New System.Drawing.Size(100, 62)
         Me.Panel8.TabIndex = 4
         '
         'GamePointsInput
         '
-        Me.GamePointsInput.Location = New System.Drawing.Point(20, 37)
-        Me.GamePointsInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GamePointsInput.Location = New System.Drawing.Point(15, 30)
         Me.GamePointsInput.Name = "GamePointsInput"
-        Me.GamePointsInput.Size = New System.Drawing.Size(61, 22)
+        Me.GamePointsInput.Size = New System.Drawing.Size(47, 20)
         Me.GamePointsInput.TabIndex = 0
         '
         'GamePointsLabel
         '
         Me.GamePointsLabel.AutoSize = True
-        Me.GamePointsLabel.Location = New System.Drawing.Point(16, 17)
-        Me.GamePointsLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GamePointsLabel.Location = New System.Drawing.Point(12, 14)
         Me.GamePointsLabel.Name = "GamePointsLabel"
-        Me.GamePointsLabel.Size = New System.Drawing.Size(80, 17)
+        Me.GamePointsLabel.Size = New System.Drawing.Size(61, 13)
         Me.GamePointsLabel.TabIndex = 1
         Me.GamePointsLabel.Text = "Point Value"
         '
@@ -593,27 +556,24 @@ Partial Class Form1
         '
         Me.Panel9.Controls.Add(Me.GameIDInput)
         Me.Panel9.Controls.Add(Me.GameIDLabel)
-        Me.Panel9.Location = New System.Drawing.Point(455, 191)
-        Me.Panel9.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel9.Location = New System.Drawing.Point(341, 155)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(164, 76)
+        Me.Panel9.Size = New System.Drawing.Size(123, 62)
         Me.Panel9.TabIndex = 5
         '
         'GameIDInput
         '
-        Me.GameIDInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameIDInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameIDInput.Location = New System.Drawing.Point(15, 30)
         Me.GameIDInput.Name = "GameIDInput"
-        Me.GameIDInput.Size = New System.Drawing.Size(124, 22)
+        Me.GameIDInput.Size = New System.Drawing.Size(94, 20)
         Me.GameIDInput.TabIndex = 3
         '
         'GameIDLabel
         '
         Me.GameIDLabel.AutoSize = True
-        Me.GameIDLabel.Location = New System.Drawing.Point(16, 17)
-        Me.GameIDLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GameIDLabel.Location = New System.Drawing.Point(12, 14)
         Me.GameIDLabel.Name = "GameIDLabel"
-        Me.GameIDLabel.Size = New System.Drawing.Size(21, 17)
+        Me.GameIDLabel.Size = New System.Drawing.Size(18, 13)
         Me.GameIDLabel.TabIndex = 1
         Me.GameIDLabel.Text = "ID"
         '
@@ -621,28 +581,25 @@ Partial Class Form1
         '
         Me.Panel10.Controls.Add(Me.GamePublisherInput)
         Me.Panel10.Controls.Add(Me.GamePublisherLabel)
-        Me.Panel10.Location = New System.Drawing.Point(8, 107)
-        Me.Panel10.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel10.Location = New System.Drawing.Point(6, 87)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(611, 76)
+        Me.Panel10.Size = New System.Drawing.Size(458, 62)
         Me.Panel10.TabIndex = 4
         '
         'GamePublisherInput
         '
         Me.GamePublisherInput.FormattingEnabled = True
-        Me.GamePublisherInput.Location = New System.Drawing.Point(20, 37)
-        Me.GamePublisherInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GamePublisherInput.Location = New System.Drawing.Point(15, 30)
         Me.GamePublisherInput.Name = "GamePublisherInput"
-        Me.GamePublisherInput.Size = New System.Drawing.Size(545, 24)
+        Me.GamePublisherInput.Size = New System.Drawing.Size(410, 21)
         Me.GamePublisherInput.TabIndex = 3
         '
         'GamePublisherLabel
         '
         Me.GamePublisherLabel.AutoSize = True
-        Me.GamePublisherLabel.Location = New System.Drawing.Point(16, 17)
-        Me.GamePublisherLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GamePublisherLabel.Location = New System.Drawing.Point(12, 14)
         Me.GamePublisherLabel.Name = "GamePublisherLabel"
-        Me.GamePublisherLabel.Size = New System.Drawing.Size(67, 17)
+        Me.GamePublisherLabel.Size = New System.Drawing.Size(50, 13)
         Me.GamePublisherLabel.TabIndex = 1
         Me.GamePublisherLabel.Text = "Publisher"
         '
@@ -650,39 +607,34 @@ Partial Class Form1
         '
         Me.Panel11.Controls.Add(Me.GameNameInput)
         Me.Panel11.Controls.Add(Me.Label5)
-        Me.Panel11.Location = New System.Drawing.Point(8, 23)
-        Me.Panel11.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel11.Location = New System.Drawing.Point(6, 19)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(611, 76)
+        Me.Panel11.Size = New System.Drawing.Size(458, 62)
         Me.Panel11.TabIndex = 3
         '
         'GameNameInput
         '
         Me.GameNameInput.Enabled = False
-        Me.GameNameInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameNameInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameNameInput.Location = New System.Drawing.Point(15, 30)
         Me.GameNameInput.Name = "GameNameInput"
-        Me.GameNameInput.Size = New System.Drawing.Size(545, 22)
+        Me.GameNameInput.Size = New System.Drawing.Size(410, 20)
         Me.GameNameInput.TabIndex = 0
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(16, 17)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(12, 14)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(45, 17)
+        Me.Label5.Size = New System.Drawing.Size(35, 13)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Name"
         '
         'GameListBox
         '
         Me.GameListBox.FormattingEnabled = True
-        Me.GameListBox.ItemHeight = 16
-        Me.GameListBox.Location = New System.Drawing.Point(36, 48)
-        Me.GameListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameListBox.Location = New System.Drawing.Point(27, 39)
         Me.GameListBox.Name = "GameListBox"
-        Me.GameListBox.Size = New System.Drawing.Size(293, 676)
+        Me.GameListBox.Size = New System.Drawing.Size(221, 550)
         Me.GameListBox.TabIndex = 8
         '
         'Publisher
@@ -693,51 +645,46 @@ Partial Class Form1
         Me.Publisher.Controls.Add(Me.PublisherSaveButton)
         Me.Publisher.Controls.Add(Me.PublisherInfo)
         Me.Publisher.Controls.Add(Me.PublisherListBox)
-        Me.Publisher.Location = New System.Drawing.Point(4, 25)
-        Me.Publisher.Margin = New System.Windows.Forms.Padding(4)
+        Me.Publisher.Location = New System.Drawing.Point(4, 22)
         Me.Publisher.Name = "Publisher"
-        Me.Publisher.Padding = New System.Windows.Forms.Padding(4)
-        Me.Publisher.Size = New System.Drawing.Size(1180, 927)
+        Me.Publisher.Padding = New System.Windows.Forms.Padding(3)
+        Me.Publisher.Size = New System.Drawing.Size(883, 751)
         Me.Publisher.TabIndex = 1
         Me.Publisher.Text = "Publishers"
         Me.Publisher.UseVisualStyleBackColor = True
         '
         'PublisherCancelButton
         '
-        Me.PublisherCancelButton.Location = New System.Drawing.Point(911, 378)
-        Me.PublisherCancelButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherCancelButton.Location = New System.Drawing.Point(683, 307)
         Me.PublisherCancelButton.Name = "PublisherCancelButton"
-        Me.PublisherCancelButton.Size = New System.Drawing.Size(100, 28)
+        Me.PublisherCancelButton.Size = New System.Drawing.Size(75, 23)
         Me.PublisherCancelButton.TabIndex = 14
         Me.PublisherCancelButton.Text = "Cancel"
         Me.PublisherCancelButton.UseVisualStyleBackColor = True
         '
         'PublisherEditButton
         '
-        Me.PublisherEditButton.Location = New System.Drawing.Point(436, 378)
-        Me.PublisherEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherEditButton.Location = New System.Drawing.Point(327, 307)
         Me.PublisherEditButton.Name = "PublisherEditButton"
-        Me.PublisherEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.PublisherEditButton.Size = New System.Drawing.Size(75, 23)
         Me.PublisherEditButton.TabIndex = 13
         Me.PublisherEditButton.Text = "Edit"
         Me.PublisherEditButton.UseVisualStyleBackColor = True
         '
         'PublisherAddButton
         '
-        Me.PublisherAddButton.Location = New System.Drawing.Point(36, 743)
-        Me.PublisherAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherAddButton.Location = New System.Drawing.Point(27, 604)
         Me.PublisherAddButton.Name = "PublisherAddButton"
-        Me.PublisherAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.PublisherAddButton.Size = New System.Drawing.Size(75, 23)
         Me.PublisherAddButton.TabIndex = 11
         Me.PublisherAddButton.Text = "Add"
         Me.PublisherAddButton.UseVisualStyleBackColor = True
         '
         'PublisherSaveButton
         '
-        Me.PublisherSaveButton.Location = New System.Drawing.Point(1041, 378)
-        Me.PublisherSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherSaveButton.Location = New System.Drawing.Point(781, 307)
         Me.PublisherSaveButton.Name = "PublisherSaveButton"
-        Me.PublisherSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.PublisherSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.PublisherSaveButton.TabIndex = 10
         Me.PublisherSaveButton.Text = "Save"
         Me.PublisherSaveButton.UseVisualStyleBackColor = True
@@ -748,11 +695,9 @@ Partial Class Form1
         Me.PublisherInfo.Controls.Add(Me.Panel5)
         Me.PublisherInfo.Controls.Add(Me.Panel6)
         Me.PublisherInfo.Controls.Add(Me.Panel7)
-        Me.PublisherInfo.Location = New System.Drawing.Point(436, 66)
-        Me.PublisherInfo.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherInfo.Location = New System.Drawing.Point(327, 54)
         Me.PublisherInfo.Name = "PublisherInfo"
-        Me.PublisherInfo.Padding = New System.Windows.Forms.Padding(4)
-        Me.PublisherInfo.Size = New System.Drawing.Size(705, 290)
+        Me.PublisherInfo.Size = New System.Drawing.Size(529, 236)
         Me.PublisherInfo.TabIndex = 9
         Me.PublisherInfo.TabStop = False
         Me.PublisherInfo.Text = "Publisher Info"
@@ -761,46 +706,41 @@ Partial Class Form1
         '
         Me.Panel4.Controls.Add(Me.PublisherLocationInput)
         Me.Panel4.Controls.Add(Me.PublisherLocationLabel)
-        Me.Panel4.Location = New System.Drawing.Point(8, 191)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel4.Location = New System.Drawing.Point(6, 155)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(611, 76)
+        Me.Panel4.Size = New System.Drawing.Size(458, 62)
         Me.Panel4.TabIndex = 4
         '
         'PublisherLocationInput
         '
-        Me.PublisherLocationInput.Location = New System.Drawing.Point(20, 37)
-        Me.PublisherLocationInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherLocationInput.Location = New System.Drawing.Point(15, 30)
         Me.PublisherLocationInput.Name = "PublisherLocationInput"
-        Me.PublisherLocationInput.Size = New System.Drawing.Size(545, 22)
+        Me.PublisherLocationInput.Size = New System.Drawing.Size(410, 20)
         Me.PublisherLocationInput.TabIndex = 0
         '
         'PublisherLocationLabel
         '
         Me.PublisherLocationLabel.AutoSize = True
-        Me.PublisherLocationLabel.Location = New System.Drawing.Point(16, 17)
-        Me.PublisherLocationLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.PublisherLocationLabel.Location = New System.Drawing.Point(12, 14)
         Me.PublisherLocationLabel.Name = "PublisherLocationLabel"
-        Me.PublisherLocationLabel.Size = New System.Drawing.Size(62, 17)
+        Me.PublisherLocationLabel.Size = New System.Drawing.Size(48, 13)
         Me.PublisherLocationLabel.TabIndex = 1
         Me.PublisherLocationLabel.Text = "Location"
         '
         'Panel5
         '
         Me.Panel5.Controls.Add(Me.PublisherIsIndependent)
-        Me.Panel5.Location = New System.Drawing.Point(307, 107)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel5.Location = New System.Drawing.Point(230, 87)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(312, 76)
+        Me.Panel5.Size = New System.Drawing.Size(234, 62)
         Me.Panel5.TabIndex = 5
         '
         'PublisherIsIndependent
         '
         Me.PublisherIsIndependent.AutoSize = True
-        Me.PublisherIsIndependent.Location = New System.Drawing.Point(24, 41)
-        Me.PublisherIsIndependent.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherIsIndependent.Location = New System.Drawing.Point(18, 33)
         Me.PublisherIsIndependent.Name = "PublisherIsIndependent"
-        Me.PublisherIsIndependent.Size = New System.Drawing.Size(117, 21)
+        Me.PublisherIsIndependent.Size = New System.Drawing.Size(92, 17)
         Me.PublisherIsIndependent.TabIndex = 2
         Me.PublisherIsIndependent.Text = "Independent?"
         Me.PublisherIsIndependent.UseVisualStyleBackColor = True
@@ -809,27 +749,24 @@ Partial Class Form1
         '
         Me.Panel6.Controls.Add(Me.PublisherIDInput)
         Me.Panel6.Controls.Add(Me.PublisherIDLabel)
-        Me.Panel6.Location = New System.Drawing.Point(8, 107)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel6.Location = New System.Drawing.Point(6, 87)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(291, 76)
+        Me.Panel6.Size = New System.Drawing.Size(218, 62)
         Me.Panel6.TabIndex = 4
         '
         'PublisherIDInput
         '
-        Me.PublisherIDInput.Location = New System.Drawing.Point(20, 37)
-        Me.PublisherIDInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherIDInput.Location = New System.Drawing.Point(15, 30)
         Me.PublisherIDInput.Name = "PublisherIDInput"
-        Me.PublisherIDInput.Size = New System.Drawing.Size(233, 22)
+        Me.PublisherIDInput.Size = New System.Drawing.Size(176, 20)
         Me.PublisherIDInput.TabIndex = 2
         '
         'PublisherIDLabel
         '
         Me.PublisherIDLabel.AutoSize = True
-        Me.PublisherIDLabel.Location = New System.Drawing.Point(16, 17)
-        Me.PublisherIDLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.PublisherIDLabel.Location = New System.Drawing.Point(12, 14)
         Me.PublisherIDLabel.Name = "PublisherIDLabel"
-        Me.PublisherIDLabel.Size = New System.Drawing.Size(21, 17)
+        Me.PublisherIDLabel.Size = New System.Drawing.Size(18, 13)
         Me.PublisherIDLabel.TabIndex = 1
         Me.PublisherIDLabel.Text = "ID"
         '
@@ -837,39 +774,34 @@ Partial Class Form1
         '
         Me.Panel7.Controls.Add(Me.PublisherNameInput)
         Me.Panel7.Controls.Add(Me.PublisherNameLabel)
-        Me.Panel7.Location = New System.Drawing.Point(8, 23)
-        Me.Panel7.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel7.Location = New System.Drawing.Point(6, 19)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(611, 76)
+        Me.Panel7.Size = New System.Drawing.Size(458, 62)
         Me.Panel7.TabIndex = 3
         '
         'PublisherNameInput
         '
         Me.PublisherNameInput.Enabled = False
-        Me.PublisherNameInput.Location = New System.Drawing.Point(20, 37)
-        Me.PublisherNameInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherNameInput.Location = New System.Drawing.Point(15, 30)
         Me.PublisherNameInput.Name = "PublisherNameInput"
-        Me.PublisherNameInput.Size = New System.Drawing.Size(545, 22)
+        Me.PublisherNameInput.Size = New System.Drawing.Size(410, 20)
         Me.PublisherNameInput.TabIndex = 0
         '
         'PublisherNameLabel
         '
         Me.PublisherNameLabel.AutoSize = True
-        Me.PublisherNameLabel.Location = New System.Drawing.Point(16, 17)
-        Me.PublisherNameLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.PublisherNameLabel.Location = New System.Drawing.Point(12, 14)
         Me.PublisherNameLabel.Name = "PublisherNameLabel"
-        Me.PublisherNameLabel.Size = New System.Drawing.Size(45, 17)
+        Me.PublisherNameLabel.Size = New System.Drawing.Size(35, 13)
         Me.PublisherNameLabel.TabIndex = 1
         Me.PublisherNameLabel.Text = "Name"
         '
         'PublisherListBox
         '
         Me.PublisherListBox.FormattingEnabled = True
-        Me.PublisherListBox.ItemHeight = 16
-        Me.PublisherListBox.Location = New System.Drawing.Point(36, 48)
-        Me.PublisherListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.PublisherListBox.Location = New System.Drawing.Point(27, 39)
         Me.PublisherListBox.Name = "PublisherListBox"
-        Me.PublisherListBox.Size = New System.Drawing.Size(293, 676)
+        Me.PublisherListBox.Size = New System.Drawing.Size(221, 550)
         Me.PublisherListBox.TabIndex = 8
         '
         'SupplierTab
@@ -881,60 +813,54 @@ Partial Class Form1
         Me.SupplierTab.Controls.Add(Me.SupplierSaveButton)
         Me.SupplierTab.Controls.Add(Me.SupplierInfo)
         Me.SupplierTab.Controls.Add(Me.Supplier_ListBox)
-        Me.SupplierTab.Location = New System.Drawing.Point(4, 25)
-        Me.SupplierTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierTab.Location = New System.Drawing.Point(4, 22)
         Me.SupplierTab.Name = "SupplierTab"
-        Me.SupplierTab.Size = New System.Drawing.Size(1180, 927)
+        Me.SupplierTab.Size = New System.Drawing.Size(883, 751)
         Me.SupplierTab.TabIndex = 2
         Me.SupplierTab.Text = "Suppliers"
         Me.SupplierTab.UseVisualStyleBackColor = True
         '
         'SupplierCancelEditButton
         '
-        Me.SupplierCancelEditButton.Location = New System.Drawing.Point(897, 441)
-        Me.SupplierCancelEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierCancelEditButton.Location = New System.Drawing.Point(673, 358)
         Me.SupplierCancelEditButton.Name = "SupplierCancelEditButton"
-        Me.SupplierCancelEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.SupplierCancelEditButton.Size = New System.Drawing.Size(75, 23)
         Me.SupplierCancelEditButton.TabIndex = 7
         Me.SupplierCancelEditButton.Text = "Cancel"
         Me.SupplierCancelEditButton.UseVisualStyleBackColor = True
         '
         'SupplierEditButton
         '
-        Me.SupplierEditButton.Location = New System.Drawing.Point(423, 441)
-        Me.SupplierEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierEditButton.Location = New System.Drawing.Point(317, 358)
         Me.SupplierEditButton.Name = "SupplierEditButton"
-        Me.SupplierEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.SupplierEditButton.Size = New System.Drawing.Size(75, 23)
         Me.SupplierEditButton.TabIndex = 6
         Me.SupplierEditButton.Text = "Edit"
         Me.SupplierEditButton.UseVisualStyleBackColor = True
         '
         'SupplierDeleteButton
         '
-        Me.SupplierDeleteButton.Location = New System.Drawing.Point(155, 725)
-        Me.SupplierDeleteButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierDeleteButton.Location = New System.Drawing.Point(116, 589)
         Me.SupplierDeleteButton.Name = "SupplierDeleteButton"
-        Me.SupplierDeleteButton.Size = New System.Drawing.Size(100, 28)
+        Me.SupplierDeleteButton.Size = New System.Drawing.Size(75, 23)
         Me.SupplierDeleteButton.TabIndex = 5
         Me.SupplierDeleteButton.Text = "Delete"
         Me.SupplierDeleteButton.UseVisualStyleBackColor = True
         '
         'SupplierAddButton
         '
-        Me.SupplierAddButton.Location = New System.Drawing.Point(23, 725)
-        Me.SupplierAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierAddButton.Location = New System.Drawing.Point(17, 589)
         Me.SupplierAddButton.Name = "SupplierAddButton"
-        Me.SupplierAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.SupplierAddButton.Size = New System.Drawing.Size(75, 23)
         Me.SupplierAddButton.TabIndex = 4
         Me.SupplierAddButton.Text = "Add"
         Me.SupplierAddButton.UseVisualStyleBackColor = True
         '
         'SupplierSaveButton
         '
-        Me.SupplierSaveButton.Location = New System.Drawing.Point(1028, 441)
-        Me.SupplierSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierSaveButton.Location = New System.Drawing.Point(771, 358)
         Me.SupplierSaveButton.Name = "SupplierSaveButton"
-        Me.SupplierSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.SupplierSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.SupplierSaveButton.TabIndex = 3
         Me.SupplierSaveButton.Text = "Save"
         Me.SupplierSaveButton.UseVisualStyleBackColor = True
@@ -946,11 +872,9 @@ Partial Class Form1
         Me.SupplierInfo.Controls.Add(Me.SupplierPhoneDetails)
         Me.SupplierInfo.Controls.Add(Me.SupplierNIFDetails)
         Me.SupplierInfo.Controls.Add(Me.SupplierNameDetails)
-        Me.SupplierInfo.Location = New System.Drawing.Point(423, 48)
-        Me.SupplierInfo.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierInfo.Location = New System.Drawing.Point(317, 39)
         Me.SupplierInfo.Name = "SupplierInfo"
-        Me.SupplierInfo.Padding = New System.Windows.Forms.Padding(4)
-        Me.SupplierInfo.Size = New System.Drawing.Size(705, 370)
+        Me.SupplierInfo.Size = New System.Drawing.Size(529, 301)
         Me.SupplierInfo.TabIndex = 2
         Me.SupplierInfo.TabStop = False
         Me.SupplierInfo.Text = "Supplier Info"
@@ -959,27 +883,24 @@ Partial Class Form1
         '
         Me.Panel2.Controls.Add(Me.SupplierAddressInput)
         Me.Panel2.Controls.Add(Me.SupplierAddressLabel)
-        Me.Panel2.Location = New System.Drawing.Point(8, 274)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Location = New System.Drawing.Point(6, 223)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(611, 76)
+        Me.Panel2.Size = New System.Drawing.Size(458, 62)
         Me.Panel2.TabIndex = 4
         '
         'SupplierAddressInput
         '
-        Me.SupplierAddressInput.Location = New System.Drawing.Point(20, 37)
-        Me.SupplierAddressInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierAddressInput.Location = New System.Drawing.Point(15, 30)
         Me.SupplierAddressInput.Name = "SupplierAddressInput"
-        Me.SupplierAddressInput.Size = New System.Drawing.Size(545, 22)
+        Me.SupplierAddressInput.Size = New System.Drawing.Size(410, 20)
         Me.SupplierAddressInput.TabIndex = 0
         '
         'SupplierAddressLabel
         '
         Me.SupplierAddressLabel.AutoSize = True
-        Me.SupplierAddressLabel.Location = New System.Drawing.Point(16, 17)
-        Me.SupplierAddressLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SupplierAddressLabel.Location = New System.Drawing.Point(12, 14)
         Me.SupplierAddressLabel.Name = "SupplierAddressLabel"
-        Me.SupplierAddressLabel.Size = New System.Drawing.Size(60, 17)
+        Me.SupplierAddressLabel.Size = New System.Drawing.Size(45, 13)
         Me.SupplierAddressLabel.TabIndex = 1
         Me.SupplierAddressLabel.Text = "Address"
         '
@@ -987,27 +908,24 @@ Partial Class Form1
         '
         Me.Panel1.Controls.Add(Me.SupplierEmailInput)
         Me.Panel1.Controls.Add(Me.SupplierEmailLabel)
-        Me.Panel1.Location = New System.Drawing.Point(8, 191)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Location = New System.Drawing.Point(6, 155)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(611, 76)
+        Me.Panel1.Size = New System.Drawing.Size(458, 62)
         Me.Panel1.TabIndex = 4
         '
         'SupplierEmailInput
         '
-        Me.SupplierEmailInput.Location = New System.Drawing.Point(20, 37)
-        Me.SupplierEmailInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierEmailInput.Location = New System.Drawing.Point(15, 30)
         Me.SupplierEmailInput.Name = "SupplierEmailInput"
-        Me.SupplierEmailInput.Size = New System.Drawing.Size(545, 22)
+        Me.SupplierEmailInput.Size = New System.Drawing.Size(410, 20)
         Me.SupplierEmailInput.TabIndex = 0
         '
         'SupplierEmailLabel
         '
         Me.SupplierEmailLabel.AutoSize = True
-        Me.SupplierEmailLabel.Location = New System.Drawing.Point(16, 17)
-        Me.SupplierEmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SupplierEmailLabel.Location = New System.Drawing.Point(12, 14)
         Me.SupplierEmailLabel.Name = "SupplierEmailLabel"
-        Me.SupplierEmailLabel.Size = New System.Drawing.Size(42, 17)
+        Me.SupplierEmailLabel.Size = New System.Drawing.Size(32, 13)
         Me.SupplierEmailLabel.TabIndex = 1
         Me.SupplierEmailLabel.Text = "Email"
         '
@@ -1015,27 +933,24 @@ Partial Class Form1
         '
         Me.SupplierPhoneDetails.Controls.Add(Me.SupplierPhoneInput)
         Me.SupplierPhoneDetails.Controls.Add(Me.SupplierPhoneLabel)
-        Me.SupplierPhoneDetails.Location = New System.Drawing.Point(307, 107)
-        Me.SupplierPhoneDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierPhoneDetails.Location = New System.Drawing.Point(230, 87)
         Me.SupplierPhoneDetails.Name = "SupplierPhoneDetails"
-        Me.SupplierPhoneDetails.Size = New System.Drawing.Size(312, 76)
+        Me.SupplierPhoneDetails.Size = New System.Drawing.Size(234, 62)
         Me.SupplierPhoneDetails.TabIndex = 5
         '
         'SupplierPhoneInput
         '
-        Me.SupplierPhoneInput.Location = New System.Drawing.Point(20, 37)
-        Me.SupplierPhoneInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierPhoneInput.Location = New System.Drawing.Point(15, 30)
         Me.SupplierPhoneInput.Name = "SupplierPhoneInput"
-        Me.SupplierPhoneInput.Size = New System.Drawing.Size(233, 22)
+        Me.SupplierPhoneInput.Size = New System.Drawing.Size(176, 20)
         Me.SupplierPhoneInput.TabIndex = 3
         '
         'SupplierPhoneLabel
         '
         Me.SupplierPhoneLabel.AutoSize = True
-        Me.SupplierPhoneLabel.Location = New System.Drawing.Point(16, 17)
-        Me.SupplierPhoneLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SupplierPhoneLabel.Location = New System.Drawing.Point(12, 14)
         Me.SupplierPhoneLabel.Name = "SupplierPhoneLabel"
-        Me.SupplierPhoneLabel.Size = New System.Drawing.Size(49, 17)
+        Me.SupplierPhoneLabel.Size = New System.Drawing.Size(38, 13)
         Me.SupplierPhoneLabel.TabIndex = 1
         Me.SupplierPhoneLabel.Text = "Phone"
         '
@@ -1043,27 +958,24 @@ Partial Class Form1
         '
         Me.SupplierNIFDetails.Controls.Add(Me.SupplierNIFInput)
         Me.SupplierNIFDetails.Controls.Add(Me.SupplierNIFLabel)
-        Me.SupplierNIFDetails.Location = New System.Drawing.Point(8, 107)
-        Me.SupplierNIFDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierNIFDetails.Location = New System.Drawing.Point(6, 87)
         Me.SupplierNIFDetails.Name = "SupplierNIFDetails"
-        Me.SupplierNIFDetails.Size = New System.Drawing.Size(291, 76)
+        Me.SupplierNIFDetails.Size = New System.Drawing.Size(218, 62)
         Me.SupplierNIFDetails.TabIndex = 4
         '
         'SupplierNIFInput
         '
-        Me.SupplierNIFInput.Location = New System.Drawing.Point(20, 37)
-        Me.SupplierNIFInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierNIFInput.Location = New System.Drawing.Point(15, 30)
         Me.SupplierNIFInput.Name = "SupplierNIFInput"
-        Me.SupplierNIFInput.Size = New System.Drawing.Size(233, 22)
+        Me.SupplierNIFInput.Size = New System.Drawing.Size(176, 20)
         Me.SupplierNIFInput.TabIndex = 2
         '
         'SupplierNIFLabel
         '
         Me.SupplierNIFLabel.AutoSize = True
-        Me.SupplierNIFLabel.Location = New System.Drawing.Point(16, 17)
-        Me.SupplierNIFLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SupplierNIFLabel.Location = New System.Drawing.Point(12, 14)
         Me.SupplierNIFLabel.Name = "SupplierNIFLabel"
-        Me.SupplierNIFLabel.Size = New System.Drawing.Size(29, 17)
+        Me.SupplierNIFLabel.Size = New System.Drawing.Size(24, 13)
         Me.SupplierNIFLabel.TabIndex = 1
         Me.SupplierNIFLabel.Text = "NIF"
         '
@@ -1071,39 +983,34 @@ Partial Class Form1
         '
         Me.SupplierNameDetails.Controls.Add(Me.SupplierNameInput)
         Me.SupplierNameDetails.Controls.Add(Me.SupplierNameLabel)
-        Me.SupplierNameDetails.Location = New System.Drawing.Point(8, 23)
-        Me.SupplierNameDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierNameDetails.Location = New System.Drawing.Point(6, 19)
         Me.SupplierNameDetails.Name = "SupplierNameDetails"
-        Me.SupplierNameDetails.Size = New System.Drawing.Size(611, 76)
+        Me.SupplierNameDetails.Size = New System.Drawing.Size(458, 62)
         Me.SupplierNameDetails.TabIndex = 3
         '
         'SupplierNameInput
         '
         Me.SupplierNameInput.Enabled = False
-        Me.SupplierNameInput.Location = New System.Drawing.Point(20, 37)
-        Me.SupplierNameInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.SupplierNameInput.Location = New System.Drawing.Point(15, 30)
         Me.SupplierNameInput.Name = "SupplierNameInput"
-        Me.SupplierNameInput.Size = New System.Drawing.Size(545, 22)
+        Me.SupplierNameInput.Size = New System.Drawing.Size(410, 20)
         Me.SupplierNameInput.TabIndex = 0
         '
         'SupplierNameLabel
         '
         Me.SupplierNameLabel.AutoSize = True
-        Me.SupplierNameLabel.Location = New System.Drawing.Point(16, 17)
-        Me.SupplierNameLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SupplierNameLabel.Location = New System.Drawing.Point(12, 14)
         Me.SupplierNameLabel.Name = "SupplierNameLabel"
-        Me.SupplierNameLabel.Size = New System.Drawing.Size(45, 17)
+        Me.SupplierNameLabel.Size = New System.Drawing.Size(35, 13)
         Me.SupplierNameLabel.TabIndex = 1
         Me.SupplierNameLabel.Text = "Name"
         '
         'Supplier_ListBox
         '
         Me.Supplier_ListBox.FormattingEnabled = True
-        Me.Supplier_ListBox.ItemHeight = 16
-        Me.Supplier_ListBox.Location = New System.Drawing.Point(23, 30)
-        Me.Supplier_ListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.Supplier_ListBox.Location = New System.Drawing.Point(17, 24)
         Me.Supplier_ListBox.Name = "Supplier_ListBox"
-        Me.Supplier_ListBox.Size = New System.Drawing.Size(293, 676)
+        Me.Supplier_ListBox.Size = New System.Drawing.Size(221, 550)
         Me.Supplier_ListBox.TabIndex = 0
         '
         'StoreTab
@@ -1115,10 +1022,9 @@ Partial Class Form1
         Me.StoreTab.Controls.Add(Me.StoreSaveButton)
         Me.StoreTab.Controls.Add(Me.GroupBox2)
         Me.StoreTab.Controls.Add(Me.StoreListBox)
-        Me.StoreTab.Location = New System.Drawing.Point(4, 25)
-        Me.StoreTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreTab.Location = New System.Drawing.Point(4, 22)
         Me.StoreTab.Name = "StoreTab"
-        Me.StoreTab.Size = New System.Drawing.Size(1180, 927)
+        Me.StoreTab.Size = New System.Drawing.Size(883, 751)
         Me.StoreTab.TabIndex = 3
         Me.StoreTab.Text = "Stores"
         Me.StoreTab.UseVisualStyleBackColor = True
@@ -1139,11 +1045,9 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.Panel21)
         Me.GroupBox4.Controls.Add(Me.Panel14)
         Me.GroupBox4.Controls.Add(Me.EmployeeListBox)
-        Me.GroupBox4.Location = New System.Drawing.Point(352, 236)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox4.Location = New System.Drawing.Point(264, 192)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Size = New System.Drawing.Size(804, 687)
+        Me.GroupBox4.Size = New System.Drawing.Size(603, 558)
         Me.GroupBox4.TabIndex = 10
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Employees"
@@ -1151,105 +1055,76 @@ Partial Class Form1
         'Panel15
         '
         Me.Panel15.Controls.Add(Me.EmployeeAddressInput)
-        Me.Panel15.Controls.Add(Me.Label27)
-        Me.Panel15.Location = New System.Drawing.Point(311, 191)
-        Me.Panel15.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel15.Location = New System.Drawing.Point(233, 155)
         Me.Panel15.Name = "Panel15"
-        Me.Panel15.Size = New System.Drawing.Size(485, 76)
+        Me.Panel15.Size = New System.Drawing.Size(364, 62)
         Me.Panel15.TabIndex = 7
         '
         'EmployeeAddressInput
         '
-        Me.EmployeeAddressInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeeAddressInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeAddressInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeeAddressInput.Name = "EmployeeAddressInput"
-        Me.EmployeeAddressInput.Size = New System.Drawing.Size(444, 22)
+        Me.EmployeeAddressInput.Size = New System.Drawing.Size(334, 20)
         Me.EmployeeAddressInput.TabIndex = 2
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(16, 17)
-        Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(60, 17)
-        Me.Label27.TabIndex = 1
-        Me.Label27.Text = "Address"
         '
         'Panel13
         '
         Me.Panel13.Controls.Add(Me.EmployeeScheduleSelect)
-        Me.Panel13.Controls.Add(Me.Label26)
-        Me.Panel13.Location = New System.Drawing.Point(607, 358)
-        Me.Panel13.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel13.Location = New System.Drawing.Point(455, 291)
         Me.Panel13.Name = "Panel13"
-        Me.Panel13.Size = New System.Drawing.Size(187, 74)
+        Me.Panel13.Size = New System.Drawing.Size(140, 60)
         Me.Panel13.TabIndex = 8
         '
         'EmployeeScheduleSelect
         '
         Me.EmployeeScheduleSelect.FormattingEnabled = True
-        Me.EmployeeScheduleSelect.Location = New System.Drawing.Point(19, 37)
+        Me.EmployeeScheduleSelect.Location = New System.Drawing.Point(14, 30)
+        Me.EmployeeScheduleSelect.Margin = New System.Windows.Forms.Padding(2)
         Me.EmployeeScheduleSelect.Name = "EmployeeScheduleSelect"
-        Me.EmployeeScheduleSelect.Size = New System.Drawing.Size(147, 24)
+        Me.EmployeeScheduleSelect.Size = New System.Drawing.Size(111, 21)
         Me.EmployeeScheduleSelect.TabIndex = 2
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(16, 17)
-        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(67, 17)
-        Me.Label26.TabIndex = 1
-        Me.Label26.Text = "Schedule"
         '
         'EmployeeDeleteButton
         '
-        Me.EmployeeDeleteButton.Location = New System.Drawing.Point(116, 356)
-        Me.EmployeeDeleteButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeDeleteButton.Location = New System.Drawing.Point(87, 289)
         Me.EmployeeDeleteButton.Name = "EmployeeDeleteButton"
-        Me.EmployeeDeleteButton.Size = New System.Drawing.Size(100, 28)
+        Me.EmployeeDeleteButton.Size = New System.Drawing.Size(75, 23)
         Me.EmployeeDeleteButton.TabIndex = 15
         Me.EmployeeDeleteButton.Text = "Delete"
         Me.EmployeeDeleteButton.UseVisualStyleBackColor = True
         '
         'EmployeeAddButton
         '
-        Me.EmployeeAddButton.Location = New System.Drawing.Point(8, 356)
-        Me.EmployeeAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeAddButton.Location = New System.Drawing.Point(6, 289)
         Me.EmployeeAddButton.Name = "EmployeeAddButton"
-        Me.EmployeeAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.EmployeeAddButton.Size = New System.Drawing.Size(75, 23)
         Me.EmployeeAddButton.TabIndex = 15
         Me.EmployeeAddButton.Text = "Add"
         Me.EmployeeAddButton.UseVisualStyleBackColor = True
         '
         'EmployeeSaveButton
         '
-        Me.EmployeeSaveButton.Location = New System.Drawing.Point(694, 440)
-        Me.EmployeeSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeSaveButton.Location = New System.Drawing.Point(520, 358)
         Me.EmployeeSaveButton.Name = "EmployeeSaveButton"
-        Me.EmployeeSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.EmployeeSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.EmployeeSaveButton.TabIndex = 15
         Me.EmployeeSaveButton.Text = "Save"
         Me.EmployeeSaveButton.UseVisualStyleBackColor = True
         '
         'EmployeeCancelButton
         '
-        Me.EmployeeCancelButton.Location = New System.Drawing.Point(586, 440)
-        Me.EmployeeCancelButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeCancelButton.Location = New System.Drawing.Point(440, 358)
         Me.EmployeeCancelButton.Name = "EmployeeCancelButton"
-        Me.EmployeeCancelButton.Size = New System.Drawing.Size(100, 28)
+        Me.EmployeeCancelButton.Size = New System.Drawing.Size(75, 23)
         Me.EmployeeCancelButton.TabIndex = 15
         Me.EmployeeCancelButton.Text = "Cancel"
         Me.EmployeeCancelButton.UseVisualStyleBackColor = True
         '
         'EmployeeEditButton
         '
-        Me.EmployeeEditButton.Location = New System.Drawing.Point(586, 440)
-        Me.EmployeeEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeEditButton.Location = New System.Drawing.Point(440, 358)
         Me.EmployeeEditButton.Name = "EmployeeEditButton"
-        Me.EmployeeEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.EmployeeEditButton.Size = New System.Drawing.Size(75, 23)
         Me.EmployeeEditButton.TabIndex = 15
         Me.EmployeeEditButton.Text = "Edit"
         Me.EmployeeEditButton.UseVisualStyleBackColor = True
@@ -1263,10 +1138,9 @@ Partial Class Form1
         Me.Panel25.Controls.Add(Me.Label12)
         Me.Panel25.Controls.Add(Me.EmployeeStartVal)
         Me.Panel25.Controls.Add(Me.Label10)
-        Me.Panel25.Location = New System.Drawing.Point(311, 471)
-        Me.Panel25.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel25.Location = New System.Drawing.Point(233, 383)
         Me.Panel25.Name = "Panel25"
-        Me.Panel25.Size = New System.Drawing.Size(485, 208)
+        Me.Panel25.Size = New System.Drawing.Size(364, 169)
         Me.Panel25.TabIndex = 9
         '
         'EmpTaskList
@@ -1275,11 +1149,10 @@ Partial Class Form1
         Me.EmpTaskList.Alignment = System.Windows.Forms.ListViewAlignment.Left
         Me.EmpTaskList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.EmpTaskList.HideSelection = False
-        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
-        Me.EmpTaskList.Location = New System.Drawing.Point(139, 96)
-        Me.EmpTaskList.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmpTaskList.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem6})
+        Me.EmpTaskList.Location = New System.Drawing.Point(104, 78)
         Me.EmpTaskList.Name = "EmpTaskList"
-        Me.EmpTaskList.Size = New System.Drawing.Size(325, 101)
+        Me.EmpTaskList.Size = New System.Drawing.Size(245, 83)
         Me.EmpTaskList.TabIndex = 9
         Me.EmpTaskList.UseCompatibleStateImageBehavior = False
         Me.EmpTaskList.View = System.Windows.Forms.View.List
@@ -1287,60 +1160,54 @@ Partial Class Form1
         'employeeFuncLabel
         '
         Me.employeeFuncLabel.AutoSize = True
-        Me.employeeFuncLabel.Location = New System.Drawing.Point(60, 96)
-        Me.employeeFuncLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.employeeFuncLabel.Location = New System.Drawing.Point(45, 78)
         Me.employeeFuncLabel.Name = "employeeFuncLabel"
-        Me.employeeFuncLabel.Size = New System.Drawing.Size(66, 17)
+        Me.employeeFuncLabel.Size = New System.Drawing.Size(51, 13)
         Me.employeeFuncLabel.TabIndex = 8
         Me.employeeFuncLabel.Text = "Function:"
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(16, 8)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label15.Location = New System.Drawing.Point(12, 6)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(108, 17)
+        Me.Label15.Size = New System.Drawing.Size(83, 13)
         Me.Label15.TabIndex = 7
         Me.Label15.Text = "Schedule Code:"
         '
         'EmployeeEndVal
         '
         Me.EmployeeEndVal.AutoSize = True
-        Me.EmployeeEndVal.Location = New System.Drawing.Point(135, 33)
-        Me.EmployeeEndVal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.EmployeeEndVal.Location = New System.Drawing.Point(101, 27)
         Me.EmployeeEndVal.Name = "EmployeeEndVal"
-        Me.EmployeeEndVal.Size = New System.Drawing.Size(13, 17)
+        Me.EmployeeEndVal.Size = New System.Drawing.Size(10, 13)
         Me.EmployeeEndVal.TabIndex = 5
         Me.EmployeeEndVal.Text = "-"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(64, 33)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(48, 27)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(61, 17)
+        Me.Label12.Size = New System.Drawing.Size(47, 13)
         Me.Label12.TabIndex = 4
         Me.Label12.Text = "Ends At:"
         '
         'EmployeeStartVal
         '
         Me.EmployeeStartVal.AutoSize = True
-        Me.EmployeeStartVal.Location = New System.Drawing.Point(135, 62)
-        Me.EmployeeStartVal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.EmployeeStartVal.Location = New System.Drawing.Point(101, 50)
         Me.EmployeeStartVal.Name = "EmployeeStartVal"
-        Me.EmployeeStartVal.Size = New System.Drawing.Size(13, 17)
+        Me.EmployeeStartVal.Size = New System.Drawing.Size(10, 13)
         Me.EmployeeStartVal.TabIndex = 3
         Me.EmployeeStartVal.Text = "-"
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(60, 62)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(45, 50)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(66, 17)
+        Me.Label10.Size = New System.Drawing.Size(50, 13)
         Me.Label10.TabIndex = 1
         Me.Label10.Text = "Starts At:"
         '
@@ -1348,27 +1215,24 @@ Partial Class Form1
         '
         Me.Panel24.Controls.Add(Me.EmployeeNIFInput)
         Me.Panel24.Controls.Add(Me.Label9)
-        Me.Panel24.Location = New System.Drawing.Point(309, 358)
-        Me.Panel24.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel24.Location = New System.Drawing.Point(232, 291)
         Me.Panel24.Name = "Panel24"
-        Me.Panel24.Size = New System.Drawing.Size(291, 74)
+        Me.Panel24.Size = New System.Drawing.Size(218, 60)
         Me.Panel24.TabIndex = 8
         '
         'EmployeeNIFInput
         '
-        Me.EmployeeNIFInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeeNIFInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeNIFInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeeNIFInput.Name = "EmployeeNIFInput"
-        Me.EmployeeNIFInput.Size = New System.Drawing.Size(251, 22)
+        Me.EmployeeNIFInput.Size = New System.Drawing.Size(189, 20)
         Me.EmployeeNIFInput.TabIndex = 2
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(16, 17)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(12, 14)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(29, 17)
+        Me.Label9.Size = New System.Drawing.Size(24, 13)
         Me.Label9.TabIndex = 1
         Me.Label9.Text = "NIF"
         '
@@ -1376,27 +1240,24 @@ Partial Class Form1
         '
         Me.Panel22.Controls.Add(Me.EmployeeSalaryInput)
         Me.Panel22.Controls.Add(Me.Label3)
-        Me.Panel22.Location = New System.Drawing.Point(607, 275)
-        Me.Panel22.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel22.Location = New System.Drawing.Point(455, 223)
         Me.Panel22.Name = "Panel22"
-        Me.Panel22.Size = New System.Drawing.Size(187, 76)
+        Me.Panel22.Size = New System.Drawing.Size(140, 62)
         Me.Panel22.TabIndex = 7
         '
         'EmployeeSalaryInput
         '
-        Me.EmployeeSalaryInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeeSalaryInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeSalaryInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeeSalaryInput.Name = "EmployeeSalaryInput"
-        Me.EmployeeSalaryInput.Size = New System.Drawing.Size(145, 22)
+        Me.EmployeeSalaryInput.Size = New System.Drawing.Size(110, 20)
         Me.EmployeeSalaryInput.TabIndex = 2
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(16, 17)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(12, 14)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 17)
+        Me.Label3.Size = New System.Drawing.Size(36, 13)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Salary"
         '
@@ -1404,27 +1265,24 @@ Partial Class Form1
         '
         Me.Panel23.Controls.Add(Me.EmployeePhoneInput)
         Me.Panel23.Controls.Add(Me.Label8)
-        Me.Panel23.Location = New System.Drawing.Point(309, 275)
-        Me.Panel23.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel23.Location = New System.Drawing.Point(232, 223)
         Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(291, 76)
+        Me.Panel23.Size = New System.Drawing.Size(218, 62)
         Me.Panel23.TabIndex = 7
         '
         'EmployeePhoneInput
         '
-        Me.EmployeePhoneInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeePhoneInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeePhoneInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeePhoneInput.Name = "EmployeePhoneInput"
-        Me.EmployeePhoneInput.Size = New System.Drawing.Size(251, 22)
+        Me.EmployeePhoneInput.Size = New System.Drawing.Size(189, 20)
         Me.EmployeePhoneInput.TabIndex = 2
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(16, 17)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(12, 14)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(68, 17)
+        Me.Label8.Size = New System.Drawing.Size(53, 13)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Phone Nº"
         '
@@ -1432,27 +1290,24 @@ Partial Class Form1
         '
         Me.Panel21.Controls.Add(Me.EmployeeEmailInput)
         Me.Panel21.Controls.Add(Me.Label2)
-        Me.Panel21.Location = New System.Drawing.Point(311, 107)
-        Me.Panel21.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel21.Location = New System.Drawing.Point(233, 87)
         Me.Panel21.Name = "Panel21"
-        Me.Panel21.Size = New System.Drawing.Size(485, 76)
+        Me.Panel21.Size = New System.Drawing.Size(364, 62)
         Me.Panel21.TabIndex = 6
         '
         'EmployeeEmailInput
         '
-        Me.EmployeeEmailInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeeEmailInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeEmailInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeeEmailInput.Name = "EmployeeEmailInput"
-        Me.EmployeeEmailInput.Size = New System.Drawing.Size(444, 22)
+        Me.EmployeeEmailInput.Size = New System.Drawing.Size(334, 20)
         Me.EmployeeEmailInput.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 17)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(12, 14)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(42, 17)
+        Me.Label2.Size = New System.Drawing.Size(32, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Email"
         '
@@ -1460,76 +1315,67 @@ Partial Class Form1
         '
         Me.Panel14.Controls.Add(Me.EmployeeNameInput)
         Me.Panel14.Controls.Add(Me.Label1)
-        Me.Panel14.Location = New System.Drawing.Point(311, 23)
-        Me.Panel14.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel14.Location = New System.Drawing.Point(233, 19)
         Me.Panel14.Name = "Panel14"
-        Me.Panel14.Size = New System.Drawing.Size(485, 76)
+        Me.Panel14.Size = New System.Drawing.Size(364, 62)
         Me.Panel14.TabIndex = 5
         '
         'EmployeeNameInput
         '
-        Me.EmployeeNameInput.Location = New System.Drawing.Point(20, 37)
-        Me.EmployeeNameInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeNameInput.Location = New System.Drawing.Point(15, 30)
         Me.EmployeeNameInput.Name = "EmployeeNameInput"
-        Me.EmployeeNameInput.Size = New System.Drawing.Size(444, 22)
+        Me.EmployeeNameInput.Size = New System.Drawing.Size(334, 20)
         Me.EmployeeNameInput.TabIndex = 2
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 17)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(12, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(45, 17)
+        Me.Label1.Size = New System.Drawing.Size(35, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Name"
         '
         'EmployeeListBox
         '
         Me.EmployeeListBox.FormattingEnabled = True
-        Me.EmployeeListBox.ItemHeight = 16
-        Me.EmployeeListBox.Location = New System.Drawing.Point(8, 23)
-        Me.EmployeeListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeListBox.Location = New System.Drawing.Point(6, 19)
         Me.EmployeeListBox.Name = "EmployeeListBox"
-        Me.EmployeeListBox.Size = New System.Drawing.Size(293, 324)
+        Me.EmployeeListBox.Size = New System.Drawing.Size(221, 264)
         Me.EmployeeListBox.TabIndex = 15
         '
         'StoreCancelButton
         '
-        Me.StoreCancelButton.Location = New System.Drawing.Point(931, 178)
-        Me.StoreCancelButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreCancelButton.Location = New System.Drawing.Point(698, 145)
         Me.StoreCancelButton.Name = "StoreCancelButton"
-        Me.StoreCancelButton.Size = New System.Drawing.Size(100, 28)
+        Me.StoreCancelButton.Size = New System.Drawing.Size(75, 23)
         Me.StoreCancelButton.TabIndex = 14
         Me.StoreCancelButton.Text = "Cancel"
         Me.StoreCancelButton.UseVisualStyleBackColor = True
         '
         'StoreEditButton
         '
-        Me.StoreEditButton.Location = New System.Drawing.Point(352, 178)
-        Me.StoreEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreEditButton.Location = New System.Drawing.Point(264, 145)
         Me.StoreEditButton.Name = "StoreEditButton"
-        Me.StoreEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.StoreEditButton.Size = New System.Drawing.Size(75, 23)
         Me.StoreEditButton.TabIndex = 13
         Me.StoreEditButton.Text = "Edit"
         Me.StoreEditButton.UseVisualStyleBackColor = True
         '
         'StoreAddButton
         '
-        Me.StoreAddButton.Location = New System.Drawing.Point(36, 236)
-        Me.StoreAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreAddButton.Location = New System.Drawing.Point(27, 192)
         Me.StoreAddButton.Name = "StoreAddButton"
-        Me.StoreAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.StoreAddButton.Size = New System.Drawing.Size(75, 23)
         Me.StoreAddButton.TabIndex = 11
         Me.StoreAddButton.Text = "Add"
         Me.StoreAddButton.UseVisualStyleBackColor = True
         '
         'StoreSaveButton
         '
-        Me.StoreSaveButton.Location = New System.Drawing.Point(1048, 178)
-        Me.StoreSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreSaveButton.Location = New System.Drawing.Point(786, 145)
         Me.StoreSaveButton.Name = "StoreSaveButton"
-        Me.StoreSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.StoreSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.StoreSaveButton.TabIndex = 10
         Me.StoreSaveButton.Text = "Save"
         Me.StoreSaveButton.UseVisualStyleBackColor = True
@@ -1538,11 +1384,9 @@ Partial Class Form1
         '
         Me.GroupBox2.Controls.Add(Me.Panel17)
         Me.GroupBox2.Controls.Add(Me.Panel16)
-        Me.GroupBox2.Location = New System.Drawing.Point(352, 48)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Location = New System.Drawing.Point(264, 39)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(804, 123)
+        Me.GroupBox2.Size = New System.Drawing.Size(603, 100)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Store Info"
@@ -1551,28 +1395,25 @@ Partial Class Form1
         '
         Me.Panel17.Controls.Add(Me.StoreIDInput)
         Me.Panel17.Controls.Add(Me.Label6)
-        Me.Panel17.Location = New System.Drawing.Point(653, 23)
-        Me.Panel17.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel17.Location = New System.Drawing.Point(490, 19)
         Me.Panel17.Name = "Panel17"
-        Me.Panel17.Size = New System.Drawing.Size(143, 76)
+        Me.Panel17.Size = New System.Drawing.Size(107, 62)
         Me.Panel17.TabIndex = 3
         '
         'StoreIDInput
         '
         Me.StoreIDInput.Enabled = False
-        Me.StoreIDInput.Location = New System.Drawing.Point(20, 37)
-        Me.StoreIDInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreIDInput.Location = New System.Drawing.Point(15, 30)
         Me.StoreIDInput.Name = "StoreIDInput"
-        Me.StoreIDInput.Size = New System.Drawing.Size(71, 22)
+        Me.StoreIDInput.Size = New System.Drawing.Size(54, 20)
         Me.StoreIDInput.TabIndex = 0
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(16, 17)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(12, 14)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 17)
+        Me.Label6.Size = New System.Drawing.Size(46, 13)
         Me.Label6.TabIndex = 1
         Me.Label6.Text = "Store ID"
         '
@@ -1580,38 +1421,33 @@ Partial Class Form1
         '
         Me.Panel16.Controls.Add(Me.StoreLocationInput)
         Me.Panel16.Controls.Add(Me.Label4)
-        Me.Panel16.Location = New System.Drawing.Point(8, 23)
-        Me.Panel16.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel16.Location = New System.Drawing.Point(6, 19)
         Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(623, 76)
+        Me.Panel16.Size = New System.Drawing.Size(467, 62)
         Me.Panel16.TabIndex = 4
         '
         'StoreLocationInput
         '
-        Me.StoreLocationInput.Location = New System.Drawing.Point(20, 37)
-        Me.StoreLocationInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreLocationInput.Location = New System.Drawing.Point(15, 30)
         Me.StoreLocationInput.Name = "StoreLocationInput"
-        Me.StoreLocationInput.Size = New System.Drawing.Size(572, 22)
+        Me.StoreLocationInput.Size = New System.Drawing.Size(430, 20)
         Me.StoreLocationInput.TabIndex = 2
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 17)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(12, 14)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(62, 17)
+        Me.Label4.Size = New System.Drawing.Size(48, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Location"
         '
         'StoreListBox
         '
         Me.StoreListBox.FormattingEnabled = True
-        Me.StoreListBox.ItemHeight = 16
-        Me.StoreListBox.Location = New System.Drawing.Point(36, 48)
-        Me.StoreListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.StoreListBox.Location = New System.Drawing.Point(27, 39)
         Me.StoreListBox.Name = "StoreListBox"
-        Me.StoreListBox.Size = New System.Drawing.Size(293, 180)
+        Me.StoreListBox.Size = New System.Drawing.Size(221, 147)
         Me.StoreListBox.TabIndex = 8
         '
         'LogTab
@@ -1625,10 +1461,9 @@ Partial Class Form1
         Me.LogTab.Controls.Add(Me.ShowMaintenanceLog)
         Me.LogTab.Controls.Add(Me.ShowPlayLog)
         Me.LogTab.Controls.Add(Me.LogGrid)
-        Me.LogTab.Location = New System.Drawing.Point(4, 25)
-        Me.LogTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.LogTab.Location = New System.Drawing.Point(4, 22)
         Me.LogTab.Name = "LogTab"
-        Me.LogTab.Size = New System.Drawing.Size(1180, 927)
+        Me.LogTab.Size = New System.Drawing.Size(883, 751)
         Me.LogTab.TabIndex = 4
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
@@ -1638,9 +1473,11 @@ Partial Class Form1
         Me.GroupBox9.Controls.Add(Me.Label29)
         Me.GroupBox9.Controls.Add(Me.ChangeBox)
         Me.GroupBox9.Controls.Add(Me.loguserchanges)
-        Me.GroupBox9.Location = New System.Drawing.Point(394, 541)
+        Me.GroupBox9.Location = New System.Drawing.Point(378, 539)
+        Me.GroupBox9.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(473, 195)
+        Me.GroupBox9.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox9.Size = New System.Drawing.Size(489, 195)
         Me.GroupBox9.TabIndex = 12
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Check User Ledger:"
@@ -1648,7 +1485,8 @@ Partial Class Form1
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(17, 32)
+        Me.Label29.Location = New System.Drawing.Point(13, 26)
+        Me.Label29.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(36, 13)
         Me.Label29.TabIndex = 11
@@ -1657,17 +1495,19 @@ Partial Class Form1
         'ChangeBox
         '
         Me.ChangeBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ChangeBox.Location = New System.Drawing.Point(20, 59)
+        Me.ChangeBox.Location = New System.Drawing.Point(15, 48)
+        Me.ChangeBox.Margin = New System.Windows.Forms.Padding(2)
         Me.ChangeBox.Name = "ChangeBox"
-        Me.ChangeBox.Size = New System.Drawing.Size(447, 130)
+        Me.ChangeBox.Size = New System.Drawing.Size(470, 143)
         Me.ChangeBox.TabIndex = 9
         '
         'loguserchanges
         '
         Me.loguserchanges.FormattingEnabled = True
-        Me.loguserchanges.Location = New System.Drawing.Point(59, 29)
+        Me.loguserchanges.Location = New System.Drawing.Point(53, 23)
+        Me.loguserchanges.Margin = New System.Windows.Forms.Padding(2)
         Me.loguserchanges.Name = "loguserchanges"
-        Me.loguserchanges.Size = New System.Drawing.Size(165, 21)
+        Me.loguserchanges.Size = New System.Drawing.Size(125, 21)
         Me.loguserchanges.TabIndex = 10
         '
         'GroupBox3
@@ -1687,11 +1527,9 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.Label14)
         Me.GroupBox3.Controls.Add(Me.Label11)
         Me.GroupBox3.Controls.Add(Me.StartTimeStats)
-        Me.GroupBox3.Location = New System.Drawing.Point(20, 654)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox3.Location = New System.Drawing.Point(15, 531)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(457, 250)
+        Me.GroupBox3.Size = New System.Drawing.Size(343, 203)
         Me.GroupBox3.TabIndex = 8
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Statistics:"
@@ -1699,7 +1537,8 @@ Partial Class Form1
         'StatsuseEnd
         '
         Me.StatsuseEnd.AutoSize = True
-        Me.StatsuseEnd.Location = New System.Drawing.Point(288, 114)
+        Me.StatsuseEnd.Location = New System.Drawing.Point(249, 97)
+        Me.StatsuseEnd.Margin = New System.Windows.Forms.Padding(2)
         Me.StatsuseEnd.Name = "StatsuseEnd"
         Me.StatsuseEnd.Size = New System.Drawing.Size(49, 17)
         Me.StatsuseEnd.TabIndex = 21
@@ -1709,7 +1548,8 @@ Partial Class Form1
         'statsUseStart
         '
         Me.statsUseStart.AutoSize = True
-        Me.statsUseStart.Location = New System.Drawing.Point(288, 91)
+        Me.statsUseStart.Location = New System.Drawing.Point(249, 74)
+        Me.statsUseStart.Margin = New System.Windows.Forms.Padding(2)
         Me.statsUseStart.Name = "statsUseStart"
         Me.statsUseStart.Size = New System.Drawing.Size(49, 17)
         Me.statsUseStart.TabIndex = 20
@@ -1719,7 +1559,8 @@ Partial Class Form1
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(11, 65)
+        Me.Label25.Location = New System.Drawing.Point(5, 52)
+        Me.Label25.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(140, 13)
         Me.Label25.TabIndex = 19
@@ -1728,15 +1569,17 @@ Partial Class Form1
         'gameStat
         '
         Me.gameStat.FormattingEnabled = True
-        Me.gameStat.Location = New System.Drawing.Point(164, 62)
+        Me.gameStat.Location = New System.Drawing.Point(152, 49)
+        Me.gameStat.Margin = New System.Windows.Forms.Padding(2)
         Me.gameStat.Name = "gameStat"
-        Me.gameStat.Size = New System.Drawing.Size(121, 21)
+        Me.gameStat.Size = New System.Drawing.Size(92, 21)
         Me.gameStat.TabIndex = 18
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(11, 42)
+        Me.Label24.Location = New System.Drawing.Point(6, 29)
+        Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(134, 13)
         Me.Label24.TabIndex = 17
@@ -1745,14 +1588,16 @@ Partial Class Form1
         'userStat
         '
         Me.userStat.FormattingEnabled = True
-        Me.userStat.Location = New System.Drawing.Point(164, 39)
+        Me.userStat.Location = New System.Drawing.Point(152, 26)
+        Me.userStat.Margin = New System.Windows.Forms.Padding(2)
         Me.userStat.Name = "userStat"
-        Me.userStat.Size = New System.Drawing.Size(121, 21)
+        Me.userStat.Size = New System.Drawing.Size(92, 21)
         Me.userStat.TabIndex = 16
         '
         'EndTimeStats
         '
-        Me.EndTimeStats.Location = New System.Drawing.Point(85, 115)
+        Me.EndTimeStats.Location = New System.Drawing.Point(44, 99)
+        Me.EndTimeStats.Margin = New System.Windows.Forms.Padding(2)
         Me.EndTimeStats.Name = "EndTimeStats"
         Me.EndTimeStats.Size = New System.Drawing.Size(200, 20)
         Me.EndTimeStats.TabIndex = 15
@@ -1760,7 +1605,8 @@ Partial Class Form1
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(48, 115)
+        Me.Label22.Location = New System.Drawing.Point(6, 97)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(31, 13)
         Me.Label22.TabIndex = 14
@@ -1768,9 +1614,10 @@ Partial Class Form1
         '
         'statisticsButtonGo
         '
-        Me.statisticsButtonGo.Location = New System.Drawing.Point(210, 10)
+        Me.statisticsButtonGo.Location = New System.Drawing.Point(256, 19)
+        Me.statisticsButtonGo.Margin = New System.Windows.Forms.Padding(2)
         Me.statisticsButtonGo.Name = "statisticsButtonGo"
-        Me.statisticsButtonGo.Size = New System.Drawing.Size(75, 23)
+        Me.statisticsButtonGo.Size = New System.Drawing.Size(74, 28)
         Me.statisticsButtonGo.TabIndex = 13
         Me.statisticsButtonGo.Text = "Calculate!"
         Me.statisticsButtonGo.UseVisualStyleBackColor = True
@@ -1778,116 +1625,104 @@ Partial Class Form1
         'totalTime
         '
         Me.totalTime.AutoSize = True
-        Me.totalTime.Location = New System.Drawing.Point(113, 212)
-        Me.totalTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.totalTime.Location = New System.Drawing.Point(88, 162)
         Me.totalTime.Name = "totalTime"
-        Me.totalTime.Size = New System.Drawing.Size(13, 17)
+        Me.totalTime.Size = New System.Drawing.Size(10, 13)
         Me.totalTime.TabIndex = 12
         Me.totalTime.Text = "-"
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(25, 212)
-        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label23.Location = New System.Drawing.Point(15, 162)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(79, 17)
+        Me.Label23.Size = New System.Drawing.Size(60, 13)
         Me.Label23.TabIndex = 11
         Me.Label23.Text = "Total Time:"
         '
         'avgTime
         '
         Me.avgTime.AutoSize = True
-        Me.avgTime.Location = New System.Drawing.Point(113, 185)
-        Me.avgTime.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.avgTime.Location = New System.Drawing.Point(88, 137)
         Me.avgTime.Name = "avgTime"
-        Me.avgTime.Size = New System.Drawing.Size(13, 17)
+        Me.avgTime.Size = New System.Drawing.Size(10, 13)
         Me.avgTime.TabIndex = 10
         Me.avgTime.Text = "-"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(8, 185)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Location = New System.Drawing.Point(6, 137)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(100, 17)
+        Me.Label14.Size = New System.Drawing.Size(76, 13)
         Me.Label14.TabIndex = 9
         Me.Label14.Text = "Average Time:"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(56, 117)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Location = New System.Drawing.Point(6, 78)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(47, 17)
+        Me.Label11.Size = New System.Drawing.Size(37, 13)
         Me.Label11.TabIndex = 8
         Me.Label11.Text = "Since:"
         '
         'StartTimeStats
         '
-        Me.StartTimeStats.Location = New System.Drawing.Point(113, 110)
-        Me.StartTimeStats.Margin = New System.Windows.Forms.Padding(4)
+        Me.StartTimeStats.Location = New System.Drawing.Point(44, 74)
         Me.StartTimeStats.Name = "StartTimeStats"
-        Me.StartTimeStats.Size = New System.Drawing.Size(265, 22)
+        Me.StartTimeStats.Size = New System.Drawing.Size(200, 20)
         Me.StartTimeStats.TabIndex = 7
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(485, 23)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(364, 19)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(129, 17)
+        Me.Label7.Size = New System.Drawing.Size(96, 13)
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "Filter By Employee:"
         '
         'EmployeeLogs
         '
         Me.EmployeeLogs.FormattingEnabled = True
-        Me.EmployeeLogs.Location = New System.Drawing.Point(621, 20)
-        Me.EmployeeLogs.Margin = New System.Windows.Forms.Padding(4)
+        Me.EmployeeLogs.Location = New System.Drawing.Point(466, 16)
         Me.EmployeeLogs.Name = "EmployeeLogs"
-        Me.EmployeeLogs.Size = New System.Drawing.Size(219, 24)
+        Me.EmployeeLogs.Size = New System.Drawing.Size(165, 21)
         Me.EmployeeLogs.TabIndex = 5
         '
         'RedeemShowLogs
         '
-        Me.RedeemShowLogs.Location = New System.Drawing.Point(361, 17)
-        Me.RedeemShowLogs.Margin = New System.Windows.Forms.Padding(4)
+        Me.RedeemShowLogs.Location = New System.Drawing.Point(271, 14)
         Me.RedeemShowLogs.Name = "RedeemShowLogs"
-        Me.RedeemShowLogs.Size = New System.Drawing.Size(116, 28)
+        Me.RedeemShowLogs.Size = New System.Drawing.Size(87, 23)
         Me.RedeemShowLogs.TabIndex = 4
         Me.RedeemShowLogs.Text = "Redeem Logs"
         Me.RedeemShowLogs.UseVisualStyleBackColor = True
         '
         'topupShowLogs
         '
-        Me.topupShowLogs.Location = New System.Drawing.Point(253, 17)
-        Me.topupShowLogs.Margin = New System.Windows.Forms.Padding(4)
+        Me.topupShowLogs.Location = New System.Drawing.Point(190, 14)
         Me.topupShowLogs.Name = "topupShowLogs"
-        Me.topupShowLogs.Size = New System.Drawing.Size(100, 28)
+        Me.topupShowLogs.Size = New System.Drawing.Size(75, 23)
         Me.topupShowLogs.TabIndex = 3
         Me.topupShowLogs.Text = "Top Up Log"
         Me.topupShowLogs.UseVisualStyleBackColor = True
         '
         'ShowMaintenanceLog
         '
-        Me.ShowMaintenanceLog.Location = New System.Drawing.Point(128, 17)
-        Me.ShowMaintenanceLog.Margin = New System.Windows.Forms.Padding(4)
+        Me.ShowMaintenanceLog.Location = New System.Drawing.Point(96, 14)
         Me.ShowMaintenanceLog.Name = "ShowMaintenanceLog"
-        Me.ShowMaintenanceLog.Size = New System.Drawing.Size(117, 28)
+        Me.ShowMaintenanceLog.Size = New System.Drawing.Size(88, 23)
         Me.ShowMaintenanceLog.TabIndex = 2
         Me.ShowMaintenanceLog.Text = "Maintenance"
         Me.ShowMaintenanceLog.UseVisualStyleBackColor = True
         '
         'ShowPlayLog
         '
-        Me.ShowPlayLog.Location = New System.Drawing.Point(20, 17)
-        Me.ShowPlayLog.Margin = New System.Windows.Forms.Padding(4)
+        Me.ShowPlayLog.Location = New System.Drawing.Point(15, 14)
         Me.ShowPlayLog.Name = "ShowPlayLog"
-        Me.ShowPlayLog.Size = New System.Drawing.Size(100, 28)
+        Me.ShowPlayLog.Size = New System.Drawing.Size(75, 23)
         Me.ShowPlayLog.TabIndex = 1
         Me.ShowPlayLog.Text = "Playing Logs"
         Me.ShowPlayLog.UseVisualStyleBackColor = True
@@ -1895,11 +1730,10 @@ Partial Class Form1
         'LogGrid
         '
         Me.LogGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.LogGrid.Location = New System.Drawing.Point(20, 53)
-        Me.LogGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.LogGrid.Location = New System.Drawing.Point(15, 43)
         Me.LogGrid.Name = "LogGrid"
         Me.LogGrid.RowHeadersWidth = 51
-        Me.LogGrid.Size = New System.Drawing.Size(1136, 593)
+        Me.LogGrid.Size = New System.Drawing.Size(852, 482)
         Me.LogGrid.TabIndex = 0
         '
         'TabPage1
@@ -1911,50 +1745,45 @@ Partial Class Form1
         Me.TabPage1.Controls.Add(Me.GroupBox5)
         Me.TabPage1.Controls.Add(Me.Label21)
         Me.TabPage1.Controls.Add(Me.MachinaListBox)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(1180, 927)
+        Me.TabPage1.Size = New System.Drawing.Size(883, 751)
         Me.TabPage1.TabIndex = 5
         Me.TabPage1.Text = "Machines"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'GameMachineAddButton
         '
-        Me.GameMachineAddButton.Location = New System.Drawing.Point(204, 442)
-        Me.GameMachineAddButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineAddButton.Location = New System.Drawing.Point(153, 359)
         Me.GameMachineAddButton.Name = "GameMachineAddButton"
-        Me.GameMachineAddButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameMachineAddButton.Size = New System.Drawing.Size(75, 23)
         Me.GameMachineAddButton.TabIndex = 29
         Me.GameMachineAddButton.Text = "Add"
         Me.GameMachineAddButton.UseVisualStyleBackColor = True
         '
         'GameMachineSaveButton
         '
-        Me.GameMachineSaveButton.Location = New System.Drawing.Point(861, 684)
-        Me.GameMachineSaveButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineSaveButton.Location = New System.Drawing.Point(646, 556)
         Me.GameMachineSaveButton.Name = "GameMachineSaveButton"
-        Me.GameMachineSaveButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameMachineSaveButton.Size = New System.Drawing.Size(75, 23)
         Me.GameMachineSaveButton.TabIndex = 28
         Me.GameMachineSaveButton.Text = "Save"
         Me.GameMachineSaveButton.UseVisualStyleBackColor = True
         '
         'GameMachineCancelButton
         '
-        Me.GameMachineCancelButton.Location = New System.Drawing.Point(753, 684)
-        Me.GameMachineCancelButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineCancelButton.Location = New System.Drawing.Point(565, 556)
         Me.GameMachineCancelButton.Name = "GameMachineCancelButton"
-        Me.GameMachineCancelButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameMachineCancelButton.Size = New System.Drawing.Size(75, 23)
         Me.GameMachineCancelButton.TabIndex = 27
         Me.GameMachineCancelButton.Text = "Cancel"
         Me.GameMachineCancelButton.UseVisualStyleBackColor = True
         '
         'GameMachineEditButton
         '
-        Me.GameMachineEditButton.Location = New System.Drawing.Point(605, 684)
-        Me.GameMachineEditButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineEditButton.Location = New System.Drawing.Point(454, 556)
         Me.GameMachineEditButton.Name = "GameMachineEditButton"
-        Me.GameMachineEditButton.Size = New System.Drawing.Size(100, 28)
+        Me.GameMachineEditButton.Size = New System.Drawing.Size(75, 23)
         Me.GameMachineEditButton.TabIndex = 26
         Me.GameMachineEditButton.Text = "Edit"
         Me.GameMachineEditButton.UseVisualStyleBackColor = True
@@ -1967,11 +1796,9 @@ Partial Class Form1
         Me.GroupBox5.Controls.Add(Me.Panel30)
         Me.GroupBox5.Controls.Add(Me.Panel31)
         Me.GroupBox5.Controls.Add(Me.Panel32)
-        Me.GroupBox5.Location = New System.Drawing.Point(605, 234)
-        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox5.Location = New System.Drawing.Point(454, 190)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox5.Size = New System.Drawing.Size(367, 443)
+        Me.GroupBox5.Size = New System.Drawing.Size(275, 360)
         Me.GroupBox5.TabIndex = 23
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Machine Info"
@@ -1982,45 +1809,40 @@ Partial Class Form1
         Me.Panel27.Controls.Add(Me.Label13)
         Me.Panel27.Controls.Add(Me.GameMachineRentInput)
         Me.Panel27.Controls.Add(Me.GameMachineRentCost)
-        Me.Panel27.Location = New System.Drawing.Point(8, 358)
-        Me.Panel27.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel27.Location = New System.Drawing.Point(6, 291)
         Me.Panel27.Name = "Panel27"
-        Me.Panel27.Size = New System.Drawing.Size(351, 76)
+        Me.Panel27.Size = New System.Drawing.Size(263, 62)
         Me.Panel27.TabIndex = 6
         '
         'GameMachineRentDurInput
         '
-        Me.GameMachineRentDurInput.Location = New System.Drawing.Point(219, 37)
-        Me.GameMachineRentDurInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineRentDurInput.Location = New System.Drawing.Point(164, 30)
         Me.GameMachineRentDurInput.Name = "GameMachineRentDurInput"
-        Me.GameMachineRentDurInput.Size = New System.Drawing.Size(109, 22)
+        Me.GameMachineRentDurInput.Size = New System.Drawing.Size(83, 20)
         Me.GameMachineRentDurInput.TabIndex = 3
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(215, 17)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Location = New System.Drawing.Point(161, 14)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(96, 17)
+        Me.Label13.Size = New System.Drawing.Size(73, 13)
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Rent Duration"
         '
         'GameMachineRentInput
         '
-        Me.GameMachineRentInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameMachineRentInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineRentInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMachineRentInput.Name = "GameMachineRentInput"
-        Me.GameMachineRentInput.Size = New System.Drawing.Size(109, 22)
+        Me.GameMachineRentInput.Size = New System.Drawing.Size(83, 20)
         Me.GameMachineRentInput.TabIndex = 0
         '
         'GameMachineRentCost
         '
         Me.GameMachineRentCost.AutoSize = True
-        Me.GameMachineRentCost.Location = New System.Drawing.Point(16, 17)
-        Me.GameMachineRentCost.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.GameMachineRentCost.Location = New System.Drawing.Point(12, 14)
         Me.GameMachineRentCost.Name = "GameMachineRentCost"
-        Me.GameMachineRentCost.Size = New System.Drawing.Size(59, 17)
+        Me.GameMachineRentCost.Size = New System.Drawing.Size(45, 13)
         Me.GameMachineRentCost.TabIndex = 1
         Me.GameMachineRentCost.Text = "Label14"
         '
@@ -2028,28 +1850,25 @@ Partial Class Form1
         '
         Me.Panel28.Controls.Add(Me.GameMachineSupplierInput)
         Me.Panel28.Controls.Add(Me.Label16)
-        Me.Panel28.Location = New System.Drawing.Point(8, 274)
-        Me.Panel28.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel28.Location = New System.Drawing.Point(6, 223)
         Me.Panel28.Name = "Panel28"
-        Me.Panel28.Size = New System.Drawing.Size(351, 76)
+        Me.Panel28.Size = New System.Drawing.Size(263, 62)
         Me.Panel28.TabIndex = 5
         '
         'GameMachineSupplierInput
         '
         Me.GameMachineSupplierInput.FormattingEnabled = True
-        Me.GameMachineSupplierInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameMachineSupplierInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineSupplierInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMachineSupplierInput.Name = "GameMachineSupplierInput"
-        Me.GameMachineSupplierInput.Size = New System.Drawing.Size(308, 24)
+        Me.GameMachineSupplierInput.Size = New System.Drawing.Size(232, 21)
         Me.GameMachineSupplierInput.TabIndex = 2
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(16, 17)
-        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Location = New System.Drawing.Point(12, 14)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(60, 17)
+        Me.Label16.Size = New System.Drawing.Size(45, 13)
         Me.Label16.TabIndex = 1
         Me.Label16.Text = "Supplier"
         '
@@ -2057,27 +1876,24 @@ Partial Class Form1
         '
         Me.Panel29.Controls.Add(Me.GameMachineLocationInput)
         Me.Panel29.Controls.Add(Me.Label17)
-        Me.Panel29.Location = New System.Drawing.Point(8, 191)
-        Me.Panel29.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel29.Location = New System.Drawing.Point(6, 155)
         Me.Panel29.Name = "Panel29"
-        Me.Panel29.Size = New System.Drawing.Size(351, 76)
+        Me.Panel29.Size = New System.Drawing.Size(263, 62)
         Me.Panel29.TabIndex = 4
         '
         'GameMachineLocationInput
         '
-        Me.GameMachineLocationInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameMachineLocationInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineLocationInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMachineLocationInput.Name = "GameMachineLocationInput"
-        Me.GameMachineLocationInput.Size = New System.Drawing.Size(308, 22)
+        Me.GameMachineLocationInput.Size = New System.Drawing.Size(232, 20)
         Me.GameMachineLocationInput.TabIndex = 0
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(16, 17)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Location = New System.Drawing.Point(12, 14)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(62, 17)
+        Me.Label17.Size = New System.Drawing.Size(48, 13)
         Me.Label17.TabIndex = 1
         Me.Label17.Text = "Location"
         '
@@ -2085,27 +1901,24 @@ Partial Class Form1
         '
         Me.Panel30.Controls.Add(Me.TextBox5)
         Me.Panel30.Controls.Add(Me.Label18)
-        Me.Panel30.Location = New System.Drawing.Point(455, 191)
-        Me.Panel30.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel30.Location = New System.Drawing.Point(341, 155)
         Me.Panel30.Name = "Panel30"
-        Me.Panel30.Size = New System.Drawing.Size(164, 76)
+        Me.Panel30.Size = New System.Drawing.Size(123, 62)
         Me.Panel30.TabIndex = 5
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(20, 37)
-        Me.TextBox5.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox5.Location = New System.Drawing.Point(15, 30)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(124, 22)
+        Me.TextBox5.Size = New System.Drawing.Size(94, 20)
         Me.TextBox5.TabIndex = 3
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(16, 17)
-        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label18.Location = New System.Drawing.Point(12, 14)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(21, 17)
+        Me.Label18.Size = New System.Drawing.Size(18, 13)
         Me.Label18.TabIndex = 1
         Me.Label18.Text = "ID"
         '
@@ -2113,27 +1926,24 @@ Partial Class Form1
         '
         Me.Panel31.Controls.Add(Me.GameMachineManuInput)
         Me.Panel31.Controls.Add(Me.Label19)
-        Me.Panel31.Location = New System.Drawing.Point(8, 107)
-        Me.Panel31.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel31.Location = New System.Drawing.Point(6, 87)
         Me.Panel31.Name = "Panel31"
-        Me.Panel31.Size = New System.Drawing.Size(351, 76)
+        Me.Panel31.Size = New System.Drawing.Size(263, 62)
         Me.Panel31.TabIndex = 4
         '
         'GameMachineManuInput
         '
-        Me.GameMachineManuInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameMachineManuInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineManuInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMachineManuInput.Name = "GameMachineManuInput"
-        Me.GameMachineManuInput.Size = New System.Drawing.Size(308, 22)
+        Me.GameMachineManuInput.Size = New System.Drawing.Size(232, 20)
         Me.GameMachineManuInput.TabIndex = 2
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(16, 17)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label19.Location = New System.Drawing.Point(12, 14)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(92, 17)
+        Me.Label19.Size = New System.Drawing.Size(70, 13)
         Me.Label19.TabIndex = 1
         Me.Label19.Text = "Manufacturer"
         '
@@ -2141,49 +1951,43 @@ Partial Class Form1
         '
         Me.Panel32.Controls.Add(Me.GameMachineSerialInput)
         Me.Panel32.Controls.Add(Me.Label20)
-        Me.Panel32.Location = New System.Drawing.Point(8, 23)
-        Me.Panel32.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel32.Location = New System.Drawing.Point(6, 19)
         Me.Panel32.Name = "Panel32"
-        Me.Panel32.Size = New System.Drawing.Size(351, 76)
+        Me.Panel32.Size = New System.Drawing.Size(263, 62)
         Me.Panel32.TabIndex = 3
         '
         'GameMachineSerialInput
         '
         Me.GameMachineSerialInput.Enabled = False
-        Me.GameMachineSerialInput.Location = New System.Drawing.Point(20, 37)
-        Me.GameMachineSerialInput.Margin = New System.Windows.Forms.Padding(4)
+        Me.GameMachineSerialInput.Location = New System.Drawing.Point(15, 30)
         Me.GameMachineSerialInput.Name = "GameMachineSerialInput"
-        Me.GameMachineSerialInput.Size = New System.Drawing.Size(308, 22)
+        Me.GameMachineSerialInput.Size = New System.Drawing.Size(232, 20)
         Me.GameMachineSerialInput.TabIndex = 0
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(16, 17)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Location = New System.Drawing.Point(12, 14)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(98, 17)
+        Me.Label20.Size = New System.Drawing.Size(73, 13)
         Me.Label20.TabIndex = 1
         Me.Label20.Text = "Serial Number"
         '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(204, 210)
-        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Location = New System.Drawing.Point(153, 171)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(117, 17)
+        Me.Label21.Size = New System.Drawing.Size(90, 13)
         Me.Label21.TabIndex = 25
         Me.Label21.Text = "Arcade Machines"
         '
         'MachinaListBox
         '
         Me.MachinaListBox.FormattingEnabled = True
-        Me.MachinaListBox.ItemHeight = 16
-        Me.MachinaListBox.Location = New System.Drawing.Point(204, 234)
-        Me.MachinaListBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.MachinaListBox.Location = New System.Drawing.Point(153, 190)
         Me.MachinaListBox.Name = "MachinaListBox"
-        Me.MachinaListBox.Size = New System.Drawing.Size(372, 196)
+        Me.MachinaListBox.Size = New System.Drawing.Size(280, 160)
         Me.MachinaListBox.TabIndex = 24
         '
         'ControlTab
@@ -2195,29 +1999,118 @@ Partial Class Form1
         Me.ControlTab.Controls.Add(Me.GroupBox7)
         Me.ControlTab.Controls.Add(Me.GroupBox6)
         Me.ControlTab.Location = New System.Drawing.Point(4, 22)
+        Me.ControlTab.Margin = New System.Windows.Forms.Padding(2)
         Me.ControlTab.Name = "ControlTab"
         Me.ControlTab.Size = New System.Drawing.Size(883, 751)
         Me.ControlTab.TabIndex = 6
         Me.ControlTab.Text = "Controls"
         Me.ControlTab.UseVisualStyleBackColor = True
         '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.Label36)
+        Me.GroupBox10.Controls.Add(Me.controlPlayMachine)
+        Me.GroupBox10.Controls.Add(Me.Label45)
+        Me.GroupBox10.Controls.Add(Me.controlTime)
+        Me.GroupBox10.Controls.Add(Me.Label39)
+        Me.GroupBox10.Controls.Add(Me.controlPlayUser)
+        Me.GroupBox10.Controls.Add(Me.ControlPlayButton)
+        Me.GroupBox10.Location = New System.Drawing.Point(492, 75)
+        Me.GroupBox10.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox10.Size = New System.Drawing.Size(204, 153)
+        Me.GroupBox10.TabIndex = 17
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "Register PlayTime"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(12, 62)
+        Me.Label36.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(51, 13)
+        Me.Label36.TabIndex = 24
+        Me.Label36.Text = "Machine:"
+        '
+        'controlPlayMachine
+        '
+        Me.controlPlayMachine.FormattingEnabled = True
+        Me.controlPlayMachine.Location = New System.Drawing.Point(80, 62)
+        Me.controlPlayMachine.Margin = New System.Windows.Forms.Padding(2)
+        Me.controlPlayMachine.Name = "controlPlayMachine"
+        Me.controlPlayMachine.Size = New System.Drawing.Size(92, 21)
+        Me.controlPlayMachine.TabIndex = 23
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Location = New System.Drawing.Point(14, 93)
+        Me.Label45.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(49, 13)
+        Me.Label45.TabIndex = 20
+        Me.Label45.Text = "Playtime:"
+        '
+        'controlTime
+        '
+        Me.controlTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.controlTime.Location = New System.Drawing.Point(80, 88)
+        Me.controlTime.Margin = New System.Windows.Forms.Padding(2)
+        Me.controlTime.Name = "controlTime"
+        Me.controlTime.Size = New System.Drawing.Size(60, 20)
+        Me.controlTime.TabIndex = 19
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(12, 41)
+        Me.Label39.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(36, 13)
+        Me.Label39.TabIndex = 9
+        Me.Label39.Text = "Who?"
+        '
+        'controlPlayUser
+        '
+        Me.controlPlayUser.FormattingEnabled = True
+        Me.controlPlayUser.Location = New System.Drawing.Point(80, 38)
+        Me.controlPlayUser.Margin = New System.Windows.Forms.Padding(2)
+        Me.controlPlayUser.Name = "controlPlayUser"
+        Me.controlPlayUser.Size = New System.Drawing.Size(92, 21)
+        Me.controlPlayUser.TabIndex = 8
+        '
+        'ControlPlayButton
+        '
+        Me.ControlPlayButton.Location = New System.Drawing.Point(15, 120)
+        Me.ControlPlayButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.ControlPlayButton.Name = "ControlPlayButton"
+        Me.ControlPlayButton.Size = New System.Drawing.Size(64, 23)
+        Me.ControlPlayButton.TabIndex = 4
+        Me.ControlPlayButton.Text = "Register Play"
+        Me.ControlPlayButton.UseVisualStyleBackColor = True
+        '
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.controlDoMaintenance)
         Me.GroupBox8.Controls.Add(Me.Label38)
         Me.GroupBox8.Controls.Add(Me.ControlMachines)
-        Me.GroupBox8.Location = New System.Drawing.Point(39, 240)
+        Me.GroupBox8.Location = New System.Drawing.Point(27, 195)
+        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(255, 98)
+        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox8.Size = New System.Drawing.Size(194, 80)
         Me.GroupBox8.TabIndex = 8
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Register Maintenance"
         '
         'controlDoMaintenance
         '
-        Me.controlDoMaintenance.Location = New System.Drawing.Point(10, 66)
+        Me.controlDoMaintenance.Location = New System.Drawing.Point(8, 54)
+        Me.controlDoMaintenance.Margin = New System.Windows.Forms.Padding(2)
         Me.controlDoMaintenance.Name = "controlDoMaintenance"
-        Me.controlDoMaintenance.Size = New System.Drawing.Size(75, 23)
+        Me.controlDoMaintenance.Size = New System.Drawing.Size(56, 22)
         Me.controlDoMaintenance.TabIndex = 4
         Me.controlDoMaintenance.Text = "Register"
         Me.controlDoMaintenance.UseVisualStyleBackColor = True
@@ -2225,7 +2118,8 @@ Partial Class Form1
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(7, 33)
+        Me.Label38.Location = New System.Drawing.Point(5, 27)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(51, 13)
         Me.Label38.TabIndex = 1
@@ -2234,15 +2128,17 @@ Partial Class Form1
         'ControlMachines
         '
         Me.ControlMachines.FormattingEnabled = True
-        Me.ControlMachines.Location = New System.Drawing.Point(64, 30)
+        Me.ControlMachines.Location = New System.Drawing.Point(60, 27)
+        Me.ControlMachines.Margin = New System.Windows.Forms.Padding(2)
         Me.ControlMachines.Name = "ControlMachines"
-        Me.ControlMachines.Size = New System.Drawing.Size(121, 21)
+        Me.ControlMachines.Size = New System.Drawing.Size(92, 21)
         Me.ControlMachines.TabIndex = 0
         '
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(36, 39)
+        Me.Label33.Location = New System.Drawing.Point(27, 32)
+        Me.Label33.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(105, 13)
         Me.Label33.TabIndex = 18
@@ -2251,9 +2147,10 @@ Partial Class Form1
         'controlEmployee
         '
         Me.controlEmployee.FormattingEnabled = True
-        Me.controlEmployee.Location = New System.Drawing.Point(147, 36)
+        Me.controlEmployee.Location = New System.Drawing.Point(136, 32)
+        Me.controlEmployee.Margin = New System.Windows.Forms.Padding(2)
         Me.controlEmployee.Name = "controlEmployee"
-        Me.controlEmployee.Size = New System.Drawing.Size(136, 21)
+        Me.controlEmployee.Size = New System.Drawing.Size(103, 21)
         Me.controlEmployee.TabIndex = 17
         '
         'GroupBox7
@@ -2269,9 +2166,11 @@ Partial Class Form1
         Me.GroupBox7.Controls.Add(Me.Label31)
         Me.GroupBox7.Controls.Add(Me.Label32)
         Me.GroupBox7.Controls.Add(Me.prizeSelect)
-        Me.GroupBox7.Location = New System.Drawing.Point(306, 86)
+        Me.GroupBox7.Location = New System.Drawing.Point(230, 70)
+        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(254, 194)
+        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox7.Size = New System.Drawing.Size(249, 158)
         Me.GroupBox7.TabIndex = 16
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Redeem Prize"
@@ -2279,7 +2178,8 @@ Partial Class Form1
         'controlStock
         '
         Me.controlStock.AutoSize = True
-        Me.controlStock.Location = New System.Drawing.Point(162, 127)
+        Me.controlStock.Location = New System.Drawing.Point(146, 82)
+        Me.controlStock.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.controlStock.Name = "controlStock"
         Me.controlStock.Size = New System.Drawing.Size(71, 13)
         Me.controlStock.TabIndex = 11
@@ -2288,7 +2188,8 @@ Partial Class Form1
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(130, 127)
+        Me.Label35.Location = New System.Drawing.Point(104, 82)
+        Me.Label35.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(38, 13)
         Me.Label35.TabIndex = 10
@@ -2297,7 +2198,8 @@ Partial Class Form1
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(16, 50)
+        Me.Label34.Location = New System.Drawing.Point(12, 24)
+        Me.Label34.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(36, 13)
         Me.Label34.TabIndex = 9
@@ -2306,15 +2208,17 @@ Partial Class Form1
         'prizeUser
         '
         Me.prizeUser.FormattingEnabled = True
-        Me.prizeUser.Location = New System.Drawing.Point(106, 47)
+        Me.prizeUser.Location = New System.Drawing.Point(80, 21)
+        Me.prizeUser.Margin = New System.Windows.Forms.Padding(2)
         Me.prizeUser.Name = "prizeUser"
-        Me.prizeUser.Size = New System.Drawing.Size(121, 21)
+        Me.prizeUser.Size = New System.Drawing.Size(92, 21)
         Me.prizeUser.TabIndex = 8
         '
         'ControlPrice
         '
         Me.ControlPrice.AutoSize = True
-        Me.ControlPrice.Location = New System.Drawing.Point(162, 106)
+        Me.ControlPrice.Location = New System.Drawing.Point(146, 100)
+        Me.ControlPrice.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.ControlPrice.Name = "ControlPrice"
         Me.ControlPrice.Size = New System.Drawing.Size(71, 13)
         Me.ControlPrice.TabIndex = 7
@@ -2323,7 +2227,8 @@ Partial Class Form1
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(130, 106)
+        Me.Label30.Location = New System.Drawing.Point(108, 99)
+        Me.Label30.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(34, 13)
         Me.Label30.TabIndex = 6
@@ -2331,16 +2236,18 @@ Partial Class Form1
         '
         'prizeQuantity
         '
-        Me.prizeQuantity.Location = New System.Drawing.Point(68, 104)
+        Me.prizeQuantity.Location = New System.Drawing.Point(57, 84)
+        Me.prizeQuantity.Margin = New System.Windows.Forms.Padding(2)
         Me.prizeQuantity.Name = "prizeQuantity"
-        Me.prizeQuantity.Size = New System.Drawing.Size(57, 20)
+        Me.prizeQuantity.Size = New System.Drawing.Size(43, 20)
         Me.prizeQuantity.TabIndex = 5
         '
         'ControlRedeemButton
         '
-        Me.ControlRedeemButton.Location = New System.Drawing.Point(10, 154)
+        Me.ControlRedeemButton.Location = New System.Drawing.Point(7, 125)
+        Me.ControlRedeemButton.Margin = New System.Windows.Forms.Padding(2)
         Me.ControlRedeemButton.Name = "ControlRedeemButton"
-        Me.ControlRedeemButton.Size = New System.Drawing.Size(75, 23)
+        Me.ControlRedeemButton.Size = New System.Drawing.Size(80, 22)
         Me.ControlRedeemButton.TabIndex = 4
         Me.ControlRedeemButton.Text = "Redeem!"
         Me.ControlRedeemButton.UseVisualStyleBackColor = True
@@ -2348,7 +2255,8 @@ Partial Class Form1
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(16, 106)
+        Me.Label31.Location = New System.Drawing.Point(4, 86)
+        Me.Label31.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(49, 13)
         Me.Label31.TabIndex = 3
@@ -2357,7 +2265,8 @@ Partial Class Form1
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(16, 77)
+        Me.Label32.Location = New System.Drawing.Point(10, 51)
+        Me.Label32.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(66, 13)
         Me.Label32.TabIndex = 1
@@ -2366,9 +2275,10 @@ Partial Class Form1
         'prizeSelect
         '
         Me.prizeSelect.FormattingEnabled = True
-        Me.prizeSelect.Location = New System.Drawing.Point(106, 74)
+        Me.prizeSelect.Location = New System.Drawing.Point(80, 48)
+        Me.prizeSelect.Margin = New System.Windows.Forms.Padding(2)
         Me.prizeSelect.Name = "prizeSelect"
-        Me.prizeSelect.Size = New System.Drawing.Size(121, 21)
+        Me.prizeSelect.Size = New System.Drawing.Size(92, 21)
         Me.prizeSelect.TabIndex = 0
         '
         'GroupBox6
@@ -2380,9 +2290,11 @@ Partial Class Form1
         Me.GroupBox6.Controls.Add(Me.Label27)
         Me.GroupBox6.Controls.Add(Me.Label26)
         Me.GroupBox6.Controls.Add(Me.topUpWho)
-        Me.GroupBox6.Location = New System.Drawing.Point(36, 86)
+        Me.GroupBox6.Location = New System.Drawing.Point(27, 70)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(255, 140)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(2)
+        Me.GroupBox6.Size = New System.Drawing.Size(194, 116)
         Me.GroupBox6.TabIndex = 0
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Top Up"
@@ -2390,7 +2302,8 @@ Partial Class Form1
         'topUpPrice
         '
         Me.topUpPrice.AutoSize = True
-        Me.topUpPrice.Location = New System.Drawing.Point(161, 62)
+        Me.topUpPrice.Location = New System.Drawing.Point(141, 51)
+        Me.topUpPrice.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.topUpPrice.Name = "topUpPrice"
         Me.topUpPrice.Size = New System.Drawing.Size(38, 13)
         Me.topUpPrice.TabIndex = 7
@@ -2399,7 +2312,8 @@ Partial Class Form1
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(121, 62)
+        Me.Label28.Location = New System.Drawing.Point(106, 51)
+        Me.Label28.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(34, 13)
         Me.Label28.TabIndex = 6
@@ -2407,16 +2321,18 @@ Partial Class Form1
         '
         'topUpQuantity
         '
-        Me.topUpQuantity.Location = New System.Drawing.Point(59, 60)
+        Me.topUpQuantity.Location = New System.Drawing.Point(62, 49)
+        Me.topUpQuantity.Margin = New System.Windows.Forms.Padding(2)
         Me.topUpQuantity.Name = "topUpQuantity"
-        Me.topUpQuantity.Size = New System.Drawing.Size(57, 20)
+        Me.topUpQuantity.Size = New System.Drawing.Size(43, 20)
         Me.topUpQuantity.TabIndex = 5
         '
         'topUpButton
         '
-        Me.topUpButton.Location = New System.Drawing.Point(10, 101)
+        Me.topUpButton.Location = New System.Drawing.Point(8, 82)
+        Me.topUpButton.Margin = New System.Windows.Forms.Padding(2)
         Me.topUpButton.Name = "topUpButton"
-        Me.topUpButton.Size = New System.Drawing.Size(75, 23)
+        Me.topUpButton.Size = New System.Drawing.Size(75, 22)
         Me.topUpButton.TabIndex = 4
         Me.topUpButton.Text = "TopUp"
         Me.topUpButton.UseVisualStyleBackColor = True
@@ -2424,7 +2340,7 @@ Partial Class Form1
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(7, 62)
+        Me.Label27.Location = New System.Drawing.Point(5, 50)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(49, 13)
         Me.Label27.TabIndex = 3
@@ -2433,7 +2349,7 @@ Partial Class Form1
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(7, 33)
+        Me.Label26.Location = New System.Drawing.Point(5, 27)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(36, 13)
         Me.Label26.TabIndex = 1
@@ -2442,10 +2358,18 @@ Partial Class Form1
         'topUpWho
         '
         Me.topUpWho.FormattingEnabled = True
-        Me.topUpWho.Location = New System.Drawing.Point(49, 30)
+        Me.topUpWho.Location = New System.Drawing.Point(62, 24)
+        Me.topUpWho.Margin = New System.Windows.Forms.Padding(2)
         Me.topUpWho.Name = "topUpWho"
-        Me.topUpWho.Size = New System.Drawing.Size(121, 21)
+        Me.topUpWho.Size = New System.Drawing.Size(92, 21)
         Me.topUpWho.TabIndex = 0
+        '
+        'Label272
+        '
+        Me.Label272.Location = New System.Drawing.Point(0, 0)
+        Me.Label272.Name = "Label272"
+        Me.Label272.Size = New System.Drawing.Size(100, 23)
+        Me.Label272.TabIndex = 0
         '
         'RedeemedBindingSource1
         '
@@ -2493,89 +2417,12 @@ Partial Class Form1
         '
         Me.PlayedTableAdapter.ClearBeforeFill = True
         '
-        'ControlPlayButton
-        '
-        Me.ControlPlayButton.Location = New System.Drawing.Point(19, 148)
-        Me.ControlPlayButton.Name = "ControlPlayButton"
-        Me.ControlPlayButton.Size = New System.Drawing.Size(75, 23)
-        Me.ControlPlayButton.TabIndex = 4
-        Me.ControlPlayButton.Text = "Register Play"
-        Me.ControlPlayButton.UseVisualStyleBackColor = True
-        '
-        'controlPlayUser
-        '
-        Me.controlPlayUser.FormattingEnabled = True
-        Me.controlPlayUser.Location = New System.Drawing.Point(106, 47)
-        Me.controlPlayUser.Name = "controlPlayUser"
-        Me.controlPlayUser.Size = New System.Drawing.Size(121, 21)
-        Me.controlPlayUser.TabIndex = 8
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(16, 50)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(36, 13)
-        Me.Label39.TabIndex = 9
-        Me.Label39.Text = "Who?"
-        '
-        'controlTime
-        '
-        Me.controlTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.controlTime.Location = New System.Drawing.Point(106, 108)
-        Me.controlTime.Name = "controlTime"
-        Me.controlTime.Size = New System.Drawing.Size(79, 20)
-        Me.controlTime.TabIndex = 19
-        '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(18, 114)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(49, 13)
-        Me.Label45.TabIndex = 20
-        Me.Label45.Text = "Playtime:"
-        '
-        'controlPlayMachine
-        '
-        Me.controlPlayMachine.FormattingEnabled = True
-        Me.controlPlayMachine.Location = New System.Drawing.Point(106, 76)
-        Me.controlPlayMachine.Name = "controlPlayMachine"
-        Me.controlPlayMachine.Size = New System.Drawing.Size(121, 21)
-        Me.controlPlayMachine.TabIndex = 23
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(16, 76)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(51, 13)
-        Me.Label36.TabIndex = 24
-        Me.Label36.Text = "Machine:"
-        '
-        'GroupBox10
-        '
-        Me.GroupBox10.Controls.Add(Me.Label36)
-        Me.GroupBox10.Controls.Add(Me.controlPlayMachine)
-        Me.GroupBox10.Controls.Add(Me.Label45)
-        Me.GroupBox10.Controls.Add(Me.controlTime)
-        Me.GroupBox10.Controls.Add(Me.Label39)
-        Me.GroupBox10.Controls.Add(Me.controlPlayUser)
-        Me.GroupBox10.Controls.Add(Me.ControlPlayButton)
-        Me.GroupBox10.Location = New System.Drawing.Point(583, 92)
-        Me.GroupBox10.Name = "GroupBox10"
-        Me.GroupBox10.Size = New System.Drawing.Size(272, 188)
-        Me.GroupBox10.TabIndex = 17
-        Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "Register PlayTime"
-        '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1220, 1013)
+        Me.ClientSize = New System.Drawing.Size(915, 823)
         Me.Controls.Add(Me.TabControl)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.TabControl.ResumeLayout(False)
@@ -2621,7 +2468,6 @@ Partial Class Form1
         Me.Panel15.ResumeLayout(False)
         Me.Panel15.PerformLayout()
         Me.Panel13.ResumeLayout(False)
-        Me.Panel13.PerformLayout()
         Me.Panel25.ResumeLayout(False)
         Me.Panel25.PerformLayout()
         Me.Panel24.ResumeLayout(False)
@@ -2664,6 +2510,8 @@ Partial Class Form1
         Me.Panel32.PerformLayout()
         Me.ControlTab.ResumeLayout(False)
         Me.ControlTab.PerformLayout()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
@@ -2679,8 +2527,6 @@ Partial Class Form1
         CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox10.ResumeLayout(False)
-        Me.GroupBox10.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

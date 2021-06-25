@@ -123,6 +123,7 @@ Public Class Form1
 
         CMD = New SqlCommand
         CMD.Connection = CN
+
         CMD.CommandText = "arcade.getPublisher"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("code", Convert.ToInt32(game.gameID))
@@ -542,7 +543,7 @@ Public Class Form1
             GameMachineLocationInput.Enabled = True
             GameMachineManuInput.Enabled = True
             GameMachineSupplierInput.Enabled = True
-            GameMAchineRentInput.Enabled = True
+            GameMachineRentInput.Enabled = True
 
         Else
             GameMachineCancelButton.Hide()
@@ -553,7 +554,7 @@ Public Class Form1
             GameMachineLocationInput.Enabled = False
             GameMachineManuInput.Enabled = False
             GameMachineSupplierInput.Enabled = False
-            GameMAchineRentInput.Enabled = False
+            GameMachineRentInput.Enabled = False
 
         End If
     End Sub
@@ -566,7 +567,7 @@ Public Class Form1
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
-        GameMAchineRentInput.Enabled = False
+        GameMachineRentInput.Enabled = False
 
         If GameMachinesListBox.SelectedIndex > -1 Then
             currentGameMachine = GameMachinesListBox.SelectedIndex
@@ -583,7 +584,7 @@ Public Class Form1
         GameMachineLocationInput.Enabled = False
         GameMachineManuInput.Enabled = False
         GameMachineSupplierInput.Enabled = False
-        GameMAchineRentInput.Enabled = False
+        GameMachineRentInput.Enabled = False
 
 
         Dim line As String = GameMachineSupplierInput.Text
@@ -1570,6 +1571,7 @@ Public Class Form1
     Private Sub ShowTopupLogs()
 
         CMD.Connection = CN
+        CMD.Parameters.Clear()
         CMD.CommandText = "arcade.getTopped"
         CMD.CommandType = CommandType.StoredProcedure
 
@@ -1883,6 +1885,8 @@ Public Class Form1
 
         CMD = New SqlCommand
         CMD.Connection = CN
+        CMD.Parameters.Clear()
+
         CMD.CommandText = "arcade.getAllMachines"
         CMD.CommandType = CommandType.StoredProcedure
         RDR = CMD.ExecuteReader
@@ -1902,6 +1906,8 @@ Public Class Form1
 
         CMD = New SqlCommand
         CMD.Connection = CN
+        CMD.Parameters.Clear()
+
         CMD.CommandText = "arcade.topUp"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("value", topUpQuantity.Text)
@@ -1940,6 +1946,8 @@ Public Class Form1
         Else
             CMD = New SqlCommand
             CMD.Connection = CN
+            CMD.Parameters.Clear()
+
             CMD.CommandText = "arcade.redeemPrize"
             CMD.CommandType = CommandType.StoredProcedure
             CMD.Parameters.Clear()
@@ -2109,6 +2117,8 @@ MessageBoxButtons.OK, MessageBoxIcon.Error)
     Private Sub ControlPlayButton_Click(sender As Object, e As EventArgs) Handles ControlPlayButton.Click
         CMD = New SqlCommand
         CMD.Connection = CN
+        CMD.Parameters.Clear()
+
         CMD.CommandText = "arcade.registerPlay"
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.AddWithValue("points_recv", CInt(Math.Ceiling(Rnd() * 200)) + 1)
@@ -2138,6 +2148,12 @@ MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select
     End Sub
 
+    Private Sub Label24_Click(sender As Object, e As EventArgs) Handles Label24.Click
 
+    End Sub
+
+    Private Sub GroupBox7_Enter(sender As Object, e As EventArgs) Handles GroupBox7.Enter
+
+    End Sub
 End Class
 
