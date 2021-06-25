@@ -12,6 +12,7 @@ Public Class Form1
     Dim currentStore As Integer
     Dim currentStoreID As Integer
     Dim currentEmployee As Integer
+    Dim currentControlEmployee As Integer
     Dim editing As Boolean
     Dim adding As Boolean
 
@@ -168,6 +169,8 @@ Public Class Form1
         StoreIDInput.Text = store.storeID
         StoreLocationInput.Text = store.storeLocation
 
+
+
     End Sub
 
     Public Sub ShowPublisher()
@@ -279,7 +282,8 @@ Public Class Form1
                 StoreLoad()
             Case 4
                 LoadLogs()
-
+            Case 6
+                loadcontrol()
         End Select
 
 
@@ -932,6 +936,8 @@ Public Class Form1
                 StoreLoad()
             Case 4
                 LoadLogs()
+            Case 6
+                loadcontrol()
 
         End Select
 
@@ -1751,6 +1757,56 @@ Public Class Form1
         CN.Close()
 
 
+    End Sub
+
+    Private Sub controlEmployee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles controlEmployee.SelectedIndexChanged
+        If controlEmployee.SelectedIndex > -1 Then
+            currentControlEmployee = controlEmployee.SelectedIndex
+            Dim line As String = currentControlEmployee
+            Dim result() As String
+            result = line.Split(" ")
+            currentControlEmployee = result(0)
+        End If
+    End Sub
+
+    Private Sub loadcontrol()
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getEMployeeList"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim RDR As SqlDataReader
+
+        CN.Open()
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+            controlEmployee.Items.Add(RDR.Item("employee"))
+        End While
+        RDR.Close()
+
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getClientList"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+
+
+
+            topUpWho.Items.Add(RDR.Item("client"))
+        End While
+        RDR.Close()
+        CN.Close()
     End Sub
 End Class
 

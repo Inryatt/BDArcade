@@ -17,7 +17,7 @@ INSERT INTO arcade.ArcadeMachine([serial_no],[manufacturer],[NIF],[code],[store_
 INSERT INTO arcade.Supplier ([NIF],[email],[phone_no],[sup_address],[sup_name]) VALUES ('000000000',null,'000000000',null,null);
 INSERT INTO arcade.Game([game_id],[game_name],[publisher_id],[point_value],[credit_cost],[no_players]) VALUES(04999,null,'03999','0','0','1'); -- 1 player due to CHECK constraints
 INSERT INTO arcade.Publisher([pub_id],[pub_name],[pub_location],[is_indie]) VALUES(03999,'DELETED PUBLISHER',null,null);
-
+INSERT INTO arcade.Cli
 --GAME
 
 INSERT INTO arcade.Game([game_id],[game_name],[publisher_id],[point_value],[credit_cost],[no_players]) VALUES(04000,'Donkey Kong','03005','1','1','1');

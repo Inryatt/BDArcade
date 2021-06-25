@@ -1372,6 +1372,7 @@ AS
 
 GO
 
+<<<<<<< HEAD
 
 CREATE OR ALTER PROCEDURE arcade.alterStore
 	@store_id INT = null,
@@ -1395,4 +1396,16 @@ AS
 		PRINT 'An error occured while updating store! Canceling Operation.'
 		ROLLBACK TRAN
 	END CATCH
+=======
+create or alter procedure arcade.getPrizesFromStore
+	@id int =null,
+	as
+	Select * from arcade.prize where store_id = @id
+	go
+
+
+CREATE OR ALTER PROCEDURE arcade.getClientList
+AS
+	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.client WHERE client_no!=06999
+>>>>>>> b21b8eda1734e2db677bf225dedd34889d4afde6
 GO
