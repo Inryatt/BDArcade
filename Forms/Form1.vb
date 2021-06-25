@@ -12,7 +12,12 @@ Public Class Form1
     Dim currentStore As Integer
     Dim currentStoreID As Integer
     Dim currentEmployee As Integer
-    Dim currentControlEmployee As Integer
+    Dim currentControlEmployee As String
+    Dim currentControlStore As String
+    Dim currentControlPrize As String
+    Dim currentControlPrizePrice As String
+    Dim currentControlMachine As String
+
     Dim editing As Boolean
     Dim adding As Boolean
 
@@ -1488,6 +1493,9 @@ Public Class Form1
 
         gameStat.Items.Add("")
 
+        ChangeBox.DataSource = Nothing
+        LogGrid.DataSource = Nothing
+
         CMD = New SqlCommand
         CMD.Connection = CN
 
@@ -1510,7 +1518,8 @@ Public Class Form1
 
         CMD = New SqlCommand
         CMD.Connection = CN
-
+        loguserchanges.Items.Clear()
+        userStat.Items.Clear()
         CMD.Parameters.Clear()
         CMD.CommandText = "arcade.getUserList"
         CMD.CommandType = CommandType.StoredProcedure
@@ -1521,6 +1530,8 @@ Public Class Form1
         While RDR.Read()
 
             userStat.Items.Add(RDR.Item("client"))
+            loguserchanges.Items.Add(RDR.Item("client"))
+
         End While
 
         RDR.Close()
@@ -1621,16 +1632,56 @@ Public Class Form1
     End Sub
 
     Private Sub controlEmployee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles controlEmployee.SelectedIndexChanged
+        prizeSelect.ResetText()
+
+
         If controlEmployee.SelectedIndex > -1 Then
-            currentControlEmployee = controlEmployee.SelectedIndex
+            currentControlEmployee = controlEmployee.SelectedItem
             Dim line As String = currentControlEmployee
             Dim result() As String
             result = line.Split(" ")
             currentControlEmployee = result(0)
+
+            CMD = New SqlCommand
+            CMD.Connection = CN
+
+            CMD.Parameters.Clear()
+            CMD.CommandText = "arcade.employeeWorksAt"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("@employeeid", currentControlEmployee)
+            CMD.Parameters.Add("@ret", SqlDbType.Int)
+            CMD.Parameters("@ret").Direction = ParameterDirection.ReturnValue
+            Dim RDR As SqlDataReader
+
+            CN.Open()
+
+            CMD.ExecuteNonQuery()
+            currentControlStore = CMD.Parameters("@ret").Value
+            prizeSelect.Items.Clear()
+            CMD = New SqlCommand
+            CMD.Connection = CN
+
+            CMD.Parameters.Clear()
+            CMD.CommandText = "arcade.getPrizesFromStore"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("@id", currentControlStore)
+
+            RDR = CMD.ExecuteReader
+
+            While RDR.Read
+
+
+
+                prizeSelect.Items.Add(RDR.Item("prize"))
+            End While
+            RDR.Close()
+            CN.Close()
         End If
     End Sub
 
     Private Sub loadcontrol()
+
+
 
         CMD = New SqlCommand
         CMD.Connection = CN
@@ -1645,9 +1696,12 @@ Public Class Form1
         RDR = CMD.ExecuteReader
 
         While RDR.Read
+
             controlEmployee.Items.Add(RDR.Item("employee"))
+
+
         End While
-        RDR.Close()
+
 
 
         CMD = New SqlCommand
@@ -1658,16 +1712,293 @@ Public Class Form1
         CMD.CommandType = CommandType.StoredProcedure
         CMD.Parameters.Clear()
 
+        RDR.Close()
+        RDR = CMD.ExecuteReader
+
+        While RDR.Read
+
+            prizeUser.Items.Add(RDR.Item("client"))
+
+            controlPlayUser.Items.Add(RDR.Item("client"))
+            topUpWho.Items.Add(RDR.Item("client"))
+        End While
+        RDR.Close()
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getPrizesFromStore"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+
         RDR = CMD.ExecuteReader
 
         While RDR.Read
 
 
 
-            topUpWho.Items.Add(RDR.Item("client"))
+            prizeSelect.Items.Add(RDR.Item("prize"))
         End While
         RDR.Close()
+
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getAllMachines"
+        CMD.CommandType = CommandType.StoredProcedure
+        RDR = CMD.ExecuteReader
+        ControlMachines.Items.Clear()
+
+        While RDR.Read
+            If RDR.Item("serial_no") <> 0 Then
+                controlPlayMachine.Items.Add(RDR.Item("serial_no"))
+
+                ControlMachines.Items.Add(RDR.Item("serial_no"))
+            End If
+        End While
         CN.Close()
     End Sub
+
+    Private Sub topUpButton_Click(sender As Object, e As EventArgs) Handles topUpButton.Click
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.topUp"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("value", topUpQuantity.Text)
+
+        Dim line As String = topUpWho.Text
+        Dim result() As String
+        result = line.Split(" ")
+        Dim person As String = result(0)
+
+        CMD.Parameters.AddWithValue("client", person)
+
+
+
+        CMD.Parameters.AddWithValue("employee", currentControlEmployee)
+
+        CN.Open()
+        Dim retVal As Integer
+        retVal = CMD.ExecuteNonQuery()
+        CN.Close()
+
+        Select Case retVal
+            Case -1
+                MessageBox.Show("Missing/Invalid Client,  Employee or Value!", "ERROR",
+    MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+
+        End Select
+    End Sub
+
+    Private Sub ControlRedeemButton_Click(sender As Object, e As EventArgs) Handles ControlRedeemButton.Click
+
+
+        If Integer.Parse(controlStock.Text) < prizeQuantity.Value Then
+            MessageBox.Show("There's not enough stock!", "ERROR",
+   MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            CMD = New SqlCommand
+            CMD.Connection = CN
+            CMD.CommandText = "arcade.redeemPrize"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.Clear()
+            CMD.Parameters.AddWithValue("quantity", prizeQuantity.Text)
+
+            Dim line As String = prizeUser.Text
+            Dim result() As String
+            result = line.Split(" ")
+            Dim person As String = result(0)
+
+            Dim line2 As String = prizeSelect.Text
+            Dim result2() As String
+            result2 = line2.Split(" ")
+            Dim person2 As String = result2(0)
+
+            CMD.Parameters.AddWithValue("client", person)
+            CMD.Parameters.AddWithValue("prize", person2)
+
+
+
+            CMD.Parameters.AddWithValue("employee", currentControlEmployee)
+
+            CN.Open()
+            Dim retVal As Integer = CMD.ExecuteNonQuery()
+            CN.Close()
+
+            Select Case retVal
+                Case -1
+                    MessageBox.Show("Missing/Invalid Client, Prize, Employee or Quantity!", "ERROR",
+    MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+
+            End Select
+
+            CMD = New SqlCommand
+            CMD.Connection = CN
+
+            CMD.Parameters.Clear()
+            CMD.CommandText = "arcade.getPrizeStock"
+            CMD.CommandType = CommandType.StoredProcedure
+            CMD.Parameters.AddWithValue("@prize", currentControlPrize)
+            CMD.Parameters.Add("@ret", SqlDbType.Int)
+            CMD.Parameters("@ret").Direction = ParameterDirection.ReturnValue
+
+            CN.Open()
+
+            CMD.ExecuteNonQuery()
+            controlStock.Text = CMD.Parameters("@ret").Value.ToString
+            CN.Close()
+
+        End If
+
+
+    End Sub
+
+    Private Sub prizeSelect_SelectedIndexChanged(sender As Object, e As EventArgs) Handles prizeSelect.SelectedIndexChanged
+        currentControlPrize = prizeSelect.SelectedItem
+        Dim line As String = currentControlPrize
+        Dim result() As String
+        result = line.Split(" ")
+        currentControlPrize = result(0)
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getPrizePrice"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("@prize", currentControlPrize)
+        CMD.Parameters.Add("@ret", SqlDbType.Int)
+        CMD.Parameters("@ret").Direction = ParameterDirection.ReturnValue
+
+        CN.Open()
+
+        CMD.ExecuteNonQuery()
+
+        currentControlPrizePrice = CMD.Parameters("@ret").Value
+        ControlPrice.Text = "Insert Quantity"
+        CN.Close()
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.Parameters.Clear()
+        CMD.CommandText = "arcade.getPrizeStock"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("@prize", currentControlPrize)
+        CMD.Parameters.Add("@ret", SqlDbType.Int)
+        CMD.Parameters("@ret").Direction = ParameterDirection.ReturnValue
+
+        CN.Open()
+
+        CMD.ExecuteNonQuery()
+        controlStock.Text = CMD.Parameters("@ret").Value.ToString
+        CN.Close()
+
+
+    End Sub
+
+
+
+    Private Sub topUpQuantity_ValueChanged(sender As Object, e As EventArgs) Handles topUpQuantity.ValueChanged
+        topUpPrice.Text = topUpQuantity.Value.ToString + "€"
+    End Sub
+
+    Private Sub prizeQuantity_ValueChanged(sender As Object, e As EventArgs) Handles prizeQuantity.ValueChanged
+        ControlPrice.Text = (prizeQuantity.Value * Integer.Parse(currentControlPrizePrice)).ToString + " points"
+
+    End Sub
+
+    Private Sub ControlMachines_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ControlMachines.SelectedIndexChanged
+        Dim line As String = ControlMachines.SelectedItem
+        Dim result() As String
+        result = line.Split(" ")
+        Dim actualid As String = result(0)
+
+        currentControlMachine = actualid
+
+    End Sub
+
+    Private Sub controlDoMaintenance_Click(sender As Object, e As EventArgs) Handles controlDoMaintenance.Click
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.registerMaintenance"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        CMD.Parameters.AddWithValue("machine", currentControlMachine)
+        CMD.Parameters.AddWithValue("employee", currentControlEmployee)
+
+        CN.Open()
+        Dim retVal As Integer = CMD.ExecuteNonQuery()
+        CN.Close()
+
+        Select Case retVal
+            Case -1
+                MessageBox.Show("Missing/Invalid Arcade Machine or Employee!", "ERROR",
+MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+
+        End Select
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles loguserchanges.SelectedIndexChanged
+        CMD = New SqlCommand
+
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.getChanges"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Clear()
+        Dim line As String = loguserchanges.SelectedItem
+        Dim result() As String
+        result = line.Split(" ")
+        Dim actualid As String = result(0)
+        CMD.Parameters.AddWithValue("user", actualid)
+        CN.Open()
+
+
+        Dim sa As SqlDataAdapter = New SqlDataAdapter(CMD)
+        Dim ds As DataSet = New DataSet()
+
+
+        sa.Fill(ds)
+        ChangeBox.DataSource = ds.Tables(0)
+        CN.Close()
+
+    End Sub
+
+    Private Sub ControlPlayButton_Click(sender As Object, e As EventArgs) Handles ControlPlayButton.Click
+        CMD = New SqlCommand
+        CMD.Connection = CN
+        CMD.CommandText = "arcade.registerPlay"
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.AddWithValue("points_recv", CInt(Math.Ceiling(Rnd() * 200)) + 1)
+
+        Dim line As String = controlPlayUser.Text
+        Dim result() As String
+        result = line.Split(" ")
+        Dim person As String = result(0)
+
+        CMD.Parameters.AddWithValue("client", person)
+        CMD.Parameters.AddWithValue("machine", controlPlayMachine.Text)
+
+
+        CMD.Parameters.AddWithValue("playtime", controlTime.Value)
+
+        CN.Open()
+        Dim retVal As Integer
+        retVal = CMD.ExecuteNonQuery()
+        CN.Close()
+
+        Select Case retVal
+            Case -1
+                MessageBox.Show("Missing/Invalid Values in Playtime Register!", "ERROR",
+    MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+
+        End Select
+    End Sub
+
+
 End Class
 

@@ -144,6 +144,10 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StoreListBox = New System.Windows.Forms.ListBox()
         Me.LogTab = New System.Windows.Forms.TabPage()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.ChangeBox = New System.Windows.Forms.DataGridView()
+        Me.loguserchanges = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.StatsuseEnd = New System.Windows.Forms.CheckBox()
         Me.statsUseStart = New System.Windows.Forms.CheckBox()
@@ -196,6 +200,24 @@ Partial Class Form1
         Me.Label21 = New System.Windows.Forms.Label()
         Me.MachinaListBox = New System.Windows.Forms.ListBox()
         Me.ControlTab = New System.Windows.Forms.TabPage()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.controlDoMaintenance = New System.Windows.Forms.Button()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.ControlMachines = New System.Windows.Forms.ComboBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.controlEmployee = New System.Windows.Forms.ComboBox()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.controlStock = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.prizeUser = New System.Windows.Forms.ComboBox()
+        Me.ControlPrice = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.prizeQuantity = New System.Windows.Forms.NumericUpDown()
+        Me.ControlRedeemButton = New System.Windows.Forms.Button()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.prizeSelect = New System.Windows.Forms.ComboBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.topUpPrice = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -215,16 +237,14 @@ Partial Class Form1
         Me.MaintainedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.MaintainedTableAdapter()
         Me.PlayedTableAdapter = New Projeto_BD.ArcadeDataTableAdapters.PlayedTableAdapter()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.prizeQuantity = New System.Windows.Forms.NumericUpDown()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.prizeSelect = New System.Windows.Forms.ComboBox()
-        Me.controlEmployee = New System.Windows.Forms.ComboBox()
-        Me.Label33 = New System.Windows.Forms.Label()
+        Me.ControlPlayButton = New System.Windows.Forms.Button()
+        Me.controlPlayUser = New System.Windows.Forms.ComboBox()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.controlTime = New System.Windows.Forms.DateTimePicker()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.controlPlayMachine = New System.Windows.Forms.ComboBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.TabControl.SuspendLayout()
         Me.GameTab.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -259,6 +279,8 @@ Partial Class Form1
         Me.Panel17.SuspendLayout()
         Me.Panel16.SuspendLayout()
         Me.LogTab.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
+        CType(Me.ChangeBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.LogGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
@@ -270,6 +292,9 @@ Partial Class Form1
         Me.Panel31.SuspendLayout()
         Me.Panel32.SuspendLayout()
         Me.ControlTab.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
+        CType(Me.prizeQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.topUpQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RedeemedBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -279,8 +304,7 @@ Partial Class Form1
         CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox7.SuspendLayout()
-        CType(Me.prizeQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox10.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl
@@ -1397,6 +1421,7 @@ Partial Class Form1
         '
         'LogTab
         '
+        Me.LogTab.Controls.Add(Me.GroupBox9)
         Me.LogTab.Controls.Add(Me.GroupBox3)
         Me.LogTab.Controls.Add(Me.Label7)
         Me.LogTab.Controls.Add(Me.EmployeeLogs)
@@ -1411,6 +1436,43 @@ Partial Class Form1
         Me.LogTab.TabIndex = 4
         Me.LogTab.Text = "Logs"
         Me.LogTab.UseVisualStyleBackColor = True
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.Label29)
+        Me.GroupBox9.Controls.Add(Me.ChangeBox)
+        Me.GroupBox9.Controls.Add(Me.loguserchanges)
+        Me.GroupBox9.Location = New System.Drawing.Point(394, 541)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(473, 195)
+        Me.GroupBox9.TabIndex = 12
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Check User Ledger:"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(17, 32)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(36, 13)
+        Me.Label29.TabIndex = 11
+        Me.Label29.Text = "Client:"
+        '
+        'ChangeBox
+        '
+        Me.ChangeBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ChangeBox.Location = New System.Drawing.Point(20, 59)
+        Me.ChangeBox.Name = "ChangeBox"
+        Me.ChangeBox.Size = New System.Drawing.Size(447, 130)
+        Me.ChangeBox.TabIndex = 9
+        '
+        'loguserchanges
+        '
+        Me.loguserchanges.FormattingEnabled = True
+        Me.loguserchanges.Location = New System.Drawing.Point(59, 29)
+        Me.loguserchanges.Name = "loguserchanges"
+        Me.loguserchanges.Size = New System.Drawing.Size(165, 21)
+        Me.loguserchanges.TabIndex = 10
         '
         'GroupBox3
         '
@@ -1884,6 +1946,8 @@ Partial Class Form1
         '
         'ControlTab
         '
+        Me.ControlTab.Controls.Add(Me.GroupBox10)
+        Me.ControlTab.Controls.Add(Me.GroupBox8)
         Me.ControlTab.Controls.Add(Me.Label33)
         Me.ControlTab.Controls.Add(Me.controlEmployee)
         Me.ControlTab.Controls.Add(Me.GroupBox7)
@@ -1894,6 +1958,176 @@ Partial Class Form1
         Me.ControlTab.TabIndex = 6
         Me.ControlTab.Text = "Controls"
         Me.ControlTab.UseVisualStyleBackColor = True
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.controlDoMaintenance)
+        Me.GroupBox8.Controls.Add(Me.Label38)
+        Me.GroupBox8.Controls.Add(Me.ControlMachines)
+        Me.GroupBox8.Location = New System.Drawing.Point(39, 240)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(255, 98)
+        Me.GroupBox8.TabIndex = 8
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Register Maintenance"
+        '
+        'controlDoMaintenance
+        '
+        Me.controlDoMaintenance.Location = New System.Drawing.Point(10, 66)
+        Me.controlDoMaintenance.Name = "controlDoMaintenance"
+        Me.controlDoMaintenance.Size = New System.Drawing.Size(75, 23)
+        Me.controlDoMaintenance.TabIndex = 4
+        Me.controlDoMaintenance.Text = "Register"
+        Me.controlDoMaintenance.UseVisualStyleBackColor = True
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(7, 33)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(51, 13)
+        Me.Label38.TabIndex = 1
+        Me.Label38.Text = "Machine:"
+        '
+        'ControlMachines
+        '
+        Me.ControlMachines.FormattingEnabled = True
+        Me.ControlMachines.Location = New System.Drawing.Point(64, 30)
+        Me.ControlMachines.Name = "ControlMachines"
+        Me.ControlMachines.Size = New System.Drawing.Size(121, 21)
+        Me.ControlMachines.TabIndex = 0
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(36, 39)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(105, 13)
+        Me.Label33.TabIndex = 18
+        Me.Label33.Text = "Employee In Charge:"
+        '
+        'controlEmployee
+        '
+        Me.controlEmployee.FormattingEnabled = True
+        Me.controlEmployee.Location = New System.Drawing.Point(147, 36)
+        Me.controlEmployee.Name = "controlEmployee"
+        Me.controlEmployee.Size = New System.Drawing.Size(136, 21)
+        Me.controlEmployee.TabIndex = 17
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.controlStock)
+        Me.GroupBox7.Controls.Add(Me.Label35)
+        Me.GroupBox7.Controls.Add(Me.Label34)
+        Me.GroupBox7.Controls.Add(Me.prizeUser)
+        Me.GroupBox7.Controls.Add(Me.ControlPrice)
+        Me.GroupBox7.Controls.Add(Me.Label30)
+        Me.GroupBox7.Controls.Add(Me.prizeQuantity)
+        Me.GroupBox7.Controls.Add(Me.ControlRedeemButton)
+        Me.GroupBox7.Controls.Add(Me.Label31)
+        Me.GroupBox7.Controls.Add(Me.Label32)
+        Me.GroupBox7.Controls.Add(Me.prizeSelect)
+        Me.GroupBox7.Location = New System.Drawing.Point(306, 86)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(254, 194)
+        Me.GroupBox7.TabIndex = 16
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Redeem Prize"
+        '
+        'controlStock
+        '
+        Me.controlStock.AutoSize = True
+        Me.controlStock.Location = New System.Drawing.Point(162, 127)
+        Me.controlStock.Name = "controlStock"
+        Me.controlStock.Size = New System.Drawing.Size(71, 13)
+        Me.controlStock.TabIndex = 11
+        Me.controlStock.Text = "Select a prize"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(130, 127)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(38, 13)
+        Me.Label35.TabIndex = 10
+        Me.Label35.Text = "Stock:"
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(16, 50)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(36, 13)
+        Me.Label34.TabIndex = 9
+        Me.Label34.Text = "Who?"
+        '
+        'prizeUser
+        '
+        Me.prizeUser.FormattingEnabled = True
+        Me.prizeUser.Location = New System.Drawing.Point(106, 47)
+        Me.prizeUser.Name = "prizeUser"
+        Me.prizeUser.Size = New System.Drawing.Size(121, 21)
+        Me.prizeUser.TabIndex = 8
+        '
+        'ControlPrice
+        '
+        Me.ControlPrice.AutoSize = True
+        Me.ControlPrice.Location = New System.Drawing.Point(162, 106)
+        Me.ControlPrice.Name = "ControlPrice"
+        Me.ControlPrice.Size = New System.Drawing.Size(71, 13)
+        Me.ControlPrice.TabIndex = 7
+        Me.ControlPrice.Text = "Select a prize"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(130, 106)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(34, 13)
+        Me.Label30.TabIndex = 6
+        Me.Label30.Text = "Price:"
+        '
+        'prizeQuantity
+        '
+        Me.prizeQuantity.Location = New System.Drawing.Point(68, 104)
+        Me.prizeQuantity.Name = "prizeQuantity"
+        Me.prizeQuantity.Size = New System.Drawing.Size(57, 20)
+        Me.prizeQuantity.TabIndex = 5
+        '
+        'ControlRedeemButton
+        '
+        Me.ControlRedeemButton.Location = New System.Drawing.Point(10, 154)
+        Me.ControlRedeemButton.Name = "ControlRedeemButton"
+        Me.ControlRedeemButton.Size = New System.Drawing.Size(75, 23)
+        Me.ControlRedeemButton.TabIndex = 4
+        Me.ControlRedeemButton.Text = "Redeem!"
+        Me.ControlRedeemButton.UseVisualStyleBackColor = True
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(16, 106)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(49, 13)
+        Me.Label31.TabIndex = 3
+        Me.Label31.Text = "Quantity:"
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(16, 77)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(66, 13)
+        Me.Label32.TabIndex = 1
+        Me.Label32.Text = "Select Prize:"
+        '
+        'prizeSelect
+        '
+        Me.prizeSelect.FormattingEnabled = True
+        Me.prizeSelect.Location = New System.Drawing.Point(106, 74)
+        Me.prizeSelect.Name = "prizeSelect"
+        Me.prizeSelect.Size = New System.Drawing.Size(121, 21)
+        Me.prizeSelect.TabIndex = 0
         '
         'GroupBox6
         '
@@ -2017,98 +2251,81 @@ Partial Class Form1
         '
         Me.PlayedTableAdapter.ClearBeforeFill = True
         '
-        'GroupBox7
+        'ControlPlayButton
         '
-        Me.GroupBox7.Controls.Add(Me.Label29)
-        Me.GroupBox7.Controls.Add(Me.Label30)
-        Me.GroupBox7.Controls.Add(Me.prizeQuantity)
-        Me.GroupBox7.Controls.Add(Me.Button1)
-        Me.GroupBox7.Controls.Add(Me.Label31)
-        Me.GroupBox7.Controls.Add(Me.Label32)
-        Me.GroupBox7.Controls.Add(Me.prizeSelect)
-        Me.GroupBox7.Location = New System.Drawing.Point(306, 86)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(254, 140)
-        Me.GroupBox7.TabIndex = 16
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Redeem Prize"
+        Me.ControlPlayButton.Location = New System.Drawing.Point(19, 148)
+        Me.ControlPlayButton.Name = "ControlPlayButton"
+        Me.ControlPlayButton.Size = New System.Drawing.Size(75, 23)
+        Me.ControlPlayButton.TabIndex = 4
+        Me.ControlPlayButton.Text = "Register Play"
+        Me.ControlPlayButton.UseVisualStyleBackColor = True
         '
-        'Label29
+        'controlPlayUser
         '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(153, 62)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(71, 13)
-        Me.Label29.TabIndex = 7
-        Me.Label29.Text = "Select a prize"
+        Me.controlPlayUser.FormattingEnabled = True
+        Me.controlPlayUser.Location = New System.Drawing.Point(106, 47)
+        Me.controlPlayUser.Name = "controlPlayUser"
+        Me.controlPlayUser.Size = New System.Drawing.Size(121, 21)
+        Me.controlPlayUser.TabIndex = 8
         '
-        'Label30
+        'Label39
         '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(121, 62)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(34, 13)
-        Me.Label30.TabIndex = 6
-        Me.Label30.Text = "Price:"
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(16, 50)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(36, 13)
+        Me.Label39.TabIndex = 9
+        Me.Label39.Text = "Who?"
         '
-        'prizeQuantity
+        'controlTime
         '
-        Me.prizeQuantity.Location = New System.Drawing.Point(59, 60)
-        Me.prizeQuantity.Name = "prizeQuantity"
-        Me.prizeQuantity.Size = New System.Drawing.Size(57, 20)
-        Me.prizeQuantity.TabIndex = 5
+        Me.controlTime.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        Me.controlTime.Location = New System.Drawing.Point(106, 108)
+        Me.controlTime.Name = "controlTime"
+        Me.controlTime.Size = New System.Drawing.Size(79, 20)
+        Me.controlTime.TabIndex = 19
         '
-        'Button1
+        'Label45
         '
-        Me.Button1.Location = New System.Drawing.Point(10, 101)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Redeem!"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Label45.AutoSize = True
+        Me.Label45.Location = New System.Drawing.Point(18, 114)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(49, 13)
+        Me.Label45.TabIndex = 20
+        Me.Label45.Text = "Playtime:"
         '
-        'Label31
+        'controlPlayMachine
         '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(7, 62)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(49, 13)
-        Me.Label31.TabIndex = 3
-        Me.Label31.Text = "Quantity:"
+        Me.controlPlayMachine.FormattingEnabled = True
+        Me.controlPlayMachine.Location = New System.Drawing.Point(106, 76)
+        Me.controlPlayMachine.Name = "controlPlayMachine"
+        Me.controlPlayMachine.Size = New System.Drawing.Size(121, 21)
+        Me.controlPlayMachine.TabIndex = 23
         '
-        'Label32
+        'Label36
         '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(7, 33)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(66, 13)
-        Me.Label32.TabIndex = 1
-        Me.Label32.Text = "Select Prize:"
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(16, 76)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(51, 13)
+        Me.Label36.TabIndex = 24
+        Me.Label36.Text = "Machine:"
         '
-        'prizeSelect
+        'GroupBox10
         '
-        Me.prizeSelect.FormattingEnabled = True
-        Me.prizeSelect.Location = New System.Drawing.Point(97, 30)
-        Me.prizeSelect.Name = "prizeSelect"
-        Me.prizeSelect.Size = New System.Drawing.Size(121, 21)
-        Me.prizeSelect.TabIndex = 0
-        '
-        'controlEmployee
-        '
-        Me.controlEmployee.FormattingEnabled = True
-        Me.controlEmployee.Location = New System.Drawing.Point(147, 36)
-        Me.controlEmployee.Name = "controlEmployee"
-        Me.controlEmployee.Size = New System.Drawing.Size(136, 21)
-        Me.controlEmployee.TabIndex = 17
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(36, 39)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(105, 13)
-        Me.Label33.TabIndex = 18
-        Me.Label33.Text = "Employee In Charge:"
+        Me.GroupBox10.Controls.Add(Me.Label36)
+        Me.GroupBox10.Controls.Add(Me.controlPlayMachine)
+        Me.GroupBox10.Controls.Add(Me.Label45)
+        Me.GroupBox10.Controls.Add(Me.controlTime)
+        Me.GroupBox10.Controls.Add(Me.Label39)
+        Me.GroupBox10.Controls.Add(Me.controlPlayUser)
+        Me.GroupBox10.Controls.Add(Me.ControlPlayButton)
+        Me.GroupBox10.Location = New System.Drawing.Point(583, 92)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(272, 188)
+        Me.GroupBox10.TabIndex = 17
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "Register PlayTime"
         '
         'Form1
         '
@@ -2177,6 +2394,9 @@ Partial Class Form1
         Me.Panel16.PerformLayout()
         Me.LogTab.ResumeLayout(False)
         Me.LogTab.PerformLayout()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
+        CType(Me.ChangeBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.LogGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2197,6 +2417,11 @@ Partial Class Form1
         Me.Panel32.PerformLayout()
         Me.ControlTab.ResumeLayout(False)
         Me.ControlTab.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
+        CType(Me.prizeQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.topUpQuantity, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2207,9 +2432,8 @@ Partial Class Form1
         CType(Me.PlayedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RedeemedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
-        CType(Me.prizeQuantity, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2408,11 +2632,31 @@ Partial Class Form1
     Friend WithEvents Label33 As Label
     Friend WithEvents controlEmployee As ComboBox
     Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents Label29 As Label
+    Friend WithEvents ControlPrice As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents prizeQuantity As NumericUpDown
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ControlRedeemButton As Button
     Friend WithEvents Label31 As Label
     Friend WithEvents Label32 As Label
     Friend WithEvents prizeSelect As ComboBox
+    Friend WithEvents Label34 As Label
+    Friend WithEvents prizeUser As ComboBox
+    Friend WithEvents controlStock As Label
+    Friend WithEvents Label35 As Label
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents controlDoMaintenance As Button
+    Friend WithEvents Label38 As Label
+    Friend WithEvents ControlMachines As ComboBox
+    Friend WithEvents GroupBox9 As GroupBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents ChangeBox As DataGridView
+    Friend WithEvents loguserchanges As ComboBox
+    Friend WithEvents GroupBox10 As GroupBox
+    Friend WithEvents Label36 As Label
+    Friend WithEvents controlPlayMachine As ComboBox
+    Friend WithEvents Label45 As Label
+    Friend WithEvents controlTime As DateTimePicker
+    Friend WithEvents Label39 As Label
+    Friend WithEvents controlPlayUser As ComboBox
+    Friend WithEvents ControlPlayButton As Button
 End Class

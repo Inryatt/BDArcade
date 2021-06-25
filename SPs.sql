@@ -296,7 +296,7 @@ GO
 
 CREATE OR ALTER PROCEDURE arcade.getUserList
 AS
-	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.Client
+	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.Client order by client_no
 GO
 go
 CREATE OR ALTER PROCEDURE arcade.getGameList
@@ -1306,9 +1306,9 @@ AS
 GO
 
 create or alter procedure arcade.getPrizesFromStore
-	@id int =null,
+	@id int =null
 	as
-	Select * from arcade.prize where store_id = @id
+	Select  CONCAT(pri_id, ' ', pri_name) as prize from arcade.prize where store_id = @id
 	go
 
 
@@ -1316,3 +1316,46 @@ CREATE OR ALTER PROCEDURE arcade.getClientList
 AS
 	SELECT CONCAT(client_no, ' ', cli_name) as client FROM arcade.client WHERE client_no!=06999
 GO
+
+--UDF
+CREATE FUNCTION arcade.employeeWorksAt (@employeeid int)  
+RETURNS int  
+AS  
+begin
+declare @ret int;
+
+    SELECT @ret=store 
+    FROM arcade.employee  
+    WHERE emp_no = @employeeid  
+  return @ret
+  end
+;  
+
+
+--UDF
+CREATE FUNCTION arcade.getPrizePrice (@prize int)  
+RETURNS int  
+AS  
+begin
+declare @ret int;
+
+    SELECT @ret=pri_price 
+    FROM arcade.prize  
+    WHERE pri_id = @prize  
+  return @ret
+  end
+;  
+
+--UDF
+CREATE FUNCTION arcade.getPrizeStock (@prize int)  
+RETURNS int  
+AS  
+begin
+declare @ret int;
+
+    SELECT @ret=no_available 
+    FROM arcade.prize  
+    WHERE pri_id = @prize  
+  return @ret
+  end
+;  
